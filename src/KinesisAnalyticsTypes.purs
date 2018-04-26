@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -201,16 +200,16 @@ instance encodeApplicationDescription :: Encode ApplicationDescription where enc
 -- | <p>Provides a description of the application, including the application Amazon Resource Name (ARN), status, latest version, and input and output configuration.</p>
 newtype ApplicationDetail = ApplicationDetail 
   { "ApplicationName" :: (ApplicationName)
-  , "ApplicationDescription" :: NullOrUndefined (ApplicationDescription)
+  , "ApplicationDescription" :: Maybe (ApplicationDescription)
   , "ApplicationARN" :: (ResourceARN)
   , "ApplicationStatus" :: (ApplicationStatus)
-  , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "LastUpdateTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "InputDescriptions" :: NullOrUndefined (InputDescriptions)
-  , "OutputDescriptions" :: NullOrUndefined (OutputDescriptions)
-  , "ReferenceDataSourceDescriptions" :: NullOrUndefined (ReferenceDataSourceDescriptions)
-  , "CloudWatchLoggingOptionDescriptions" :: NullOrUndefined (CloudWatchLoggingOptionDescriptions)
-  , "ApplicationCode" :: NullOrUndefined (ApplicationCode)
+  , "CreateTimestamp" :: Maybe (Types.Timestamp)
+  , "LastUpdateTimestamp" :: Maybe (Types.Timestamp)
+  , "InputDescriptions" :: Maybe (InputDescriptions)
+  , "OutputDescriptions" :: Maybe (OutputDescriptions)
+  , "ReferenceDataSourceDescriptions" :: Maybe (ReferenceDataSourceDescriptions)
+  , "CloudWatchLoggingOptionDescriptions" :: Maybe (CloudWatchLoggingOptionDescriptions)
+  , "ApplicationCode" :: Maybe (ApplicationCode)
   , "ApplicationVersionId" :: (ApplicationVersionId)
   }
 derive instance newtypeApplicationDetail :: Newtype ApplicationDetail _
@@ -221,12 +220,12 @@ instance encodeApplicationDetail :: Encode ApplicationDetail where encode = gene
 
 -- | Constructs ApplicationDetail from required parameters
 newApplicationDetail :: ResourceARN -> ApplicationName -> ApplicationStatus -> ApplicationVersionId -> ApplicationDetail
-newApplicationDetail _ApplicationARN _ApplicationName _ApplicationStatus _ApplicationVersionId = ApplicationDetail { "ApplicationARN": _ApplicationARN, "ApplicationName": _ApplicationName, "ApplicationStatus": _ApplicationStatus, "ApplicationVersionId": _ApplicationVersionId, "ApplicationCode": (NullOrUndefined Nothing), "ApplicationDescription": (NullOrUndefined Nothing), "CloudWatchLoggingOptionDescriptions": (NullOrUndefined Nothing), "CreateTimestamp": (NullOrUndefined Nothing), "InputDescriptions": (NullOrUndefined Nothing), "LastUpdateTimestamp": (NullOrUndefined Nothing), "OutputDescriptions": (NullOrUndefined Nothing), "ReferenceDataSourceDescriptions": (NullOrUndefined Nothing) }
+newApplicationDetail _ApplicationARN _ApplicationName _ApplicationStatus _ApplicationVersionId = ApplicationDetail { "ApplicationARN": _ApplicationARN, "ApplicationName": _ApplicationName, "ApplicationStatus": _ApplicationStatus, "ApplicationVersionId": _ApplicationVersionId, "ApplicationCode": Nothing, "ApplicationDescription": Nothing, "CloudWatchLoggingOptionDescriptions": Nothing, "CreateTimestamp": Nothing, "InputDescriptions": Nothing, "LastUpdateTimestamp": Nothing, "OutputDescriptions": Nothing, "ReferenceDataSourceDescriptions": Nothing }
 
 -- | Constructs ApplicationDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newApplicationDetail' :: ResourceARN -> ApplicationName -> ApplicationStatus -> ApplicationVersionId -> ( { "ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: NullOrUndefined (ApplicationDescription) , "ApplicationARN" :: (ResourceARN) , "ApplicationStatus" :: (ApplicationStatus) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) , "LastUpdateTimestamp" :: NullOrUndefined (Types.Timestamp) , "InputDescriptions" :: NullOrUndefined (InputDescriptions) , "OutputDescriptions" :: NullOrUndefined (OutputDescriptions) , "ReferenceDataSourceDescriptions" :: NullOrUndefined (ReferenceDataSourceDescriptions) , "CloudWatchLoggingOptionDescriptions" :: NullOrUndefined (CloudWatchLoggingOptionDescriptions) , "ApplicationCode" :: NullOrUndefined (ApplicationCode) , "ApplicationVersionId" :: (ApplicationVersionId) } -> {"ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: NullOrUndefined (ApplicationDescription) , "ApplicationARN" :: (ResourceARN) , "ApplicationStatus" :: (ApplicationStatus) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) , "LastUpdateTimestamp" :: NullOrUndefined (Types.Timestamp) , "InputDescriptions" :: NullOrUndefined (InputDescriptions) , "OutputDescriptions" :: NullOrUndefined (OutputDescriptions) , "ReferenceDataSourceDescriptions" :: NullOrUndefined (ReferenceDataSourceDescriptions) , "CloudWatchLoggingOptionDescriptions" :: NullOrUndefined (CloudWatchLoggingOptionDescriptions) , "ApplicationCode" :: NullOrUndefined (ApplicationCode) , "ApplicationVersionId" :: (ApplicationVersionId) } ) -> ApplicationDetail
-newApplicationDetail' _ApplicationARN _ApplicationName _ApplicationStatus _ApplicationVersionId customize = (ApplicationDetail <<< customize) { "ApplicationARN": _ApplicationARN, "ApplicationName": _ApplicationName, "ApplicationStatus": _ApplicationStatus, "ApplicationVersionId": _ApplicationVersionId, "ApplicationCode": (NullOrUndefined Nothing), "ApplicationDescription": (NullOrUndefined Nothing), "CloudWatchLoggingOptionDescriptions": (NullOrUndefined Nothing), "CreateTimestamp": (NullOrUndefined Nothing), "InputDescriptions": (NullOrUndefined Nothing), "LastUpdateTimestamp": (NullOrUndefined Nothing), "OutputDescriptions": (NullOrUndefined Nothing), "ReferenceDataSourceDescriptions": (NullOrUndefined Nothing) }
+newApplicationDetail' :: ResourceARN -> ApplicationName -> ApplicationStatus -> ApplicationVersionId -> ( { "ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: Maybe (ApplicationDescription) , "ApplicationARN" :: (ResourceARN) , "ApplicationStatus" :: (ApplicationStatus) , "CreateTimestamp" :: Maybe (Types.Timestamp) , "LastUpdateTimestamp" :: Maybe (Types.Timestamp) , "InputDescriptions" :: Maybe (InputDescriptions) , "OutputDescriptions" :: Maybe (OutputDescriptions) , "ReferenceDataSourceDescriptions" :: Maybe (ReferenceDataSourceDescriptions) , "CloudWatchLoggingOptionDescriptions" :: Maybe (CloudWatchLoggingOptionDescriptions) , "ApplicationCode" :: Maybe (ApplicationCode) , "ApplicationVersionId" :: (ApplicationVersionId) } -> {"ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: Maybe (ApplicationDescription) , "ApplicationARN" :: (ResourceARN) , "ApplicationStatus" :: (ApplicationStatus) , "CreateTimestamp" :: Maybe (Types.Timestamp) , "LastUpdateTimestamp" :: Maybe (Types.Timestamp) , "InputDescriptions" :: Maybe (InputDescriptions) , "OutputDescriptions" :: Maybe (OutputDescriptions) , "ReferenceDataSourceDescriptions" :: Maybe (ReferenceDataSourceDescriptions) , "CloudWatchLoggingOptionDescriptions" :: Maybe (CloudWatchLoggingOptionDescriptions) , "ApplicationCode" :: Maybe (ApplicationCode) , "ApplicationVersionId" :: (ApplicationVersionId) } ) -> ApplicationDetail
+newApplicationDetail' _ApplicationARN _ApplicationName _ApplicationStatus _ApplicationVersionId customize = (ApplicationDetail <<< customize) { "ApplicationARN": _ApplicationARN, "ApplicationName": _ApplicationName, "ApplicationStatus": _ApplicationStatus, "ApplicationVersionId": _ApplicationVersionId, "ApplicationCode": Nothing, "ApplicationDescription": Nothing, "CloudWatchLoggingOptionDescriptions": Nothing, "CreateTimestamp": Nothing, "InputDescriptions": Nothing, "LastUpdateTimestamp": Nothing, "OutputDescriptions": Nothing, "ReferenceDataSourceDescriptions": Nothing }
 
 
 
@@ -282,11 +281,11 @@ newApplicationSummary' _ApplicationARN _ApplicationName _ApplicationStatus custo
 
 -- | <p>Describes updates to apply to an existing Amazon Kinesis Analytics application.</p>
 newtype ApplicationUpdate = ApplicationUpdate 
-  { "InputUpdates" :: NullOrUndefined (InputUpdates)
-  , "ApplicationCodeUpdate" :: NullOrUndefined (ApplicationCode)
-  , "OutputUpdates" :: NullOrUndefined (OutputUpdates)
-  , "ReferenceDataSourceUpdates" :: NullOrUndefined (ReferenceDataSourceUpdates)
-  , "CloudWatchLoggingOptionUpdates" :: NullOrUndefined (CloudWatchLoggingOptionUpdates)
+  { "InputUpdates" :: Maybe (InputUpdates)
+  , "ApplicationCodeUpdate" :: Maybe (ApplicationCode)
+  , "OutputUpdates" :: Maybe (OutputUpdates)
+  , "ReferenceDataSourceUpdates" :: Maybe (ReferenceDataSourceUpdates)
+  , "CloudWatchLoggingOptionUpdates" :: Maybe (CloudWatchLoggingOptionUpdates)
   }
 derive instance newtypeApplicationUpdate :: Newtype ApplicationUpdate _
 derive instance repGenericApplicationUpdate :: Generic ApplicationUpdate _
@@ -296,12 +295,12 @@ instance encodeApplicationUpdate :: Encode ApplicationUpdate where encode = gene
 
 -- | Constructs ApplicationUpdate from required parameters
 newApplicationUpdate :: ApplicationUpdate
-newApplicationUpdate  = ApplicationUpdate { "ApplicationCodeUpdate": (NullOrUndefined Nothing), "CloudWatchLoggingOptionUpdates": (NullOrUndefined Nothing), "InputUpdates": (NullOrUndefined Nothing), "OutputUpdates": (NullOrUndefined Nothing), "ReferenceDataSourceUpdates": (NullOrUndefined Nothing) }
+newApplicationUpdate  = ApplicationUpdate { "ApplicationCodeUpdate": Nothing, "CloudWatchLoggingOptionUpdates": Nothing, "InputUpdates": Nothing, "OutputUpdates": Nothing, "ReferenceDataSourceUpdates": Nothing }
 
 -- | Constructs ApplicationUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newApplicationUpdate' :: ( { "InputUpdates" :: NullOrUndefined (InputUpdates) , "ApplicationCodeUpdate" :: NullOrUndefined (ApplicationCode) , "OutputUpdates" :: NullOrUndefined (OutputUpdates) , "ReferenceDataSourceUpdates" :: NullOrUndefined (ReferenceDataSourceUpdates) , "CloudWatchLoggingOptionUpdates" :: NullOrUndefined (CloudWatchLoggingOptionUpdates) } -> {"InputUpdates" :: NullOrUndefined (InputUpdates) , "ApplicationCodeUpdate" :: NullOrUndefined (ApplicationCode) , "OutputUpdates" :: NullOrUndefined (OutputUpdates) , "ReferenceDataSourceUpdates" :: NullOrUndefined (ReferenceDataSourceUpdates) , "CloudWatchLoggingOptionUpdates" :: NullOrUndefined (CloudWatchLoggingOptionUpdates) } ) -> ApplicationUpdate
-newApplicationUpdate'  customize = (ApplicationUpdate <<< customize) { "ApplicationCodeUpdate": (NullOrUndefined Nothing), "CloudWatchLoggingOptionUpdates": (NullOrUndefined Nothing), "InputUpdates": (NullOrUndefined Nothing), "OutputUpdates": (NullOrUndefined Nothing), "ReferenceDataSourceUpdates": (NullOrUndefined Nothing) }
+newApplicationUpdate' :: ( { "InputUpdates" :: Maybe (InputUpdates) , "ApplicationCodeUpdate" :: Maybe (ApplicationCode) , "OutputUpdates" :: Maybe (OutputUpdates) , "ReferenceDataSourceUpdates" :: Maybe (ReferenceDataSourceUpdates) , "CloudWatchLoggingOptionUpdates" :: Maybe (CloudWatchLoggingOptionUpdates) } -> {"InputUpdates" :: Maybe (InputUpdates) , "ApplicationCodeUpdate" :: Maybe (ApplicationCode) , "OutputUpdates" :: Maybe (OutputUpdates) , "ReferenceDataSourceUpdates" :: Maybe (ReferenceDataSourceUpdates) , "CloudWatchLoggingOptionUpdates" :: Maybe (CloudWatchLoggingOptionUpdates) } ) -> ApplicationUpdate
+newApplicationUpdate'  customize = (ApplicationUpdate <<< customize) { "ApplicationCodeUpdate": Nothing, "CloudWatchLoggingOptionUpdates": Nothing, "InputUpdates": Nothing, "OutputUpdates": Nothing, "ReferenceDataSourceUpdates": Nothing }
 
 
 
@@ -378,7 +377,7 @@ newCloudWatchLoggingOption' _LogStreamARN _RoleARN customize = (CloudWatchLoggin
 
 -- | <p>Description of the CloudWatch logging option.</p>
 newtype CloudWatchLoggingOptionDescription = CloudWatchLoggingOptionDescription 
-  { "CloudWatchLoggingOptionId" :: NullOrUndefined (Id)
+  { "CloudWatchLoggingOptionId" :: Maybe (Id)
   , "LogStreamARN" :: (LogStreamARN)
   , "RoleARN" :: (RoleARN)
   }
@@ -390,12 +389,12 @@ instance encodeCloudWatchLoggingOptionDescription :: Encode CloudWatchLoggingOpt
 
 -- | Constructs CloudWatchLoggingOptionDescription from required parameters
 newCloudWatchLoggingOptionDescription :: LogStreamARN -> RoleARN -> CloudWatchLoggingOptionDescription
-newCloudWatchLoggingOptionDescription _LogStreamARN _RoleARN = CloudWatchLoggingOptionDescription { "LogStreamARN": _LogStreamARN, "RoleARN": _RoleARN, "CloudWatchLoggingOptionId": (NullOrUndefined Nothing) }
+newCloudWatchLoggingOptionDescription _LogStreamARN _RoleARN = CloudWatchLoggingOptionDescription { "LogStreamARN": _LogStreamARN, "RoleARN": _RoleARN, "CloudWatchLoggingOptionId": Nothing }
 
 -- | Constructs CloudWatchLoggingOptionDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudWatchLoggingOptionDescription' :: LogStreamARN -> RoleARN -> ( { "CloudWatchLoggingOptionId" :: NullOrUndefined (Id) , "LogStreamARN" :: (LogStreamARN) , "RoleARN" :: (RoleARN) } -> {"CloudWatchLoggingOptionId" :: NullOrUndefined (Id) , "LogStreamARN" :: (LogStreamARN) , "RoleARN" :: (RoleARN) } ) -> CloudWatchLoggingOptionDescription
-newCloudWatchLoggingOptionDescription' _LogStreamARN _RoleARN customize = (CloudWatchLoggingOptionDescription <<< customize) { "LogStreamARN": _LogStreamARN, "RoleARN": _RoleARN, "CloudWatchLoggingOptionId": (NullOrUndefined Nothing) }
+newCloudWatchLoggingOptionDescription' :: LogStreamARN -> RoleARN -> ( { "CloudWatchLoggingOptionId" :: Maybe (Id) , "LogStreamARN" :: (LogStreamARN) , "RoleARN" :: (RoleARN) } -> {"CloudWatchLoggingOptionId" :: Maybe (Id) , "LogStreamARN" :: (LogStreamARN) , "RoleARN" :: (RoleARN) } ) -> CloudWatchLoggingOptionDescription
+newCloudWatchLoggingOptionDescription' _LogStreamARN _RoleARN customize = (CloudWatchLoggingOptionDescription <<< customize) { "LogStreamARN": _LogStreamARN, "RoleARN": _RoleARN, "CloudWatchLoggingOptionId": Nothing }
 
 
 
@@ -411,8 +410,8 @@ instance encodeCloudWatchLoggingOptionDescriptions :: Encode CloudWatchLoggingOp
 -- | <p>Describes CloudWatch logging option updates.</p>
 newtype CloudWatchLoggingOptionUpdate = CloudWatchLoggingOptionUpdate 
   { "CloudWatchLoggingOptionId" :: (Id)
-  , "LogStreamARNUpdate" :: NullOrUndefined (LogStreamARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  , "LogStreamARNUpdate" :: Maybe (LogStreamARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeCloudWatchLoggingOptionUpdate :: Newtype CloudWatchLoggingOptionUpdate _
 derive instance repGenericCloudWatchLoggingOptionUpdate :: Generic CloudWatchLoggingOptionUpdate _
@@ -422,12 +421,12 @@ instance encodeCloudWatchLoggingOptionUpdate :: Encode CloudWatchLoggingOptionUp
 
 -- | Constructs CloudWatchLoggingOptionUpdate from required parameters
 newCloudWatchLoggingOptionUpdate :: Id -> CloudWatchLoggingOptionUpdate
-newCloudWatchLoggingOptionUpdate _CloudWatchLoggingOptionId = CloudWatchLoggingOptionUpdate { "CloudWatchLoggingOptionId": _CloudWatchLoggingOptionId, "LogStreamARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newCloudWatchLoggingOptionUpdate _CloudWatchLoggingOptionId = CloudWatchLoggingOptionUpdate { "CloudWatchLoggingOptionId": _CloudWatchLoggingOptionId, "LogStreamARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs CloudWatchLoggingOptionUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudWatchLoggingOptionUpdate' :: Id -> ( { "CloudWatchLoggingOptionId" :: (Id) , "LogStreamARNUpdate" :: NullOrUndefined (LogStreamARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"CloudWatchLoggingOptionId" :: (Id) , "LogStreamARNUpdate" :: NullOrUndefined (LogStreamARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> CloudWatchLoggingOptionUpdate
-newCloudWatchLoggingOptionUpdate' _CloudWatchLoggingOptionId customize = (CloudWatchLoggingOptionUpdate <<< customize) { "CloudWatchLoggingOptionId": _CloudWatchLoggingOptionId, "LogStreamARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newCloudWatchLoggingOptionUpdate' :: Id -> ( { "CloudWatchLoggingOptionId" :: (Id) , "LogStreamARNUpdate" :: Maybe (LogStreamARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"CloudWatchLoggingOptionId" :: (Id) , "LogStreamARNUpdate" :: Maybe (LogStreamARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> CloudWatchLoggingOptionUpdate
+newCloudWatchLoggingOptionUpdate' _CloudWatchLoggingOptionId customize = (CloudWatchLoggingOptionUpdate <<< customize) { "CloudWatchLoggingOptionId": _CloudWatchLoggingOptionId, "LogStreamARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
@@ -451,7 +450,7 @@ instance encodeCloudWatchLoggingOptions :: Encode CloudWatchLoggingOptions where
 
 -- | <p>User-provided application code (query) is invalid. This can be a simple syntax error.</p>
 newtype CodeValidationException = CodeValidationException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeCodeValidationException :: Newtype CodeValidationException _
 derive instance repGenericCodeValidationException :: Generic CodeValidationException _
@@ -461,18 +460,18 @@ instance encodeCodeValidationException :: Encode CodeValidationException where e
 
 -- | Constructs CodeValidationException from required parameters
 newCodeValidationException :: CodeValidationException
-newCodeValidationException  = CodeValidationException { "message": (NullOrUndefined Nothing) }
+newCodeValidationException  = CodeValidationException { "message": Nothing }
 
 -- | Constructs CodeValidationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCodeValidationException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> CodeValidationException
-newCodeValidationException'  customize = (CodeValidationException <<< customize) { "message": (NullOrUndefined Nothing) }
+newCodeValidationException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> CodeValidationException
+newCodeValidationException'  customize = (CodeValidationException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Exception thrown as a result of concurrent modification to an application. For example, two individuals attempting to edit the same application at the same time.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 derive instance repGenericConcurrentModificationException :: Generic ConcurrentModificationException _
@@ -482,23 +481,23 @@ instance encodeConcurrentModificationException :: Encode ConcurrentModificationE
 
 -- | Constructs ConcurrentModificationException from required parameters
 newConcurrentModificationException :: ConcurrentModificationException
-newConcurrentModificationException  = ConcurrentModificationException { "message": (NullOrUndefined Nothing) }
+newConcurrentModificationException  = ConcurrentModificationException { "message": Nothing }
 
 -- | Constructs ConcurrentModificationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConcurrentModificationException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ConcurrentModificationException
-newConcurrentModificationException'  customize = (ConcurrentModificationException <<< customize) { "message": (NullOrUndefined Nothing) }
+newConcurrentModificationException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ConcurrentModificationException
+newConcurrentModificationException'  customize = (ConcurrentModificationException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>TBD</p>
 newtype CreateApplicationRequest = CreateApplicationRequest 
   { "ApplicationName" :: (ApplicationName)
-  , "ApplicationDescription" :: NullOrUndefined (ApplicationDescription)
-  , "Inputs" :: NullOrUndefined (Inputs)
-  , "Outputs" :: NullOrUndefined (Outputs)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
-  , "ApplicationCode" :: NullOrUndefined (ApplicationCode)
+  , "ApplicationDescription" :: Maybe (ApplicationDescription)
+  , "Inputs" :: Maybe (Inputs)
+  , "Outputs" :: Maybe (Outputs)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
+  , "ApplicationCode" :: Maybe (ApplicationCode)
   }
 derive instance newtypeCreateApplicationRequest :: Newtype CreateApplicationRequest _
 derive instance repGenericCreateApplicationRequest :: Generic CreateApplicationRequest _
@@ -508,12 +507,12 @@ instance encodeCreateApplicationRequest :: Encode CreateApplicationRequest where
 
 -- | Constructs CreateApplicationRequest from required parameters
 newCreateApplicationRequest :: ApplicationName -> CreateApplicationRequest
-newCreateApplicationRequest _ApplicationName = CreateApplicationRequest { "ApplicationName": _ApplicationName, "ApplicationCode": (NullOrUndefined Nothing), "ApplicationDescription": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "Inputs": (NullOrUndefined Nothing), "Outputs": (NullOrUndefined Nothing) }
+newCreateApplicationRequest _ApplicationName = CreateApplicationRequest { "ApplicationName": _ApplicationName, "ApplicationCode": Nothing, "ApplicationDescription": Nothing, "CloudWatchLoggingOptions": Nothing, "Inputs": Nothing, "Outputs": Nothing }
 
 -- | Constructs CreateApplicationRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateApplicationRequest' :: ApplicationName -> ( { "ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: NullOrUndefined (ApplicationDescription) , "Inputs" :: NullOrUndefined (Inputs) , "Outputs" :: NullOrUndefined (Outputs) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ApplicationCode" :: NullOrUndefined (ApplicationCode) } -> {"ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: NullOrUndefined (ApplicationDescription) , "Inputs" :: NullOrUndefined (Inputs) , "Outputs" :: NullOrUndefined (Outputs) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ApplicationCode" :: NullOrUndefined (ApplicationCode) } ) -> CreateApplicationRequest
-newCreateApplicationRequest' _ApplicationName customize = (CreateApplicationRequest <<< customize) { "ApplicationName": _ApplicationName, "ApplicationCode": (NullOrUndefined Nothing), "ApplicationDescription": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "Inputs": (NullOrUndefined Nothing), "Outputs": (NullOrUndefined Nothing) }
+newCreateApplicationRequest' :: ApplicationName -> ( { "ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: Maybe (ApplicationDescription) , "Inputs" :: Maybe (Inputs) , "Outputs" :: Maybe (Outputs) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ApplicationCode" :: Maybe (ApplicationCode) } -> {"ApplicationName" :: (ApplicationName) , "ApplicationDescription" :: Maybe (ApplicationDescription) , "Inputs" :: Maybe (Inputs) , "Outputs" :: Maybe (Outputs) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ApplicationCode" :: Maybe (ApplicationCode) } ) -> CreateApplicationRequest
+newCreateApplicationRequest' _ApplicationName customize = (CreateApplicationRequest <<< customize) { "ApplicationName": _ApplicationName, "ApplicationCode": Nothing, "ApplicationDescription": Nothing, "CloudWatchLoggingOptions": Nothing, "Inputs": Nothing, "Outputs": Nothing }
 
 
 
@@ -740,7 +739,7 @@ newDescribeApplicationResponse' _ApplicationDetail customize = (DescribeApplicat
 
 -- | <p>Describes the data format when records are written to the destination. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>. </p>
 newtype DestinationSchema = DestinationSchema 
-  { "RecordFormatType" :: NullOrUndefined (RecordFormatType)
+  { "RecordFormatType" :: Maybe (RecordFormatType)
   }
 derive instance newtypeDestinationSchema :: Newtype DestinationSchema _
 derive instance repGenericDestinationSchema :: Generic DestinationSchema _
@@ -750,21 +749,21 @@ instance encodeDestinationSchema :: Encode DestinationSchema where encode = gene
 
 -- | Constructs DestinationSchema from required parameters
 newDestinationSchema :: DestinationSchema
-newDestinationSchema  = DestinationSchema { "RecordFormatType": (NullOrUndefined Nothing) }
+newDestinationSchema  = DestinationSchema { "RecordFormatType": Nothing }
 
 -- | Constructs DestinationSchema's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDestinationSchema' :: ( { "RecordFormatType" :: NullOrUndefined (RecordFormatType) } -> {"RecordFormatType" :: NullOrUndefined (RecordFormatType) } ) -> DestinationSchema
-newDestinationSchema'  customize = (DestinationSchema <<< customize) { "RecordFormatType": (NullOrUndefined Nothing) }
+newDestinationSchema' :: ( { "RecordFormatType" :: Maybe (RecordFormatType) } -> {"RecordFormatType" :: Maybe (RecordFormatType) } ) -> DestinationSchema
+newDestinationSchema'  customize = (DestinationSchema <<< customize) { "RecordFormatType": Nothing }
 
 
 
 newtype DiscoverInputSchemaRequest = DiscoverInputSchemaRequest 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration)
-  , "S3Configuration" :: NullOrUndefined (S3Configuration)
-  , "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration)
+  , "S3Configuration" :: Maybe (S3Configuration)
+  , "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration)
   }
 derive instance newtypeDiscoverInputSchemaRequest :: Newtype DiscoverInputSchemaRequest _
 derive instance repGenericDiscoverInputSchemaRequest :: Generic DiscoverInputSchemaRequest _
@@ -774,21 +773,21 @@ instance encodeDiscoverInputSchemaRequest :: Encode DiscoverInputSchemaRequest w
 
 -- | Constructs DiscoverInputSchemaRequest from required parameters
 newDiscoverInputSchemaRequest :: DiscoverInputSchemaRequest
-newDiscoverInputSchemaRequest  = DiscoverInputSchemaRequest { "InputProcessingConfiguration": (NullOrUndefined Nothing), "InputStartingPositionConfiguration": (NullOrUndefined Nothing), "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3Configuration": (NullOrUndefined Nothing) }
+newDiscoverInputSchemaRequest  = DiscoverInputSchemaRequest { "InputProcessingConfiguration": Nothing, "InputStartingPositionConfiguration": Nothing, "ResourceARN": Nothing, "RoleARN": Nothing, "S3Configuration": Nothing }
 
 -- | Constructs DiscoverInputSchemaRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDiscoverInputSchemaRequest' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) , "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) , "S3Configuration" :: NullOrUndefined (S3Configuration) , "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) , "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) , "S3Configuration" :: NullOrUndefined (S3Configuration) , "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) } ) -> DiscoverInputSchemaRequest
-newDiscoverInputSchemaRequest'  customize = (DiscoverInputSchemaRequest <<< customize) { "InputProcessingConfiguration": (NullOrUndefined Nothing), "InputStartingPositionConfiguration": (NullOrUndefined Nothing), "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3Configuration": (NullOrUndefined Nothing) }
+newDiscoverInputSchemaRequest' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) , "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) , "S3Configuration" :: Maybe (S3Configuration) , "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) , "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) , "S3Configuration" :: Maybe (S3Configuration) , "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) } ) -> DiscoverInputSchemaRequest
+newDiscoverInputSchemaRequest'  customize = (DiscoverInputSchemaRequest <<< customize) { "InputProcessingConfiguration": Nothing, "InputStartingPositionConfiguration": Nothing, "ResourceARN": Nothing, "RoleARN": Nothing, "S3Configuration": Nothing }
 
 
 
 -- | <p/>
 newtype DiscoverInputSchemaResponse = DiscoverInputSchemaResponse 
-  { "InputSchema" :: NullOrUndefined (SourceSchema)
-  , "ParsedInputRecords" :: NullOrUndefined (ParsedInputRecords)
-  , "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords)
-  , "RawInputRecords" :: NullOrUndefined (RawInputRecords)
+  { "InputSchema" :: Maybe (SourceSchema)
+  , "ParsedInputRecords" :: Maybe (ParsedInputRecords)
+  , "ProcessedInputRecords" :: Maybe (ProcessedInputRecords)
+  , "RawInputRecords" :: Maybe (RawInputRecords)
   }
 derive instance newtypeDiscoverInputSchemaResponse :: Newtype DiscoverInputSchemaResponse _
 derive instance repGenericDiscoverInputSchemaResponse :: Generic DiscoverInputSchemaResponse _
@@ -798,12 +797,12 @@ instance encodeDiscoverInputSchemaResponse :: Encode DiscoverInputSchemaResponse
 
 -- | Constructs DiscoverInputSchemaResponse from required parameters
 newDiscoverInputSchemaResponse :: DiscoverInputSchemaResponse
-newDiscoverInputSchemaResponse  = DiscoverInputSchemaResponse { "InputSchema": (NullOrUndefined Nothing), "ParsedInputRecords": (NullOrUndefined Nothing), "ProcessedInputRecords": (NullOrUndefined Nothing), "RawInputRecords": (NullOrUndefined Nothing) }
+newDiscoverInputSchemaResponse  = DiscoverInputSchemaResponse { "InputSchema": Nothing, "ParsedInputRecords": Nothing, "ProcessedInputRecords": Nothing, "RawInputRecords": Nothing }
 
 -- | Constructs DiscoverInputSchemaResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDiscoverInputSchemaResponse' :: ( { "InputSchema" :: NullOrUndefined (SourceSchema) , "ParsedInputRecords" :: NullOrUndefined (ParsedInputRecords) , "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) , "RawInputRecords" :: NullOrUndefined (RawInputRecords) } -> {"InputSchema" :: NullOrUndefined (SourceSchema) , "ParsedInputRecords" :: NullOrUndefined (ParsedInputRecords) , "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) , "RawInputRecords" :: NullOrUndefined (RawInputRecords) } ) -> DiscoverInputSchemaResponse
-newDiscoverInputSchemaResponse'  customize = (DiscoverInputSchemaResponse <<< customize) { "InputSchema": (NullOrUndefined Nothing), "ParsedInputRecords": (NullOrUndefined Nothing), "ProcessedInputRecords": (NullOrUndefined Nothing), "RawInputRecords": (NullOrUndefined Nothing) }
+newDiscoverInputSchemaResponse' :: ( { "InputSchema" :: Maybe (SourceSchema) , "ParsedInputRecords" :: Maybe (ParsedInputRecords) , "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) , "RawInputRecords" :: Maybe (RawInputRecords) } -> {"InputSchema" :: Maybe (SourceSchema) , "ParsedInputRecords" :: Maybe (ParsedInputRecords) , "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) , "RawInputRecords" :: Maybe (RawInputRecords) } ) -> DiscoverInputSchemaResponse
+newDiscoverInputSchemaResponse'  customize = (DiscoverInputSchemaResponse <<< customize) { "InputSchema": Nothing, "ParsedInputRecords": Nothing, "ProcessedInputRecords": Nothing, "RawInputRecords": Nothing }
 
 
 
@@ -864,10 +863,10 @@ instance encodeInAppTableName :: Encode InAppTableName where encode = genericEnc
 -- | <p>When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
 newtype Input = Input 
   { "NamePrefix" :: (InAppStreamName)
-  , "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration)
-  , "KinesisStreamsInput" :: NullOrUndefined (KinesisStreamsInput)
-  , "KinesisFirehoseInput" :: NullOrUndefined (KinesisFirehoseInput)
-  , "InputParallelism" :: NullOrUndefined (InputParallelism)
+  , "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration)
+  , "KinesisStreamsInput" :: Maybe (KinesisStreamsInput)
+  , "KinesisFirehoseInput" :: Maybe (KinesisFirehoseInput)
+  , "InputParallelism" :: Maybe (InputParallelism)
   , "InputSchema" :: (SourceSchema)
   }
 derive instance newtypeInput :: Newtype Input _
@@ -878,12 +877,12 @@ instance encodeInput :: Encode Input where encode = genericEncode options
 
 -- | Constructs Input from required parameters
 newInput :: SourceSchema -> InAppStreamName -> Input
-newInput _InputSchema _NamePrefix = Input { "InputSchema": _InputSchema, "NamePrefix": _NamePrefix, "InputParallelism": (NullOrUndefined Nothing), "InputProcessingConfiguration": (NullOrUndefined Nothing), "KinesisFirehoseInput": (NullOrUndefined Nothing), "KinesisStreamsInput": (NullOrUndefined Nothing) }
+newInput _InputSchema _NamePrefix = Input { "InputSchema": _InputSchema, "NamePrefix": _NamePrefix, "InputParallelism": Nothing, "InputProcessingConfiguration": Nothing, "KinesisFirehoseInput": Nothing, "KinesisStreamsInput": Nothing }
 
 -- | Constructs Input's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInput' :: SourceSchema -> InAppStreamName -> ( { "NamePrefix" :: (InAppStreamName) , "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) , "KinesisStreamsInput" :: NullOrUndefined (KinesisStreamsInput) , "KinesisFirehoseInput" :: NullOrUndefined (KinesisFirehoseInput) , "InputParallelism" :: NullOrUndefined (InputParallelism) , "InputSchema" :: (SourceSchema) } -> {"NamePrefix" :: (InAppStreamName) , "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) , "KinesisStreamsInput" :: NullOrUndefined (KinesisStreamsInput) , "KinesisFirehoseInput" :: NullOrUndefined (KinesisFirehoseInput) , "InputParallelism" :: NullOrUndefined (InputParallelism) , "InputSchema" :: (SourceSchema) } ) -> Input
-newInput' _InputSchema _NamePrefix customize = (Input <<< customize) { "InputSchema": _InputSchema, "NamePrefix": _NamePrefix, "InputParallelism": (NullOrUndefined Nothing), "InputProcessingConfiguration": (NullOrUndefined Nothing), "KinesisFirehoseInput": (NullOrUndefined Nothing), "KinesisStreamsInput": (NullOrUndefined Nothing) }
+newInput' :: SourceSchema -> InAppStreamName -> ( { "NamePrefix" :: (InAppStreamName) , "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) , "KinesisStreamsInput" :: Maybe (KinesisStreamsInput) , "KinesisFirehoseInput" :: Maybe (KinesisFirehoseInput) , "InputParallelism" :: Maybe (InputParallelism) , "InputSchema" :: (SourceSchema) } -> {"NamePrefix" :: (InAppStreamName) , "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) , "KinesisStreamsInput" :: Maybe (KinesisStreamsInput) , "KinesisFirehoseInput" :: Maybe (KinesisFirehoseInput) , "InputParallelism" :: Maybe (InputParallelism) , "InputSchema" :: (SourceSchema) } ) -> Input
+newInput' _InputSchema _NamePrefix customize = (Input <<< customize) { "InputSchema": _InputSchema, "NamePrefix": _NamePrefix, "InputParallelism": Nothing, "InputProcessingConfiguration": Nothing, "KinesisFirehoseInput": Nothing, "KinesisStreamsInput": Nothing }
 
 
 
@@ -920,15 +919,15 @@ instance encodeInputConfigurations :: Encode InputConfigurations where encode = 
 
 -- | <p>Describes the application input configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
 newtype InputDescription = InputDescription 
-  { "InputId" :: NullOrUndefined (Id)
-  , "NamePrefix" :: NullOrUndefined (InAppStreamName)
-  , "InAppStreamNames" :: NullOrUndefined (InAppStreamNames)
-  , "InputProcessingConfigurationDescription" :: NullOrUndefined (InputProcessingConfigurationDescription)
-  , "KinesisStreamsInputDescription" :: NullOrUndefined (KinesisStreamsInputDescription)
-  , "KinesisFirehoseInputDescription" :: NullOrUndefined (KinesisFirehoseInputDescription)
-  , "InputSchema" :: NullOrUndefined (SourceSchema)
-  , "InputParallelism" :: NullOrUndefined (InputParallelism)
-  , "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration)
+  { "InputId" :: Maybe (Id)
+  , "NamePrefix" :: Maybe (InAppStreamName)
+  , "InAppStreamNames" :: Maybe (InAppStreamNames)
+  , "InputProcessingConfigurationDescription" :: Maybe (InputProcessingConfigurationDescription)
+  , "KinesisStreamsInputDescription" :: Maybe (KinesisStreamsInputDescription)
+  , "KinesisFirehoseInputDescription" :: Maybe (KinesisFirehoseInputDescription)
+  , "InputSchema" :: Maybe (SourceSchema)
+  , "InputParallelism" :: Maybe (InputParallelism)
+  , "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration)
   }
 derive instance newtypeInputDescription :: Newtype InputDescription _
 derive instance repGenericInputDescription :: Generic InputDescription _
@@ -938,12 +937,12 @@ instance encodeInputDescription :: Encode InputDescription where encode = generi
 
 -- | Constructs InputDescription from required parameters
 newInputDescription :: InputDescription
-newInputDescription  = InputDescription { "InAppStreamNames": (NullOrUndefined Nothing), "InputId": (NullOrUndefined Nothing), "InputParallelism": (NullOrUndefined Nothing), "InputProcessingConfigurationDescription": (NullOrUndefined Nothing), "InputSchema": (NullOrUndefined Nothing), "InputStartingPositionConfiguration": (NullOrUndefined Nothing), "KinesisFirehoseInputDescription": (NullOrUndefined Nothing), "KinesisStreamsInputDescription": (NullOrUndefined Nothing), "NamePrefix": (NullOrUndefined Nothing) }
+newInputDescription  = InputDescription { "InAppStreamNames": Nothing, "InputId": Nothing, "InputParallelism": Nothing, "InputProcessingConfigurationDescription": Nothing, "InputSchema": Nothing, "InputStartingPositionConfiguration": Nothing, "KinesisFirehoseInputDescription": Nothing, "KinesisStreamsInputDescription": Nothing, "NamePrefix": Nothing }
 
 -- | Constructs InputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputDescription' :: ( { "InputId" :: NullOrUndefined (Id) , "NamePrefix" :: NullOrUndefined (InAppStreamName) , "InAppStreamNames" :: NullOrUndefined (InAppStreamNames) , "InputProcessingConfigurationDescription" :: NullOrUndefined (InputProcessingConfigurationDescription) , "KinesisStreamsInputDescription" :: NullOrUndefined (KinesisStreamsInputDescription) , "KinesisFirehoseInputDescription" :: NullOrUndefined (KinesisFirehoseInputDescription) , "InputSchema" :: NullOrUndefined (SourceSchema) , "InputParallelism" :: NullOrUndefined (InputParallelism) , "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) } -> {"InputId" :: NullOrUndefined (Id) , "NamePrefix" :: NullOrUndefined (InAppStreamName) , "InAppStreamNames" :: NullOrUndefined (InAppStreamNames) , "InputProcessingConfigurationDescription" :: NullOrUndefined (InputProcessingConfigurationDescription) , "KinesisStreamsInputDescription" :: NullOrUndefined (KinesisStreamsInputDescription) , "KinesisFirehoseInputDescription" :: NullOrUndefined (KinesisFirehoseInputDescription) , "InputSchema" :: NullOrUndefined (SourceSchema) , "InputParallelism" :: NullOrUndefined (InputParallelism) , "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) } ) -> InputDescription
-newInputDescription'  customize = (InputDescription <<< customize) { "InAppStreamNames": (NullOrUndefined Nothing), "InputId": (NullOrUndefined Nothing), "InputParallelism": (NullOrUndefined Nothing), "InputProcessingConfigurationDescription": (NullOrUndefined Nothing), "InputSchema": (NullOrUndefined Nothing), "InputStartingPositionConfiguration": (NullOrUndefined Nothing), "KinesisFirehoseInputDescription": (NullOrUndefined Nothing), "KinesisStreamsInputDescription": (NullOrUndefined Nothing), "NamePrefix": (NullOrUndefined Nothing) }
+newInputDescription' :: ( { "InputId" :: Maybe (Id) , "NamePrefix" :: Maybe (InAppStreamName) , "InAppStreamNames" :: Maybe (InAppStreamNames) , "InputProcessingConfigurationDescription" :: Maybe (InputProcessingConfigurationDescription) , "KinesisStreamsInputDescription" :: Maybe (KinesisStreamsInputDescription) , "KinesisFirehoseInputDescription" :: Maybe (KinesisFirehoseInputDescription) , "InputSchema" :: Maybe (SourceSchema) , "InputParallelism" :: Maybe (InputParallelism) , "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) } -> {"InputId" :: Maybe (Id) , "NamePrefix" :: Maybe (InAppStreamName) , "InAppStreamNames" :: Maybe (InAppStreamNames) , "InputProcessingConfigurationDescription" :: Maybe (InputProcessingConfigurationDescription) , "KinesisStreamsInputDescription" :: Maybe (KinesisStreamsInputDescription) , "KinesisFirehoseInputDescription" :: Maybe (KinesisFirehoseInputDescription) , "InputSchema" :: Maybe (SourceSchema) , "InputParallelism" :: Maybe (InputParallelism) , "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) } ) -> InputDescription
+newInputDescription'  customize = (InputDescription <<< customize) { "InAppStreamNames": Nothing, "InputId": Nothing, "InputParallelism": Nothing, "InputProcessingConfigurationDescription": Nothing, "InputSchema": Nothing, "InputStartingPositionConfiguration": Nothing, "KinesisFirehoseInputDescription": Nothing, "KinesisStreamsInputDescription": Nothing, "NamePrefix": Nothing }
 
 
 
@@ -980,8 +979,8 @@ newInputLambdaProcessor' _ResourceARN _RoleARN customize = (InputLambdaProcessor
 
 -- | <p>An object that contains the Amazon Resource Name (ARN) of the <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that is used to preprocess records in the stream, and the ARN of the IAM role that is used to access the AWS Lambda expression.</p>
 newtype InputLambdaProcessorDescription = InputLambdaProcessorDescription 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
   }
 derive instance newtypeInputLambdaProcessorDescription :: Newtype InputLambdaProcessorDescription _
 derive instance repGenericInputLambdaProcessorDescription :: Generic InputLambdaProcessorDescription _
@@ -991,19 +990,19 @@ instance encodeInputLambdaProcessorDescription :: Encode InputLambdaProcessorDes
 
 -- | Constructs InputLambdaProcessorDescription from required parameters
 newInputLambdaProcessorDescription :: InputLambdaProcessorDescription
-newInputLambdaProcessorDescription  = InputLambdaProcessorDescription { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newInputLambdaProcessorDescription  = InputLambdaProcessorDescription { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs InputLambdaProcessorDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputLambdaProcessorDescription' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } ) -> InputLambdaProcessorDescription
-newInputLambdaProcessorDescription'  customize = (InputLambdaProcessorDescription <<< customize) { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newInputLambdaProcessorDescription' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } ) -> InputLambdaProcessorDescription
+newInputLambdaProcessorDescription'  customize = (InputLambdaProcessorDescription <<< customize) { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p>Represents an update to the <a>InputLambdaProcessor</a> that is used to preprocess the records in the stream.</p>
 newtype InputLambdaProcessorUpdate = InputLambdaProcessorUpdate 
-  { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "ResourceARNUpdate" :: Maybe (ResourceARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeInputLambdaProcessorUpdate :: Newtype InputLambdaProcessorUpdate _
 derive instance repGenericInputLambdaProcessorUpdate :: Generic InputLambdaProcessorUpdate _
@@ -1013,18 +1012,18 @@ instance encodeInputLambdaProcessorUpdate :: Encode InputLambdaProcessorUpdate w
 
 -- | Constructs InputLambdaProcessorUpdate from required parameters
 newInputLambdaProcessorUpdate :: InputLambdaProcessorUpdate
-newInputLambdaProcessorUpdate  = InputLambdaProcessorUpdate { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newInputLambdaProcessorUpdate  = InputLambdaProcessorUpdate { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs InputLambdaProcessorUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputLambdaProcessorUpdate' :: ( { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> InputLambdaProcessorUpdate
-newInputLambdaProcessorUpdate'  customize = (InputLambdaProcessorUpdate <<< customize) { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newInputLambdaProcessorUpdate' :: ( { "ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> InputLambdaProcessorUpdate
+newInputLambdaProcessorUpdate'  customize = (InputLambdaProcessorUpdate <<< customize) { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
 -- | <p>Describes the number of in-application streams to create for a given streaming source. For information about parallelism, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
 newtype InputParallelism = InputParallelism 
-  { "Count" :: NullOrUndefined (InputParallelismCount)
+  { "Count" :: Maybe (InputParallelismCount)
   }
 derive instance newtypeInputParallelism :: Newtype InputParallelism _
 derive instance repGenericInputParallelism :: Generic InputParallelism _
@@ -1034,12 +1033,12 @@ instance encodeInputParallelism :: Encode InputParallelism where encode = generi
 
 -- | Constructs InputParallelism from required parameters
 newInputParallelism :: InputParallelism
-newInputParallelism  = InputParallelism { "Count": (NullOrUndefined Nothing) }
+newInputParallelism  = InputParallelism { "Count": Nothing }
 
 -- | Constructs InputParallelism's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputParallelism' :: ( { "Count" :: NullOrUndefined (InputParallelismCount) } -> {"Count" :: NullOrUndefined (InputParallelismCount) } ) -> InputParallelism
-newInputParallelism'  customize = (InputParallelism <<< customize) { "Count": (NullOrUndefined Nothing) }
+newInputParallelism' :: ( { "Count" :: Maybe (InputParallelismCount) } -> {"Count" :: Maybe (InputParallelismCount) } ) -> InputParallelism
+newInputParallelism'  customize = (InputParallelism <<< customize) { "Count": Nothing }
 
 
 
@@ -1054,7 +1053,7 @@ instance encodeInputParallelismCount :: Encode InputParallelismCount where encod
 
 -- | <p>Provides updates to the parallelism count.</p>
 newtype InputParallelismUpdate = InputParallelismUpdate 
-  { "CountUpdate" :: NullOrUndefined (InputParallelismCount)
+  { "CountUpdate" :: Maybe (InputParallelismCount)
   }
 derive instance newtypeInputParallelismUpdate :: Newtype InputParallelismUpdate _
 derive instance repGenericInputParallelismUpdate :: Generic InputParallelismUpdate _
@@ -1064,12 +1063,12 @@ instance encodeInputParallelismUpdate :: Encode InputParallelismUpdate where enc
 
 -- | Constructs InputParallelismUpdate from required parameters
 newInputParallelismUpdate :: InputParallelismUpdate
-newInputParallelismUpdate  = InputParallelismUpdate { "CountUpdate": (NullOrUndefined Nothing) }
+newInputParallelismUpdate  = InputParallelismUpdate { "CountUpdate": Nothing }
 
 -- | Constructs InputParallelismUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputParallelismUpdate' :: ( { "CountUpdate" :: NullOrUndefined (InputParallelismCount) } -> {"CountUpdate" :: NullOrUndefined (InputParallelismCount) } ) -> InputParallelismUpdate
-newInputParallelismUpdate'  customize = (InputParallelismUpdate <<< customize) { "CountUpdate": (NullOrUndefined Nothing) }
+newInputParallelismUpdate' :: ( { "CountUpdate" :: Maybe (InputParallelismCount) } -> {"CountUpdate" :: Maybe (InputParallelismCount) } ) -> InputParallelismUpdate
+newInputParallelismUpdate'  customize = (InputParallelismUpdate <<< customize) { "CountUpdate": Nothing }
 
 
 
@@ -1096,7 +1095,7 @@ newInputProcessingConfiguration' _InputLambdaProcessor customize = (InputProcess
 
 -- | <p>Provides configuration information about an input processor. Currently, the only input processor available is <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.</p>
 newtype InputProcessingConfigurationDescription = InputProcessingConfigurationDescription 
-  { "InputLambdaProcessorDescription" :: NullOrUndefined (InputLambdaProcessorDescription)
+  { "InputLambdaProcessorDescription" :: Maybe (InputLambdaProcessorDescription)
   }
 derive instance newtypeInputProcessingConfigurationDescription :: Newtype InputProcessingConfigurationDescription _
 derive instance repGenericInputProcessingConfigurationDescription :: Generic InputProcessingConfigurationDescription _
@@ -1106,12 +1105,12 @@ instance encodeInputProcessingConfigurationDescription :: Encode InputProcessing
 
 -- | Constructs InputProcessingConfigurationDescription from required parameters
 newInputProcessingConfigurationDescription :: InputProcessingConfigurationDescription
-newInputProcessingConfigurationDescription  = InputProcessingConfigurationDescription { "InputLambdaProcessorDescription": (NullOrUndefined Nothing) }
+newInputProcessingConfigurationDescription  = InputProcessingConfigurationDescription { "InputLambdaProcessorDescription": Nothing }
 
 -- | Constructs InputProcessingConfigurationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputProcessingConfigurationDescription' :: ( { "InputLambdaProcessorDescription" :: NullOrUndefined (InputLambdaProcessorDescription) } -> {"InputLambdaProcessorDescription" :: NullOrUndefined (InputLambdaProcessorDescription) } ) -> InputProcessingConfigurationDescription
-newInputProcessingConfigurationDescription'  customize = (InputProcessingConfigurationDescription <<< customize) { "InputLambdaProcessorDescription": (NullOrUndefined Nothing) }
+newInputProcessingConfigurationDescription' :: ( { "InputLambdaProcessorDescription" :: Maybe (InputLambdaProcessorDescription) } -> {"InputLambdaProcessorDescription" :: Maybe (InputLambdaProcessorDescription) } ) -> InputProcessingConfigurationDescription
+newInputProcessingConfigurationDescription'  customize = (InputProcessingConfigurationDescription <<< customize) { "InputLambdaProcessorDescription": Nothing }
 
 
 
@@ -1138,9 +1137,9 @@ newInputProcessingConfigurationUpdate' _InputLambdaProcessorUpdate customize = (
 
 -- | <p>Describes updates for the application's input schema.</p>
 newtype InputSchemaUpdate = InputSchemaUpdate 
-  { "RecordFormatUpdate" :: NullOrUndefined (RecordFormat)
-  , "RecordEncodingUpdate" :: NullOrUndefined (RecordEncoding)
-  , "RecordColumnUpdates" :: NullOrUndefined (RecordColumns)
+  { "RecordFormatUpdate" :: Maybe (RecordFormat)
+  , "RecordEncodingUpdate" :: Maybe (RecordEncoding)
+  , "RecordColumnUpdates" :: Maybe (RecordColumns)
   }
 derive instance newtypeInputSchemaUpdate :: Newtype InputSchemaUpdate _
 derive instance repGenericInputSchemaUpdate :: Generic InputSchemaUpdate _
@@ -1150,12 +1149,12 @@ instance encodeInputSchemaUpdate :: Encode InputSchemaUpdate where encode = gene
 
 -- | Constructs InputSchemaUpdate from required parameters
 newInputSchemaUpdate :: InputSchemaUpdate
-newInputSchemaUpdate  = InputSchemaUpdate { "RecordColumnUpdates": (NullOrUndefined Nothing), "RecordEncodingUpdate": (NullOrUndefined Nothing), "RecordFormatUpdate": (NullOrUndefined Nothing) }
+newInputSchemaUpdate  = InputSchemaUpdate { "RecordColumnUpdates": Nothing, "RecordEncodingUpdate": Nothing, "RecordFormatUpdate": Nothing }
 
 -- | Constructs InputSchemaUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputSchemaUpdate' :: ( { "RecordFormatUpdate" :: NullOrUndefined (RecordFormat) , "RecordEncodingUpdate" :: NullOrUndefined (RecordEncoding) , "RecordColumnUpdates" :: NullOrUndefined (RecordColumns) } -> {"RecordFormatUpdate" :: NullOrUndefined (RecordFormat) , "RecordEncodingUpdate" :: NullOrUndefined (RecordEncoding) , "RecordColumnUpdates" :: NullOrUndefined (RecordColumns) } ) -> InputSchemaUpdate
-newInputSchemaUpdate'  customize = (InputSchemaUpdate <<< customize) { "RecordColumnUpdates": (NullOrUndefined Nothing), "RecordEncodingUpdate": (NullOrUndefined Nothing), "RecordFormatUpdate": (NullOrUndefined Nothing) }
+newInputSchemaUpdate' :: ( { "RecordFormatUpdate" :: Maybe (RecordFormat) , "RecordEncodingUpdate" :: Maybe (RecordEncoding) , "RecordColumnUpdates" :: Maybe (RecordColumns) } -> {"RecordFormatUpdate" :: Maybe (RecordFormat) , "RecordEncodingUpdate" :: Maybe (RecordEncoding) , "RecordColumnUpdates" :: Maybe (RecordColumns) } ) -> InputSchemaUpdate
+newInputSchemaUpdate'  customize = (InputSchemaUpdate <<< customize) { "RecordColumnUpdates": Nothing, "RecordEncodingUpdate": Nothing, "RecordFormatUpdate": Nothing }
 
 
 
@@ -1170,7 +1169,7 @@ instance encodeInputStartingPosition :: Encode InputStartingPosition where encod
 
 -- | <p>Describes the point at which the application reads from the streaming source.</p>
 newtype InputStartingPositionConfiguration = InputStartingPositionConfiguration 
-  { "InputStartingPosition" :: NullOrUndefined (InputStartingPosition)
+  { "InputStartingPosition" :: Maybe (InputStartingPosition)
   }
 derive instance newtypeInputStartingPositionConfiguration :: Newtype InputStartingPositionConfiguration _
 derive instance repGenericInputStartingPositionConfiguration :: Generic InputStartingPositionConfiguration _
@@ -1180,24 +1179,24 @@ instance encodeInputStartingPositionConfiguration :: Encode InputStartingPositio
 
 -- | Constructs InputStartingPositionConfiguration from required parameters
 newInputStartingPositionConfiguration :: InputStartingPositionConfiguration
-newInputStartingPositionConfiguration  = InputStartingPositionConfiguration { "InputStartingPosition": (NullOrUndefined Nothing) }
+newInputStartingPositionConfiguration  = InputStartingPositionConfiguration { "InputStartingPosition": Nothing }
 
 -- | Constructs InputStartingPositionConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputStartingPositionConfiguration' :: ( { "InputStartingPosition" :: NullOrUndefined (InputStartingPosition) } -> {"InputStartingPosition" :: NullOrUndefined (InputStartingPosition) } ) -> InputStartingPositionConfiguration
-newInputStartingPositionConfiguration'  customize = (InputStartingPositionConfiguration <<< customize) { "InputStartingPosition": (NullOrUndefined Nothing) }
+newInputStartingPositionConfiguration' :: ( { "InputStartingPosition" :: Maybe (InputStartingPosition) } -> {"InputStartingPosition" :: Maybe (InputStartingPosition) } ) -> InputStartingPositionConfiguration
+newInputStartingPositionConfiguration'  customize = (InputStartingPositionConfiguration <<< customize) { "InputStartingPosition": Nothing }
 
 
 
 -- | <p>Describes updates to a specific input configuration (identified by the <code>InputId</code> of an application). </p>
 newtype InputUpdate = InputUpdate 
   { "InputId" :: (Id)
-  , "NamePrefixUpdate" :: NullOrUndefined (InAppStreamName)
-  , "InputProcessingConfigurationUpdate" :: NullOrUndefined (InputProcessingConfigurationUpdate)
-  , "KinesisStreamsInputUpdate" :: NullOrUndefined (KinesisStreamsInputUpdate)
-  , "KinesisFirehoseInputUpdate" :: NullOrUndefined (KinesisFirehoseInputUpdate)
-  , "InputSchemaUpdate" :: NullOrUndefined (InputSchemaUpdate)
-  , "InputParallelismUpdate" :: NullOrUndefined (InputParallelismUpdate)
+  , "NamePrefixUpdate" :: Maybe (InAppStreamName)
+  , "InputProcessingConfigurationUpdate" :: Maybe (InputProcessingConfigurationUpdate)
+  , "KinesisStreamsInputUpdate" :: Maybe (KinesisStreamsInputUpdate)
+  , "KinesisFirehoseInputUpdate" :: Maybe (KinesisFirehoseInputUpdate)
+  , "InputSchemaUpdate" :: Maybe (InputSchemaUpdate)
+  , "InputParallelismUpdate" :: Maybe (InputParallelismUpdate)
   }
 derive instance newtypeInputUpdate :: Newtype InputUpdate _
 derive instance repGenericInputUpdate :: Generic InputUpdate _
@@ -1207,12 +1206,12 @@ instance encodeInputUpdate :: Encode InputUpdate where encode = genericEncode op
 
 -- | Constructs InputUpdate from required parameters
 newInputUpdate :: Id -> InputUpdate
-newInputUpdate _InputId = InputUpdate { "InputId": _InputId, "InputParallelismUpdate": (NullOrUndefined Nothing), "InputProcessingConfigurationUpdate": (NullOrUndefined Nothing), "InputSchemaUpdate": (NullOrUndefined Nothing), "KinesisFirehoseInputUpdate": (NullOrUndefined Nothing), "KinesisStreamsInputUpdate": (NullOrUndefined Nothing), "NamePrefixUpdate": (NullOrUndefined Nothing) }
+newInputUpdate _InputId = InputUpdate { "InputId": _InputId, "InputParallelismUpdate": Nothing, "InputProcessingConfigurationUpdate": Nothing, "InputSchemaUpdate": Nothing, "KinesisFirehoseInputUpdate": Nothing, "KinesisStreamsInputUpdate": Nothing, "NamePrefixUpdate": Nothing }
 
 -- | Constructs InputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInputUpdate' :: Id -> ( { "InputId" :: (Id) , "NamePrefixUpdate" :: NullOrUndefined (InAppStreamName) , "InputProcessingConfigurationUpdate" :: NullOrUndefined (InputProcessingConfigurationUpdate) , "KinesisStreamsInputUpdate" :: NullOrUndefined (KinesisStreamsInputUpdate) , "KinesisFirehoseInputUpdate" :: NullOrUndefined (KinesisFirehoseInputUpdate) , "InputSchemaUpdate" :: NullOrUndefined (InputSchemaUpdate) , "InputParallelismUpdate" :: NullOrUndefined (InputParallelismUpdate) } -> {"InputId" :: (Id) , "NamePrefixUpdate" :: NullOrUndefined (InAppStreamName) , "InputProcessingConfigurationUpdate" :: NullOrUndefined (InputProcessingConfigurationUpdate) , "KinesisStreamsInputUpdate" :: NullOrUndefined (KinesisStreamsInputUpdate) , "KinesisFirehoseInputUpdate" :: NullOrUndefined (KinesisFirehoseInputUpdate) , "InputSchemaUpdate" :: NullOrUndefined (InputSchemaUpdate) , "InputParallelismUpdate" :: NullOrUndefined (InputParallelismUpdate) } ) -> InputUpdate
-newInputUpdate' _InputId customize = (InputUpdate <<< customize) { "InputId": _InputId, "InputParallelismUpdate": (NullOrUndefined Nothing), "InputProcessingConfigurationUpdate": (NullOrUndefined Nothing), "InputSchemaUpdate": (NullOrUndefined Nothing), "KinesisFirehoseInputUpdate": (NullOrUndefined Nothing), "KinesisStreamsInputUpdate": (NullOrUndefined Nothing), "NamePrefixUpdate": (NullOrUndefined Nothing) }
+newInputUpdate' :: Id -> ( { "InputId" :: (Id) , "NamePrefixUpdate" :: Maybe (InAppStreamName) , "InputProcessingConfigurationUpdate" :: Maybe (InputProcessingConfigurationUpdate) , "KinesisStreamsInputUpdate" :: Maybe (KinesisStreamsInputUpdate) , "KinesisFirehoseInputUpdate" :: Maybe (KinesisFirehoseInputUpdate) , "InputSchemaUpdate" :: Maybe (InputSchemaUpdate) , "InputParallelismUpdate" :: Maybe (InputParallelismUpdate) } -> {"InputId" :: (Id) , "NamePrefixUpdate" :: Maybe (InAppStreamName) , "InputProcessingConfigurationUpdate" :: Maybe (InputProcessingConfigurationUpdate) , "KinesisStreamsInputUpdate" :: Maybe (KinesisStreamsInputUpdate) , "KinesisFirehoseInputUpdate" :: Maybe (KinesisFirehoseInputUpdate) , "InputSchemaUpdate" :: Maybe (InputSchemaUpdate) , "InputParallelismUpdate" :: Maybe (InputParallelismUpdate) } ) -> InputUpdate
+newInputUpdate' _InputId customize = (InputUpdate <<< customize) { "InputId": _InputId, "InputParallelismUpdate": Nothing, "InputProcessingConfigurationUpdate": Nothing, "InputSchemaUpdate": Nothing, "KinesisFirehoseInputUpdate": Nothing, "KinesisStreamsInputUpdate": Nothing, "NamePrefixUpdate": Nothing }
 
 
 
@@ -1236,7 +1235,7 @@ instance encodeInputs :: Encode Inputs where encode = genericEncode options
 
 -- | <p>User-provided application configuration is not valid.</p>
 newtype InvalidApplicationConfigurationException = InvalidApplicationConfigurationException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInvalidApplicationConfigurationException :: Newtype InvalidApplicationConfigurationException _
 derive instance repGenericInvalidApplicationConfigurationException :: Generic InvalidApplicationConfigurationException _
@@ -1246,18 +1245,18 @@ instance encodeInvalidApplicationConfigurationException :: Encode InvalidApplica
 
 -- | Constructs InvalidApplicationConfigurationException from required parameters
 newInvalidApplicationConfigurationException :: InvalidApplicationConfigurationException
-newInvalidApplicationConfigurationException  = InvalidApplicationConfigurationException { "message": (NullOrUndefined Nothing) }
+newInvalidApplicationConfigurationException  = InvalidApplicationConfigurationException { "message": Nothing }
 
 -- | Constructs InvalidApplicationConfigurationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidApplicationConfigurationException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InvalidApplicationConfigurationException
-newInvalidApplicationConfigurationException'  customize = (InvalidApplicationConfigurationException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidApplicationConfigurationException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InvalidApplicationConfigurationException
+newInvalidApplicationConfigurationException'  customize = (InvalidApplicationConfigurationException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Specified input parameter value is invalid.</p>
 newtype InvalidArgumentException = InvalidArgumentException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInvalidArgumentException :: Newtype InvalidArgumentException _
 derive instance repGenericInvalidArgumentException :: Generic InvalidArgumentException _
@@ -1267,12 +1266,12 @@ instance encodeInvalidArgumentException :: Encode InvalidArgumentException where
 
 -- | Constructs InvalidArgumentException from required parameters
 newInvalidArgumentException :: InvalidArgumentException
-newInvalidArgumentException  = InvalidArgumentException { "message": (NullOrUndefined Nothing) }
+newInvalidArgumentException  = InvalidArgumentException { "message": Nothing }
 
 -- | Constructs InvalidArgumentException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidArgumentException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InvalidArgumentException
-newInvalidArgumentException'  customize = (InvalidArgumentException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidArgumentException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InvalidArgumentException
+newInvalidArgumentException'  customize = (InvalidArgumentException <<< customize) { "message": Nothing }
 
 
 
@@ -1321,8 +1320,8 @@ newKinesisFirehoseInput' _ResourceARN _RoleARN customize = (KinesisFirehoseInput
 
 -- | <p> Describes the Amazon Kinesis Firehose delivery stream that is configured as the streaming source in the application input configuration. </p>
 newtype KinesisFirehoseInputDescription = KinesisFirehoseInputDescription 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisFirehoseInputDescription :: Newtype KinesisFirehoseInputDescription _
 derive instance repGenericKinesisFirehoseInputDescription :: Generic KinesisFirehoseInputDescription _
@@ -1332,19 +1331,19 @@ instance encodeKinesisFirehoseInputDescription :: Encode KinesisFirehoseInputDes
 
 -- | Constructs KinesisFirehoseInputDescription from required parameters
 newKinesisFirehoseInputDescription :: KinesisFirehoseInputDescription
-newKinesisFirehoseInputDescription  = KinesisFirehoseInputDescription { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisFirehoseInputDescription  = KinesisFirehoseInputDescription { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs KinesisFirehoseInputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisFirehoseInputDescription' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } ) -> KinesisFirehoseInputDescription
-newKinesisFirehoseInputDescription'  customize = (KinesisFirehoseInputDescription <<< customize) { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisFirehoseInputDescription' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } ) -> KinesisFirehoseInputDescription
+newKinesisFirehoseInputDescription'  customize = (KinesisFirehoseInputDescription <<< customize) { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p>When updating application input configuration, provides information about an Amazon Kinesis Firehose delivery stream as the streaming source.</p>
 newtype KinesisFirehoseInputUpdate = KinesisFirehoseInputUpdate 
-  { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "ResourceARNUpdate" :: Maybe (ResourceARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisFirehoseInputUpdate :: Newtype KinesisFirehoseInputUpdate _
 derive instance repGenericKinesisFirehoseInputUpdate :: Generic KinesisFirehoseInputUpdate _
@@ -1354,12 +1353,12 @@ instance encodeKinesisFirehoseInputUpdate :: Encode KinesisFirehoseInputUpdate w
 
 -- | Constructs KinesisFirehoseInputUpdate from required parameters
 newKinesisFirehoseInputUpdate :: KinesisFirehoseInputUpdate
-newKinesisFirehoseInputUpdate  = KinesisFirehoseInputUpdate { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisFirehoseInputUpdate  = KinesisFirehoseInputUpdate { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs KinesisFirehoseInputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisFirehoseInputUpdate' :: ( { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> KinesisFirehoseInputUpdate
-newKinesisFirehoseInputUpdate'  customize = (KinesisFirehoseInputUpdate <<< customize) { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisFirehoseInputUpdate' :: ( { "ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> KinesisFirehoseInputUpdate
+newKinesisFirehoseInputUpdate'  customize = (KinesisFirehoseInputUpdate <<< customize) { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
@@ -1387,8 +1386,8 @@ newKinesisFirehoseOutput' _ResourceARN _RoleARN customize = (KinesisFirehoseOutp
 
 -- | <p> For an application output, describes the Amazon Kinesis Firehose delivery stream configured as its destination. </p>
 newtype KinesisFirehoseOutputDescription = KinesisFirehoseOutputDescription 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisFirehoseOutputDescription :: Newtype KinesisFirehoseOutputDescription _
 derive instance repGenericKinesisFirehoseOutputDescription :: Generic KinesisFirehoseOutputDescription _
@@ -1398,19 +1397,19 @@ instance encodeKinesisFirehoseOutputDescription :: Encode KinesisFirehoseOutputD
 
 -- | Constructs KinesisFirehoseOutputDescription from required parameters
 newKinesisFirehoseOutputDescription :: KinesisFirehoseOutputDescription
-newKinesisFirehoseOutputDescription  = KinesisFirehoseOutputDescription { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisFirehoseOutputDescription  = KinesisFirehoseOutputDescription { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs KinesisFirehoseOutputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisFirehoseOutputDescription' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } ) -> KinesisFirehoseOutputDescription
-newKinesisFirehoseOutputDescription'  customize = (KinesisFirehoseOutputDescription <<< customize) { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisFirehoseOutputDescription' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } ) -> KinesisFirehoseOutputDescription
+newKinesisFirehoseOutputDescription'  customize = (KinesisFirehoseOutputDescription <<< customize) { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p> When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an Amazon Kinesis Firehose delivery stream configured as the destination. </p>
 newtype KinesisFirehoseOutputUpdate = KinesisFirehoseOutputUpdate 
-  { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "ResourceARNUpdate" :: Maybe (ResourceARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisFirehoseOutputUpdate :: Newtype KinesisFirehoseOutputUpdate _
 derive instance repGenericKinesisFirehoseOutputUpdate :: Generic KinesisFirehoseOutputUpdate _
@@ -1420,12 +1419,12 @@ instance encodeKinesisFirehoseOutputUpdate :: Encode KinesisFirehoseOutputUpdate
 
 -- | Constructs KinesisFirehoseOutputUpdate from required parameters
 newKinesisFirehoseOutputUpdate :: KinesisFirehoseOutputUpdate
-newKinesisFirehoseOutputUpdate  = KinesisFirehoseOutputUpdate { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisFirehoseOutputUpdate  = KinesisFirehoseOutputUpdate { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs KinesisFirehoseOutputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisFirehoseOutputUpdate' :: ( { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> KinesisFirehoseOutputUpdate
-newKinesisFirehoseOutputUpdate'  customize = (KinesisFirehoseOutputUpdate <<< customize) { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisFirehoseOutputUpdate' :: ( { "ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> KinesisFirehoseOutputUpdate
+newKinesisFirehoseOutputUpdate'  customize = (KinesisFirehoseOutputUpdate <<< customize) { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
@@ -1453,8 +1452,8 @@ newKinesisStreamsInput' _ResourceARN _RoleARN customize = (KinesisStreamsInput <
 
 -- | <p> Describes the Amazon Kinesis stream that is configured as the streaming source in the application input configuration. </p>
 newtype KinesisStreamsInputDescription = KinesisStreamsInputDescription 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisStreamsInputDescription :: Newtype KinesisStreamsInputDescription _
 derive instance repGenericKinesisStreamsInputDescription :: Generic KinesisStreamsInputDescription _
@@ -1464,19 +1463,19 @@ instance encodeKinesisStreamsInputDescription :: Encode KinesisStreamsInputDescr
 
 -- | Constructs KinesisStreamsInputDescription from required parameters
 newKinesisStreamsInputDescription :: KinesisStreamsInputDescription
-newKinesisStreamsInputDescription  = KinesisStreamsInputDescription { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisStreamsInputDescription  = KinesisStreamsInputDescription { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs KinesisStreamsInputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisStreamsInputDescription' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } ) -> KinesisStreamsInputDescription
-newKinesisStreamsInputDescription'  customize = (KinesisStreamsInputDescription <<< customize) { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisStreamsInputDescription' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } ) -> KinesisStreamsInputDescription
+newKinesisStreamsInputDescription'  customize = (KinesisStreamsInputDescription <<< customize) { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p>When updating application input configuration, provides information about an Amazon Kinesis stream as the streaming source.</p>
 newtype KinesisStreamsInputUpdate = KinesisStreamsInputUpdate 
-  { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "ResourceARNUpdate" :: Maybe (ResourceARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisStreamsInputUpdate :: Newtype KinesisStreamsInputUpdate _
 derive instance repGenericKinesisStreamsInputUpdate :: Generic KinesisStreamsInputUpdate _
@@ -1486,12 +1485,12 @@ instance encodeKinesisStreamsInputUpdate :: Encode KinesisStreamsInputUpdate whe
 
 -- | Constructs KinesisStreamsInputUpdate from required parameters
 newKinesisStreamsInputUpdate :: KinesisStreamsInputUpdate
-newKinesisStreamsInputUpdate  = KinesisStreamsInputUpdate { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisStreamsInputUpdate  = KinesisStreamsInputUpdate { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs KinesisStreamsInputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisStreamsInputUpdate' :: ( { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> KinesisStreamsInputUpdate
-newKinesisStreamsInputUpdate'  customize = (KinesisStreamsInputUpdate <<< customize) { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisStreamsInputUpdate' :: ( { "ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> KinesisStreamsInputUpdate
+newKinesisStreamsInputUpdate'  customize = (KinesisStreamsInputUpdate <<< customize) { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
@@ -1519,8 +1518,8 @@ newKinesisStreamsOutput' _ResourceARN _RoleARN customize = (KinesisStreamsOutput
 
 -- | <p> For an application output, describes the Amazon Kinesis stream configured as its destination. </p>
 newtype KinesisStreamsOutputDescription = KinesisStreamsOutputDescription 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisStreamsOutputDescription :: Newtype KinesisStreamsOutputDescription _
 derive instance repGenericKinesisStreamsOutputDescription :: Generic KinesisStreamsOutputDescription _
@@ -1530,19 +1529,19 @@ instance encodeKinesisStreamsOutputDescription :: Encode KinesisStreamsOutputDes
 
 -- | Constructs KinesisStreamsOutputDescription from required parameters
 newKinesisStreamsOutputDescription :: KinesisStreamsOutputDescription
-newKinesisStreamsOutputDescription  = KinesisStreamsOutputDescription { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisStreamsOutputDescription  = KinesisStreamsOutputDescription { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs KinesisStreamsOutputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisStreamsOutputDescription' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } ) -> KinesisStreamsOutputDescription
-newKinesisStreamsOutputDescription'  customize = (KinesisStreamsOutputDescription <<< customize) { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisStreamsOutputDescription' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } ) -> KinesisStreamsOutputDescription
+newKinesisStreamsOutputDescription'  customize = (KinesisStreamsOutputDescription <<< customize) { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p> When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an Amazon Kinesis stream configured as the destination. </p>
 newtype KinesisStreamsOutputUpdate = KinesisStreamsOutputUpdate 
-  { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "ResourceARNUpdate" :: Maybe (ResourceARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeKinesisStreamsOutputUpdate :: Newtype KinesisStreamsOutputUpdate _
 derive instance repGenericKinesisStreamsOutputUpdate :: Generic KinesisStreamsOutputUpdate _
@@ -1552,12 +1551,12 @@ instance encodeKinesisStreamsOutputUpdate :: Encode KinesisStreamsOutputUpdate w
 
 -- | Constructs KinesisStreamsOutputUpdate from required parameters
 newKinesisStreamsOutputUpdate :: KinesisStreamsOutputUpdate
-newKinesisStreamsOutputUpdate  = KinesisStreamsOutputUpdate { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisStreamsOutputUpdate  = KinesisStreamsOutputUpdate { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs KinesisStreamsOutputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisStreamsOutputUpdate' :: ( { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> KinesisStreamsOutputUpdate
-newKinesisStreamsOutputUpdate'  customize = (KinesisStreamsOutputUpdate <<< customize) { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newKinesisStreamsOutputUpdate' :: ( { "ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> KinesisStreamsOutputUpdate
+newKinesisStreamsOutputUpdate'  customize = (KinesisStreamsOutputUpdate <<< customize) { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
@@ -1585,8 +1584,8 @@ newLambdaOutput' _ResourceARN _RoleARN customize = (LambdaOutput <<< customize) 
 
 -- | <p>For an application output, describes the AWS Lambda function configured as its destination. </p>
 newtype LambdaOutputDescription = LambdaOutputDescription 
-  { "ResourceARN" :: NullOrUndefined (ResourceARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
+  { "ResourceARN" :: Maybe (ResourceARN)
+  , "RoleARN" :: Maybe (RoleARN)
   }
 derive instance newtypeLambdaOutputDescription :: Newtype LambdaOutputDescription _
 derive instance repGenericLambdaOutputDescription :: Generic LambdaOutputDescription _
@@ -1596,19 +1595,19 @@ instance encodeLambdaOutputDescription :: Encode LambdaOutputDescription where e
 
 -- | Constructs LambdaOutputDescription from required parameters
 newLambdaOutputDescription :: LambdaOutputDescription
-newLambdaOutputDescription  = LambdaOutputDescription { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newLambdaOutputDescription  = LambdaOutputDescription { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs LambdaOutputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLambdaOutputDescription' :: ( { "ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } -> {"ResourceARN" :: NullOrUndefined (ResourceARN) , "RoleARN" :: NullOrUndefined (RoleARN) } ) -> LambdaOutputDescription
-newLambdaOutputDescription'  customize = (LambdaOutputDescription <<< customize) { "ResourceARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newLambdaOutputDescription' :: ( { "ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } -> {"ResourceARN" :: Maybe (ResourceARN) , "RoleARN" :: Maybe (RoleARN) } ) -> LambdaOutputDescription
+newLambdaOutputDescription'  customize = (LambdaOutputDescription <<< customize) { "ResourceARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p>When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an AWS Lambda function configured as the destination.</p>
 newtype LambdaOutputUpdate = LambdaOutputUpdate 
-  { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN)
-  , "RoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "ResourceARNUpdate" :: Maybe (ResourceARN)
+  , "RoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeLambdaOutputUpdate :: Newtype LambdaOutputUpdate _
 derive instance repGenericLambdaOutputUpdate :: Generic LambdaOutputUpdate _
@@ -1618,18 +1617,18 @@ instance encodeLambdaOutputUpdate :: Encode LambdaOutputUpdate where encode = ge
 
 -- | Constructs LambdaOutputUpdate from required parameters
 newLambdaOutputUpdate :: LambdaOutputUpdate
-newLambdaOutputUpdate  = LambdaOutputUpdate { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newLambdaOutputUpdate  = LambdaOutputUpdate { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 -- | Constructs LambdaOutputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLambdaOutputUpdate' :: ( { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"ResourceARNUpdate" :: NullOrUndefined (ResourceARN) , "RoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> LambdaOutputUpdate
-newLambdaOutputUpdate'  customize = (LambdaOutputUpdate <<< customize) { "ResourceARNUpdate": (NullOrUndefined Nothing), "RoleARNUpdate": (NullOrUndefined Nothing) }
+newLambdaOutputUpdate' :: ( { "ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } -> {"ResourceARNUpdate" :: Maybe (ResourceARN) , "RoleARNUpdate" :: Maybe (RoleARN) } ) -> LambdaOutputUpdate
+newLambdaOutputUpdate'  customize = (LambdaOutputUpdate <<< customize) { "ResourceARNUpdate": Nothing, "RoleARNUpdate": Nothing }
 
 
 
 -- | <p>Exceeded the number of applications allowed.</p>
 newtype LimitExceededException = LimitExceededException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 derive instance repGenericLimitExceededException :: Generic LimitExceededException _
@@ -1639,12 +1638,12 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 -- | Constructs LimitExceededException from required parameters
 newLimitExceededException :: LimitExceededException
-newLimitExceededException  = LimitExceededException { "message": (NullOrUndefined Nothing) }
+newLimitExceededException  = LimitExceededException { "message": Nothing }
 
 -- | Constructs LimitExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLimitExceededException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> LimitExceededException
-newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLimitExceededException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> LimitExceededException
+newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": Nothing }
 
 
 
@@ -1659,8 +1658,8 @@ instance encodeListApplicationsInputLimit :: Encode ListApplicationsInputLimit w
 
 -- | <p/>
 newtype ListApplicationsRequest = ListApplicationsRequest 
-  { "Limit" :: NullOrUndefined (ListApplicationsInputLimit)
-  , "ExclusiveStartApplicationName" :: NullOrUndefined (ApplicationName)
+  { "Limit" :: Maybe (ListApplicationsInputLimit)
+  , "ExclusiveStartApplicationName" :: Maybe (ApplicationName)
   }
 derive instance newtypeListApplicationsRequest :: Newtype ListApplicationsRequest _
 derive instance repGenericListApplicationsRequest :: Generic ListApplicationsRequest _
@@ -1670,12 +1669,12 @@ instance encodeListApplicationsRequest :: Encode ListApplicationsRequest where e
 
 -- | Constructs ListApplicationsRequest from required parameters
 newListApplicationsRequest :: ListApplicationsRequest
-newListApplicationsRequest  = ListApplicationsRequest { "ExclusiveStartApplicationName": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newListApplicationsRequest  = ListApplicationsRequest { "ExclusiveStartApplicationName": Nothing, "Limit": Nothing }
 
 -- | Constructs ListApplicationsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListApplicationsRequest' :: ( { "Limit" :: NullOrUndefined (ListApplicationsInputLimit) , "ExclusiveStartApplicationName" :: NullOrUndefined (ApplicationName) } -> {"Limit" :: NullOrUndefined (ListApplicationsInputLimit) , "ExclusiveStartApplicationName" :: NullOrUndefined (ApplicationName) } ) -> ListApplicationsRequest
-newListApplicationsRequest'  customize = (ListApplicationsRequest <<< customize) { "ExclusiveStartApplicationName": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newListApplicationsRequest' :: ( { "Limit" :: Maybe (ListApplicationsInputLimit) , "ExclusiveStartApplicationName" :: Maybe (ApplicationName) } -> {"Limit" :: Maybe (ListApplicationsInputLimit) , "ExclusiveStartApplicationName" :: Maybe (ApplicationName) } ) -> ListApplicationsRequest
+newListApplicationsRequest'  customize = (ListApplicationsRequest <<< customize) { "ExclusiveStartApplicationName": Nothing, "Limit": Nothing }
 
 
 
@@ -1712,8 +1711,8 @@ instance encodeLogStreamARN :: Encode LogStreamARN where encode = genericEncode 
 
 -- | <p>When configuring application input at the time of creating or updating an application, provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.</p>
 newtype MappingParameters = MappingParameters 
-  { "JSONMappingParameters" :: NullOrUndefined (JSONMappingParameters)
-  , "CSVMappingParameters" :: NullOrUndefined (CSVMappingParameters)
+  { "JSONMappingParameters" :: Maybe (JSONMappingParameters)
+  , "CSVMappingParameters" :: Maybe (CSVMappingParameters)
   }
 derive instance newtypeMappingParameters :: Newtype MappingParameters _
 derive instance repGenericMappingParameters :: Generic MappingParameters _
@@ -1723,21 +1722,21 @@ instance encodeMappingParameters :: Encode MappingParameters where encode = gene
 
 -- | Constructs MappingParameters from required parameters
 newMappingParameters :: MappingParameters
-newMappingParameters  = MappingParameters { "CSVMappingParameters": (NullOrUndefined Nothing), "JSONMappingParameters": (NullOrUndefined Nothing) }
+newMappingParameters  = MappingParameters { "CSVMappingParameters": Nothing, "JSONMappingParameters": Nothing }
 
 -- | Constructs MappingParameters's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMappingParameters' :: ( { "JSONMappingParameters" :: NullOrUndefined (JSONMappingParameters) , "CSVMappingParameters" :: NullOrUndefined (CSVMappingParameters) } -> {"JSONMappingParameters" :: NullOrUndefined (JSONMappingParameters) , "CSVMappingParameters" :: NullOrUndefined (CSVMappingParameters) } ) -> MappingParameters
-newMappingParameters'  customize = (MappingParameters <<< customize) { "CSVMappingParameters": (NullOrUndefined Nothing), "JSONMappingParameters": (NullOrUndefined Nothing) }
+newMappingParameters' :: ( { "JSONMappingParameters" :: Maybe (JSONMappingParameters) , "CSVMappingParameters" :: Maybe (CSVMappingParameters) } -> {"JSONMappingParameters" :: Maybe (JSONMappingParameters) , "CSVMappingParameters" :: Maybe (CSVMappingParameters) } ) -> MappingParameters
+newMappingParameters'  customize = (MappingParameters <<< customize) { "CSVMappingParameters": Nothing, "JSONMappingParameters": Nothing }
 
 
 
 -- | <p> Describes application output configuration in which you identify an in-application stream and a destination where you want the in-application stream data to be written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p> <p/> <p>For limits on how many destinations an application can write and other limitations, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. </p>
 newtype Output = Output 
   { "Name" :: (InAppStreamName)
-  , "KinesisStreamsOutput" :: NullOrUndefined (KinesisStreamsOutput)
-  , "KinesisFirehoseOutput" :: NullOrUndefined (KinesisFirehoseOutput)
-  , "LambdaOutput" :: NullOrUndefined (LambdaOutput)
+  , "KinesisStreamsOutput" :: Maybe (KinesisStreamsOutput)
+  , "KinesisFirehoseOutput" :: Maybe (KinesisFirehoseOutput)
+  , "LambdaOutput" :: Maybe (LambdaOutput)
   , "DestinationSchema" :: (DestinationSchema)
   }
 derive instance newtypeOutput :: Newtype Output _
@@ -1748,23 +1747,23 @@ instance encodeOutput :: Encode Output where encode = genericEncode options
 
 -- | Constructs Output from required parameters
 newOutput :: DestinationSchema -> InAppStreamName -> Output
-newOutput _DestinationSchema _Name = Output { "DestinationSchema": _DestinationSchema, "Name": _Name, "KinesisFirehoseOutput": (NullOrUndefined Nothing), "KinesisStreamsOutput": (NullOrUndefined Nothing), "LambdaOutput": (NullOrUndefined Nothing) }
+newOutput _DestinationSchema _Name = Output { "DestinationSchema": _DestinationSchema, "Name": _Name, "KinesisFirehoseOutput": Nothing, "KinesisStreamsOutput": Nothing, "LambdaOutput": Nothing }
 
 -- | Constructs Output's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newOutput' :: DestinationSchema -> InAppStreamName -> ( { "Name" :: (InAppStreamName) , "KinesisStreamsOutput" :: NullOrUndefined (KinesisStreamsOutput) , "KinesisFirehoseOutput" :: NullOrUndefined (KinesisFirehoseOutput) , "LambdaOutput" :: NullOrUndefined (LambdaOutput) , "DestinationSchema" :: (DestinationSchema) } -> {"Name" :: (InAppStreamName) , "KinesisStreamsOutput" :: NullOrUndefined (KinesisStreamsOutput) , "KinesisFirehoseOutput" :: NullOrUndefined (KinesisFirehoseOutput) , "LambdaOutput" :: NullOrUndefined (LambdaOutput) , "DestinationSchema" :: (DestinationSchema) } ) -> Output
-newOutput' _DestinationSchema _Name customize = (Output <<< customize) { "DestinationSchema": _DestinationSchema, "Name": _Name, "KinesisFirehoseOutput": (NullOrUndefined Nothing), "KinesisStreamsOutput": (NullOrUndefined Nothing), "LambdaOutput": (NullOrUndefined Nothing) }
+newOutput' :: DestinationSchema -> InAppStreamName -> ( { "Name" :: (InAppStreamName) , "KinesisStreamsOutput" :: Maybe (KinesisStreamsOutput) , "KinesisFirehoseOutput" :: Maybe (KinesisFirehoseOutput) , "LambdaOutput" :: Maybe (LambdaOutput) , "DestinationSchema" :: (DestinationSchema) } -> {"Name" :: (InAppStreamName) , "KinesisStreamsOutput" :: Maybe (KinesisStreamsOutput) , "KinesisFirehoseOutput" :: Maybe (KinesisFirehoseOutput) , "LambdaOutput" :: Maybe (LambdaOutput) , "DestinationSchema" :: (DestinationSchema) } ) -> Output
+newOutput' _DestinationSchema _Name customize = (Output <<< customize) { "DestinationSchema": _DestinationSchema, "Name": _Name, "KinesisFirehoseOutput": Nothing, "KinesisStreamsOutput": Nothing, "LambdaOutput": Nothing }
 
 
 
 -- | <p>Describes the application output configuration, which includes the in-application stream name and the destination where the stream data is written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p>
 newtype OutputDescription = OutputDescription 
-  { "OutputId" :: NullOrUndefined (Id)
-  , "Name" :: NullOrUndefined (InAppStreamName)
-  , "KinesisStreamsOutputDescription" :: NullOrUndefined (KinesisStreamsOutputDescription)
-  , "KinesisFirehoseOutputDescription" :: NullOrUndefined (KinesisFirehoseOutputDescription)
-  , "LambdaOutputDescription" :: NullOrUndefined (LambdaOutputDescription)
-  , "DestinationSchema" :: NullOrUndefined (DestinationSchema)
+  { "OutputId" :: Maybe (Id)
+  , "Name" :: Maybe (InAppStreamName)
+  , "KinesisStreamsOutputDescription" :: Maybe (KinesisStreamsOutputDescription)
+  , "KinesisFirehoseOutputDescription" :: Maybe (KinesisFirehoseOutputDescription)
+  , "LambdaOutputDescription" :: Maybe (LambdaOutputDescription)
+  , "DestinationSchema" :: Maybe (DestinationSchema)
   }
 derive instance newtypeOutputDescription :: Newtype OutputDescription _
 derive instance repGenericOutputDescription :: Generic OutputDescription _
@@ -1774,12 +1773,12 @@ instance encodeOutputDescription :: Encode OutputDescription where encode = gene
 
 -- | Constructs OutputDescription from required parameters
 newOutputDescription :: OutputDescription
-newOutputDescription  = OutputDescription { "DestinationSchema": (NullOrUndefined Nothing), "KinesisFirehoseOutputDescription": (NullOrUndefined Nothing), "KinesisStreamsOutputDescription": (NullOrUndefined Nothing), "LambdaOutputDescription": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "OutputId": (NullOrUndefined Nothing) }
+newOutputDescription  = OutputDescription { "DestinationSchema": Nothing, "KinesisFirehoseOutputDescription": Nothing, "KinesisStreamsOutputDescription": Nothing, "LambdaOutputDescription": Nothing, "Name": Nothing, "OutputId": Nothing }
 
 -- | Constructs OutputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newOutputDescription' :: ( { "OutputId" :: NullOrUndefined (Id) , "Name" :: NullOrUndefined (InAppStreamName) , "KinesisStreamsOutputDescription" :: NullOrUndefined (KinesisStreamsOutputDescription) , "KinesisFirehoseOutputDescription" :: NullOrUndefined (KinesisFirehoseOutputDescription) , "LambdaOutputDescription" :: NullOrUndefined (LambdaOutputDescription) , "DestinationSchema" :: NullOrUndefined (DestinationSchema) } -> {"OutputId" :: NullOrUndefined (Id) , "Name" :: NullOrUndefined (InAppStreamName) , "KinesisStreamsOutputDescription" :: NullOrUndefined (KinesisStreamsOutputDescription) , "KinesisFirehoseOutputDescription" :: NullOrUndefined (KinesisFirehoseOutputDescription) , "LambdaOutputDescription" :: NullOrUndefined (LambdaOutputDescription) , "DestinationSchema" :: NullOrUndefined (DestinationSchema) } ) -> OutputDescription
-newOutputDescription'  customize = (OutputDescription <<< customize) { "DestinationSchema": (NullOrUndefined Nothing), "KinesisFirehoseOutputDescription": (NullOrUndefined Nothing), "KinesisStreamsOutputDescription": (NullOrUndefined Nothing), "LambdaOutputDescription": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "OutputId": (NullOrUndefined Nothing) }
+newOutputDescription' :: ( { "OutputId" :: Maybe (Id) , "Name" :: Maybe (InAppStreamName) , "KinesisStreamsOutputDescription" :: Maybe (KinesisStreamsOutputDescription) , "KinesisFirehoseOutputDescription" :: Maybe (KinesisFirehoseOutputDescription) , "LambdaOutputDescription" :: Maybe (LambdaOutputDescription) , "DestinationSchema" :: Maybe (DestinationSchema) } -> {"OutputId" :: Maybe (Id) , "Name" :: Maybe (InAppStreamName) , "KinesisStreamsOutputDescription" :: Maybe (KinesisStreamsOutputDescription) , "KinesisFirehoseOutputDescription" :: Maybe (KinesisFirehoseOutputDescription) , "LambdaOutputDescription" :: Maybe (LambdaOutputDescription) , "DestinationSchema" :: Maybe (DestinationSchema) } ) -> OutputDescription
+newOutputDescription'  customize = (OutputDescription <<< customize) { "DestinationSchema": Nothing, "KinesisFirehoseOutputDescription": Nothing, "KinesisStreamsOutputDescription": Nothing, "LambdaOutputDescription": Nothing, "Name": Nothing, "OutputId": Nothing }
 
 
 
@@ -1795,11 +1794,11 @@ instance encodeOutputDescriptions :: Encode OutputDescriptions where encode = ge
 -- | <p> Describes updates to the output configuration identified by the <code>OutputId</code>. </p>
 newtype OutputUpdate = OutputUpdate 
   { "OutputId" :: (Id)
-  , "NameUpdate" :: NullOrUndefined (InAppStreamName)
-  , "KinesisStreamsOutputUpdate" :: NullOrUndefined (KinesisStreamsOutputUpdate)
-  , "KinesisFirehoseOutputUpdate" :: NullOrUndefined (KinesisFirehoseOutputUpdate)
-  , "LambdaOutputUpdate" :: NullOrUndefined (LambdaOutputUpdate)
-  , "DestinationSchemaUpdate" :: NullOrUndefined (DestinationSchema)
+  , "NameUpdate" :: Maybe (InAppStreamName)
+  , "KinesisStreamsOutputUpdate" :: Maybe (KinesisStreamsOutputUpdate)
+  , "KinesisFirehoseOutputUpdate" :: Maybe (KinesisFirehoseOutputUpdate)
+  , "LambdaOutputUpdate" :: Maybe (LambdaOutputUpdate)
+  , "DestinationSchemaUpdate" :: Maybe (DestinationSchema)
   }
 derive instance newtypeOutputUpdate :: Newtype OutputUpdate _
 derive instance repGenericOutputUpdate :: Generic OutputUpdate _
@@ -1809,12 +1808,12 @@ instance encodeOutputUpdate :: Encode OutputUpdate where encode = genericEncode 
 
 -- | Constructs OutputUpdate from required parameters
 newOutputUpdate :: Id -> OutputUpdate
-newOutputUpdate _OutputId = OutputUpdate { "OutputId": _OutputId, "DestinationSchemaUpdate": (NullOrUndefined Nothing), "KinesisFirehoseOutputUpdate": (NullOrUndefined Nothing), "KinesisStreamsOutputUpdate": (NullOrUndefined Nothing), "LambdaOutputUpdate": (NullOrUndefined Nothing), "NameUpdate": (NullOrUndefined Nothing) }
+newOutputUpdate _OutputId = OutputUpdate { "OutputId": _OutputId, "DestinationSchemaUpdate": Nothing, "KinesisFirehoseOutputUpdate": Nothing, "KinesisStreamsOutputUpdate": Nothing, "LambdaOutputUpdate": Nothing, "NameUpdate": Nothing }
 
 -- | Constructs OutputUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newOutputUpdate' :: Id -> ( { "OutputId" :: (Id) , "NameUpdate" :: NullOrUndefined (InAppStreamName) , "KinesisStreamsOutputUpdate" :: NullOrUndefined (KinesisStreamsOutputUpdate) , "KinesisFirehoseOutputUpdate" :: NullOrUndefined (KinesisFirehoseOutputUpdate) , "LambdaOutputUpdate" :: NullOrUndefined (LambdaOutputUpdate) , "DestinationSchemaUpdate" :: NullOrUndefined (DestinationSchema) } -> {"OutputId" :: (Id) , "NameUpdate" :: NullOrUndefined (InAppStreamName) , "KinesisStreamsOutputUpdate" :: NullOrUndefined (KinesisStreamsOutputUpdate) , "KinesisFirehoseOutputUpdate" :: NullOrUndefined (KinesisFirehoseOutputUpdate) , "LambdaOutputUpdate" :: NullOrUndefined (LambdaOutputUpdate) , "DestinationSchemaUpdate" :: NullOrUndefined (DestinationSchema) } ) -> OutputUpdate
-newOutputUpdate' _OutputId customize = (OutputUpdate <<< customize) { "OutputId": _OutputId, "DestinationSchemaUpdate": (NullOrUndefined Nothing), "KinesisFirehoseOutputUpdate": (NullOrUndefined Nothing), "KinesisStreamsOutputUpdate": (NullOrUndefined Nothing), "LambdaOutputUpdate": (NullOrUndefined Nothing), "NameUpdate": (NullOrUndefined Nothing) }
+newOutputUpdate' :: Id -> ( { "OutputId" :: (Id) , "NameUpdate" :: Maybe (InAppStreamName) , "KinesisStreamsOutputUpdate" :: Maybe (KinesisStreamsOutputUpdate) , "KinesisFirehoseOutputUpdate" :: Maybe (KinesisFirehoseOutputUpdate) , "LambdaOutputUpdate" :: Maybe (LambdaOutputUpdate) , "DestinationSchemaUpdate" :: Maybe (DestinationSchema) } -> {"OutputId" :: (Id) , "NameUpdate" :: Maybe (InAppStreamName) , "KinesisStreamsOutputUpdate" :: Maybe (KinesisStreamsOutputUpdate) , "KinesisFirehoseOutputUpdate" :: Maybe (KinesisFirehoseOutputUpdate) , "LambdaOutputUpdate" :: Maybe (LambdaOutputUpdate) , "DestinationSchemaUpdate" :: Maybe (DestinationSchema) } ) -> OutputUpdate
+newOutputUpdate' _OutputId customize = (OutputUpdate <<< customize) { "OutputId": _OutputId, "DestinationSchemaUpdate": Nothing, "KinesisFirehoseOutputUpdate": Nothing, "KinesisStreamsOutputUpdate": Nothing, "LambdaOutputUpdate": Nothing, "NameUpdate": Nothing }
 
 
 
@@ -1902,7 +1901,7 @@ instance encodeRawInputRecords :: Encode RawInputRecords where encode = genericE
 -- | <p>Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.</p> <p>Also used to describe the format of the reference data source.</p>
 newtype RecordColumn = RecordColumn 
   { "Name" :: (RecordColumnName)
-  , "Mapping" :: NullOrUndefined (RecordColumnMapping)
+  , "Mapping" :: Maybe (RecordColumnMapping)
   , "SqlType" :: (RecordColumnSqlType)
   }
 derive instance newtypeRecordColumn :: Newtype RecordColumn _
@@ -1913,12 +1912,12 @@ instance encodeRecordColumn :: Encode RecordColumn where encode = genericEncode 
 
 -- | Constructs RecordColumn from required parameters
 newRecordColumn :: RecordColumnName -> RecordColumnSqlType -> RecordColumn
-newRecordColumn _Name _SqlType = RecordColumn { "Name": _Name, "SqlType": _SqlType, "Mapping": (NullOrUndefined Nothing) }
+newRecordColumn _Name _SqlType = RecordColumn { "Name": _Name, "SqlType": _SqlType, "Mapping": Nothing }
 
 -- | Constructs RecordColumn's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRecordColumn' :: RecordColumnName -> RecordColumnSqlType -> ( { "Name" :: (RecordColumnName) , "Mapping" :: NullOrUndefined (RecordColumnMapping) , "SqlType" :: (RecordColumnSqlType) } -> {"Name" :: (RecordColumnName) , "Mapping" :: NullOrUndefined (RecordColumnMapping) , "SqlType" :: (RecordColumnSqlType) } ) -> RecordColumn
-newRecordColumn' _Name _SqlType customize = (RecordColumn <<< customize) { "Name": _Name, "SqlType": _SqlType, "Mapping": (NullOrUndefined Nothing) }
+newRecordColumn' :: RecordColumnName -> RecordColumnSqlType -> ( { "Name" :: (RecordColumnName) , "Mapping" :: Maybe (RecordColumnMapping) , "SqlType" :: (RecordColumnSqlType) } -> {"Name" :: (RecordColumnName) , "Mapping" :: Maybe (RecordColumnMapping) , "SqlType" :: (RecordColumnSqlType) } ) -> RecordColumn
+newRecordColumn' _Name _SqlType customize = (RecordColumn <<< customize) { "Name": _Name, "SqlType": _SqlType, "Mapping": Nothing }
 
 
 
@@ -1979,7 +1978,7 @@ instance encodeRecordEncoding :: Encode RecordEncoding where encode = genericEnc
 -- | <p> Describes the record format and relevant mapping information that should be applied to schematize the records on the stream. </p>
 newtype RecordFormat = RecordFormat 
   { "RecordFormatType" :: (RecordFormatType)
-  , "MappingParameters" :: NullOrUndefined (MappingParameters)
+  , "MappingParameters" :: Maybe (MappingParameters)
   }
 derive instance newtypeRecordFormat :: Newtype RecordFormat _
 derive instance repGenericRecordFormat :: Generic RecordFormat _
@@ -1989,12 +1988,12 @@ instance encodeRecordFormat :: Encode RecordFormat where encode = genericEncode 
 
 -- | Constructs RecordFormat from required parameters
 newRecordFormat :: RecordFormatType -> RecordFormat
-newRecordFormat _RecordFormatType = RecordFormat { "RecordFormatType": _RecordFormatType, "MappingParameters": (NullOrUndefined Nothing) }
+newRecordFormat _RecordFormatType = RecordFormat { "RecordFormatType": _RecordFormatType, "MappingParameters": Nothing }
 
 -- | Constructs RecordFormat's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRecordFormat' :: RecordFormatType -> ( { "RecordFormatType" :: (RecordFormatType) , "MappingParameters" :: NullOrUndefined (MappingParameters) } -> {"RecordFormatType" :: (RecordFormatType) , "MappingParameters" :: NullOrUndefined (MappingParameters) } ) -> RecordFormat
-newRecordFormat' _RecordFormatType customize = (RecordFormat <<< customize) { "RecordFormatType": _RecordFormatType, "MappingParameters": (NullOrUndefined Nothing) }
+newRecordFormat' :: RecordFormatType -> ( { "RecordFormatType" :: (RecordFormatType) , "MappingParameters" :: Maybe (MappingParameters) } -> {"RecordFormatType" :: (RecordFormatType) , "MappingParameters" :: Maybe (MappingParameters) } ) -> RecordFormat
+newRecordFormat' _RecordFormatType customize = (RecordFormat <<< customize) { "RecordFormatType": _RecordFormatType, "MappingParameters": Nothing }
 
 
 
@@ -2028,7 +2027,7 @@ instance encodeRecordRowPath :: Encode RecordRowPath where encode = genericEncod
 -- | <p>Describes the reference data source by providing the source information (S3 bucket name and object key name), the resulting in-application table name that is created, and the necessary schema to map the data elements in the Amazon S3 object to the in-application table.</p>
 newtype ReferenceDataSource = ReferenceDataSource 
   { "TableName" :: (InAppTableName)
-  , "S3ReferenceDataSource" :: NullOrUndefined (S3ReferenceDataSource)
+  , "S3ReferenceDataSource" :: Maybe (S3ReferenceDataSource)
   , "ReferenceSchema" :: (SourceSchema)
   }
 derive instance newtypeReferenceDataSource :: Newtype ReferenceDataSource _
@@ -2039,12 +2038,12 @@ instance encodeReferenceDataSource :: Encode ReferenceDataSource where encode = 
 
 -- | Constructs ReferenceDataSource from required parameters
 newReferenceDataSource :: SourceSchema -> InAppTableName -> ReferenceDataSource
-newReferenceDataSource _ReferenceSchema _TableName = ReferenceDataSource { "ReferenceSchema": _ReferenceSchema, "TableName": _TableName, "S3ReferenceDataSource": (NullOrUndefined Nothing) }
+newReferenceDataSource _ReferenceSchema _TableName = ReferenceDataSource { "ReferenceSchema": _ReferenceSchema, "TableName": _TableName, "S3ReferenceDataSource": Nothing }
 
 -- | Constructs ReferenceDataSource's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReferenceDataSource' :: SourceSchema -> InAppTableName -> ( { "TableName" :: (InAppTableName) , "S3ReferenceDataSource" :: NullOrUndefined (S3ReferenceDataSource) , "ReferenceSchema" :: (SourceSchema) } -> {"TableName" :: (InAppTableName) , "S3ReferenceDataSource" :: NullOrUndefined (S3ReferenceDataSource) , "ReferenceSchema" :: (SourceSchema) } ) -> ReferenceDataSource
-newReferenceDataSource' _ReferenceSchema _TableName customize = (ReferenceDataSource <<< customize) { "ReferenceSchema": _ReferenceSchema, "TableName": _TableName, "S3ReferenceDataSource": (NullOrUndefined Nothing) }
+newReferenceDataSource' :: SourceSchema -> InAppTableName -> ( { "TableName" :: (InAppTableName) , "S3ReferenceDataSource" :: Maybe (S3ReferenceDataSource) , "ReferenceSchema" :: (SourceSchema) } -> {"TableName" :: (InAppTableName) , "S3ReferenceDataSource" :: Maybe (S3ReferenceDataSource) , "ReferenceSchema" :: (SourceSchema) } ) -> ReferenceDataSource
+newReferenceDataSource' _ReferenceSchema _TableName customize = (ReferenceDataSource <<< customize) { "ReferenceSchema": _ReferenceSchema, "TableName": _TableName, "S3ReferenceDataSource": Nothing }
 
 
 
@@ -2053,7 +2052,7 @@ newtype ReferenceDataSourceDescription = ReferenceDataSourceDescription
   { "ReferenceId" :: (Id)
   , "TableName" :: (InAppTableName)
   , "S3ReferenceDataSourceDescription" :: (S3ReferenceDataSourceDescription)
-  , "ReferenceSchema" :: NullOrUndefined (SourceSchema)
+  , "ReferenceSchema" :: Maybe (SourceSchema)
   }
 derive instance newtypeReferenceDataSourceDescription :: Newtype ReferenceDataSourceDescription _
 derive instance repGenericReferenceDataSourceDescription :: Generic ReferenceDataSourceDescription _
@@ -2063,12 +2062,12 @@ instance encodeReferenceDataSourceDescription :: Encode ReferenceDataSourceDescr
 
 -- | Constructs ReferenceDataSourceDescription from required parameters
 newReferenceDataSourceDescription :: Id -> S3ReferenceDataSourceDescription -> InAppTableName -> ReferenceDataSourceDescription
-newReferenceDataSourceDescription _ReferenceId _S3ReferenceDataSourceDescription _TableName = ReferenceDataSourceDescription { "ReferenceId": _ReferenceId, "S3ReferenceDataSourceDescription": _S3ReferenceDataSourceDescription, "TableName": _TableName, "ReferenceSchema": (NullOrUndefined Nothing) }
+newReferenceDataSourceDescription _ReferenceId _S3ReferenceDataSourceDescription _TableName = ReferenceDataSourceDescription { "ReferenceId": _ReferenceId, "S3ReferenceDataSourceDescription": _S3ReferenceDataSourceDescription, "TableName": _TableName, "ReferenceSchema": Nothing }
 
 -- | Constructs ReferenceDataSourceDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReferenceDataSourceDescription' :: Id -> S3ReferenceDataSourceDescription -> InAppTableName -> ( { "ReferenceId" :: (Id) , "TableName" :: (InAppTableName) , "S3ReferenceDataSourceDescription" :: (S3ReferenceDataSourceDescription) , "ReferenceSchema" :: NullOrUndefined (SourceSchema) } -> {"ReferenceId" :: (Id) , "TableName" :: (InAppTableName) , "S3ReferenceDataSourceDescription" :: (S3ReferenceDataSourceDescription) , "ReferenceSchema" :: NullOrUndefined (SourceSchema) } ) -> ReferenceDataSourceDescription
-newReferenceDataSourceDescription' _ReferenceId _S3ReferenceDataSourceDescription _TableName customize = (ReferenceDataSourceDescription <<< customize) { "ReferenceId": _ReferenceId, "S3ReferenceDataSourceDescription": _S3ReferenceDataSourceDescription, "TableName": _TableName, "ReferenceSchema": (NullOrUndefined Nothing) }
+newReferenceDataSourceDescription' :: Id -> S3ReferenceDataSourceDescription -> InAppTableName -> ( { "ReferenceId" :: (Id) , "TableName" :: (InAppTableName) , "S3ReferenceDataSourceDescription" :: (S3ReferenceDataSourceDescription) , "ReferenceSchema" :: Maybe (SourceSchema) } -> {"ReferenceId" :: (Id) , "TableName" :: (InAppTableName) , "S3ReferenceDataSourceDescription" :: (S3ReferenceDataSourceDescription) , "ReferenceSchema" :: Maybe (SourceSchema) } ) -> ReferenceDataSourceDescription
+newReferenceDataSourceDescription' _ReferenceId _S3ReferenceDataSourceDescription _TableName customize = (ReferenceDataSourceDescription <<< customize) { "ReferenceId": _ReferenceId, "S3ReferenceDataSourceDescription": _S3ReferenceDataSourceDescription, "TableName": _TableName, "ReferenceSchema": Nothing }
 
 
 
@@ -2084,9 +2083,9 @@ instance encodeReferenceDataSourceDescriptions :: Encode ReferenceDataSourceDesc
 -- | <p>When you update a reference data source configuration for an application, this object provides all the updated values (such as the source bucket name and object key name), the in-application table name that is created, and updated mapping information that maps the data in the Amazon S3 object to the in-application reference table that is created.</p>
 newtype ReferenceDataSourceUpdate = ReferenceDataSourceUpdate 
   { "ReferenceId" :: (Id)
-  , "TableNameUpdate" :: NullOrUndefined (InAppTableName)
-  , "S3ReferenceDataSourceUpdate" :: NullOrUndefined (S3ReferenceDataSourceUpdate)
-  , "ReferenceSchemaUpdate" :: NullOrUndefined (SourceSchema)
+  , "TableNameUpdate" :: Maybe (InAppTableName)
+  , "S3ReferenceDataSourceUpdate" :: Maybe (S3ReferenceDataSourceUpdate)
+  , "ReferenceSchemaUpdate" :: Maybe (SourceSchema)
   }
 derive instance newtypeReferenceDataSourceUpdate :: Newtype ReferenceDataSourceUpdate _
 derive instance repGenericReferenceDataSourceUpdate :: Generic ReferenceDataSourceUpdate _
@@ -2096,12 +2095,12 @@ instance encodeReferenceDataSourceUpdate :: Encode ReferenceDataSourceUpdate whe
 
 -- | Constructs ReferenceDataSourceUpdate from required parameters
 newReferenceDataSourceUpdate :: Id -> ReferenceDataSourceUpdate
-newReferenceDataSourceUpdate _ReferenceId = ReferenceDataSourceUpdate { "ReferenceId": _ReferenceId, "ReferenceSchemaUpdate": (NullOrUndefined Nothing), "S3ReferenceDataSourceUpdate": (NullOrUndefined Nothing), "TableNameUpdate": (NullOrUndefined Nothing) }
+newReferenceDataSourceUpdate _ReferenceId = ReferenceDataSourceUpdate { "ReferenceId": _ReferenceId, "ReferenceSchemaUpdate": Nothing, "S3ReferenceDataSourceUpdate": Nothing, "TableNameUpdate": Nothing }
 
 -- | Constructs ReferenceDataSourceUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReferenceDataSourceUpdate' :: Id -> ( { "ReferenceId" :: (Id) , "TableNameUpdate" :: NullOrUndefined (InAppTableName) , "S3ReferenceDataSourceUpdate" :: NullOrUndefined (S3ReferenceDataSourceUpdate) , "ReferenceSchemaUpdate" :: NullOrUndefined (SourceSchema) } -> {"ReferenceId" :: (Id) , "TableNameUpdate" :: NullOrUndefined (InAppTableName) , "S3ReferenceDataSourceUpdate" :: NullOrUndefined (S3ReferenceDataSourceUpdate) , "ReferenceSchemaUpdate" :: NullOrUndefined (SourceSchema) } ) -> ReferenceDataSourceUpdate
-newReferenceDataSourceUpdate' _ReferenceId customize = (ReferenceDataSourceUpdate <<< customize) { "ReferenceId": _ReferenceId, "ReferenceSchemaUpdate": (NullOrUndefined Nothing), "S3ReferenceDataSourceUpdate": (NullOrUndefined Nothing), "TableNameUpdate": (NullOrUndefined Nothing) }
+newReferenceDataSourceUpdate' :: Id -> ( { "ReferenceId" :: (Id) , "TableNameUpdate" :: Maybe (InAppTableName) , "S3ReferenceDataSourceUpdate" :: Maybe (S3ReferenceDataSourceUpdate) , "ReferenceSchemaUpdate" :: Maybe (SourceSchema) } -> {"ReferenceId" :: (Id) , "TableNameUpdate" :: Maybe (InAppTableName) , "S3ReferenceDataSourceUpdate" :: Maybe (S3ReferenceDataSourceUpdate) , "ReferenceSchemaUpdate" :: Maybe (SourceSchema) } ) -> ReferenceDataSourceUpdate
+newReferenceDataSourceUpdate' _ReferenceId customize = (ReferenceDataSourceUpdate <<< customize) { "ReferenceId": _ReferenceId, "ReferenceSchemaUpdate": Nothing, "S3ReferenceDataSourceUpdate": Nothing, "TableNameUpdate": Nothing }
 
 
 
@@ -2125,7 +2124,7 @@ instance encodeResourceARN :: Encode ResourceARN where encode = genericEncode op
 
 -- | <p>Application is not available for this operation.</p>
 newtype ResourceInUseException = ResourceInUseException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 derive instance repGenericResourceInUseException :: Generic ResourceInUseException _
@@ -2135,18 +2134,18 @@ instance encodeResourceInUseException :: Encode ResourceInUseException where enc
 
 -- | Constructs ResourceInUseException from required parameters
 newResourceInUseException :: ResourceInUseException
-newResourceInUseException  = ResourceInUseException { "message": (NullOrUndefined Nothing) }
+newResourceInUseException  = ResourceInUseException { "message": Nothing }
 
 -- | Constructs ResourceInUseException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceInUseException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceInUseException
-newResourceInUseException'  customize = (ResourceInUseException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceInUseException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceInUseException
+newResourceInUseException'  customize = (ResourceInUseException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Specified application can't be found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 derive instance repGenericResourceNotFoundException :: Generic ResourceNotFoundException _
@@ -2156,18 +2155,18 @@ instance encodeResourceNotFoundException :: Encode ResourceNotFoundException whe
 
 -- | Constructs ResourceNotFoundException from required parameters
 newResourceNotFoundException :: ResourceNotFoundException
-newResourceNotFoundException  = ResourceNotFoundException { "message": (NullOrUndefined Nothing) }
+newResourceNotFoundException  = ResourceNotFoundException { "message": Nothing }
 
 -- | Constructs ResourceNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceNotFoundException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceNotFoundException
-newResourceNotFoundException'  customize = (ResourceNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceNotFoundException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceNotFoundException
+newResourceNotFoundException'  customize = (ResourceNotFoundException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Discovery failed to get a record from the streaming source because of the Amazon Kinesis Streams ProvisionedThroughputExceededException. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html">GetRecords</a> in the Amazon Kinesis Streams API Reference.</p>
 newtype ResourceProvisionedThroughputExceededException = ResourceProvisionedThroughputExceededException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceProvisionedThroughputExceededException :: Newtype ResourceProvisionedThroughputExceededException _
 derive instance repGenericResourceProvisionedThroughputExceededException :: Generic ResourceProvisionedThroughputExceededException _
@@ -2177,12 +2176,12 @@ instance encodeResourceProvisionedThroughputExceededException :: Encode Resource
 
 -- | Constructs ResourceProvisionedThroughputExceededException from required parameters
 newResourceProvisionedThroughputExceededException :: ResourceProvisionedThroughputExceededException
-newResourceProvisionedThroughputExceededException  = ResourceProvisionedThroughputExceededException { "message": (NullOrUndefined Nothing) }
+newResourceProvisionedThroughputExceededException  = ResourceProvisionedThroughputExceededException { "message": Nothing }
 
 -- | Constructs ResourceProvisionedThroughputExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceProvisionedThroughputExceededException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceProvisionedThroughputExceededException
-newResourceProvisionedThroughputExceededException'  customize = (ResourceProvisionedThroughputExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceProvisionedThroughputExceededException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceProvisionedThroughputExceededException
+newResourceProvisionedThroughputExceededException'  customize = (ResourceProvisionedThroughputExceededException <<< customize) { "message": Nothing }
 
 
 
@@ -2266,9 +2265,9 @@ newS3ReferenceDataSourceDescription' _BucketARN _FileKey _ReferenceRoleARN custo
 
 -- | <p>Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object on your behalf and populate the in-application reference table.</p>
 newtype S3ReferenceDataSourceUpdate = S3ReferenceDataSourceUpdate 
-  { "BucketARNUpdate" :: NullOrUndefined (BucketARN)
-  , "FileKeyUpdate" :: NullOrUndefined (FileKey)
-  , "ReferenceRoleARNUpdate" :: NullOrUndefined (RoleARN)
+  { "BucketARNUpdate" :: Maybe (BucketARN)
+  , "FileKeyUpdate" :: Maybe (FileKey)
+  , "ReferenceRoleARNUpdate" :: Maybe (RoleARN)
   }
 derive instance newtypeS3ReferenceDataSourceUpdate :: Newtype S3ReferenceDataSourceUpdate _
 derive instance repGenericS3ReferenceDataSourceUpdate :: Generic S3ReferenceDataSourceUpdate _
@@ -2278,18 +2277,18 @@ instance encodeS3ReferenceDataSourceUpdate :: Encode S3ReferenceDataSourceUpdate
 
 -- | Constructs S3ReferenceDataSourceUpdate from required parameters
 newS3ReferenceDataSourceUpdate :: S3ReferenceDataSourceUpdate
-newS3ReferenceDataSourceUpdate  = S3ReferenceDataSourceUpdate { "BucketARNUpdate": (NullOrUndefined Nothing), "FileKeyUpdate": (NullOrUndefined Nothing), "ReferenceRoleARNUpdate": (NullOrUndefined Nothing) }
+newS3ReferenceDataSourceUpdate  = S3ReferenceDataSourceUpdate { "BucketARNUpdate": Nothing, "FileKeyUpdate": Nothing, "ReferenceRoleARNUpdate": Nothing }
 
 -- | Constructs S3ReferenceDataSourceUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newS3ReferenceDataSourceUpdate' :: ( { "BucketARNUpdate" :: NullOrUndefined (BucketARN) , "FileKeyUpdate" :: NullOrUndefined (FileKey) , "ReferenceRoleARNUpdate" :: NullOrUndefined (RoleARN) } -> {"BucketARNUpdate" :: NullOrUndefined (BucketARN) , "FileKeyUpdate" :: NullOrUndefined (FileKey) , "ReferenceRoleARNUpdate" :: NullOrUndefined (RoleARN) } ) -> S3ReferenceDataSourceUpdate
-newS3ReferenceDataSourceUpdate'  customize = (S3ReferenceDataSourceUpdate <<< customize) { "BucketARNUpdate": (NullOrUndefined Nothing), "FileKeyUpdate": (NullOrUndefined Nothing), "ReferenceRoleARNUpdate": (NullOrUndefined Nothing) }
+newS3ReferenceDataSourceUpdate' :: ( { "BucketARNUpdate" :: Maybe (BucketARN) , "FileKeyUpdate" :: Maybe (FileKey) , "ReferenceRoleARNUpdate" :: Maybe (RoleARN) } -> {"BucketARNUpdate" :: Maybe (BucketARN) , "FileKeyUpdate" :: Maybe (FileKey) , "ReferenceRoleARNUpdate" :: Maybe (RoleARN) } ) -> S3ReferenceDataSourceUpdate
+newS3ReferenceDataSourceUpdate'  customize = (S3ReferenceDataSourceUpdate <<< customize) { "BucketARNUpdate": Nothing, "FileKeyUpdate": Nothing, "ReferenceRoleARNUpdate": Nothing }
 
 
 
 -- | <p>The service is unavailable, back off and retry the operation. </p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 derive instance repGenericServiceUnavailableException :: Generic ServiceUnavailableException _
@@ -2299,19 +2298,19 @@ instance encodeServiceUnavailableException :: Encode ServiceUnavailableException
 
 -- | Constructs ServiceUnavailableException from required parameters
 newServiceUnavailableException :: ServiceUnavailableException
-newServiceUnavailableException  = ServiceUnavailableException { "message": (NullOrUndefined Nothing) }
+newServiceUnavailableException  = ServiceUnavailableException { "message": Nothing }
 
 -- | Constructs ServiceUnavailableException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newServiceUnavailableException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ServiceUnavailableException
-newServiceUnavailableException'  customize = (ServiceUnavailableException <<< customize) { "message": (NullOrUndefined Nothing) }
+newServiceUnavailableException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ServiceUnavailableException
+newServiceUnavailableException'  customize = (ServiceUnavailableException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.</p>
 newtype SourceSchema = SourceSchema 
   { "RecordFormat" :: (RecordFormat)
-  , "RecordEncoding" :: NullOrUndefined (RecordEncoding)
+  , "RecordEncoding" :: Maybe (RecordEncoding)
   , "RecordColumns" :: (RecordColumns)
   }
 derive instance newtypeSourceSchema :: Newtype SourceSchema _
@@ -2322,12 +2321,12 @@ instance encodeSourceSchema :: Encode SourceSchema where encode = genericEncode 
 
 -- | Constructs SourceSchema from required parameters
 newSourceSchema :: RecordColumns -> RecordFormat -> SourceSchema
-newSourceSchema _RecordColumns _RecordFormat = SourceSchema { "RecordColumns": _RecordColumns, "RecordFormat": _RecordFormat, "RecordEncoding": (NullOrUndefined Nothing) }
+newSourceSchema _RecordColumns _RecordFormat = SourceSchema { "RecordColumns": _RecordColumns, "RecordFormat": _RecordFormat, "RecordEncoding": Nothing }
 
 -- | Constructs SourceSchema's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSourceSchema' :: RecordColumns -> RecordFormat -> ( { "RecordFormat" :: (RecordFormat) , "RecordEncoding" :: NullOrUndefined (RecordEncoding) , "RecordColumns" :: (RecordColumns) } -> {"RecordFormat" :: (RecordFormat) , "RecordEncoding" :: NullOrUndefined (RecordEncoding) , "RecordColumns" :: (RecordColumns) } ) -> SourceSchema
-newSourceSchema' _RecordColumns _RecordFormat customize = (SourceSchema <<< customize) { "RecordColumns": _RecordColumns, "RecordFormat": _RecordFormat, "RecordEncoding": (NullOrUndefined Nothing) }
+newSourceSchema' :: RecordColumns -> RecordFormat -> ( { "RecordFormat" :: (RecordFormat) , "RecordEncoding" :: Maybe (RecordEncoding) , "RecordColumns" :: (RecordColumns) } -> {"RecordFormat" :: (RecordFormat) , "RecordEncoding" :: Maybe (RecordEncoding) , "RecordColumns" :: (RecordColumns) } ) -> SourceSchema
+newSourceSchema' _RecordColumns _RecordFormat customize = (SourceSchema <<< customize) { "RecordColumns": _RecordColumns, "RecordFormat": _RecordFormat, "RecordEncoding": Nothing }
 
 
 
@@ -2396,9 +2395,9 @@ instance encodeStopApplicationResponse :: Encode StopApplicationResponse where e
 
 -- | <p>Data format is not valid, Amazon Kinesis Analytics is not able to detect schema for the given streaming source.</p>
 newtype UnableToDetectSchemaException = UnableToDetectSchemaException 
-  { "message" :: NullOrUndefined (ErrorMessage)
-  , "RawInputRecords" :: NullOrUndefined (RawInputRecords)
-  , "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords)
+  { "message" :: Maybe (ErrorMessage)
+  , "RawInputRecords" :: Maybe (RawInputRecords)
+  , "ProcessedInputRecords" :: Maybe (ProcessedInputRecords)
   }
 derive instance newtypeUnableToDetectSchemaException :: Newtype UnableToDetectSchemaException _
 derive instance repGenericUnableToDetectSchemaException :: Generic UnableToDetectSchemaException _
@@ -2408,12 +2407,12 @@ instance encodeUnableToDetectSchemaException :: Encode UnableToDetectSchemaExcep
 
 -- | Constructs UnableToDetectSchemaException from required parameters
 newUnableToDetectSchemaException :: UnableToDetectSchemaException
-newUnableToDetectSchemaException  = UnableToDetectSchemaException { "ProcessedInputRecords": (NullOrUndefined Nothing), "RawInputRecords": (NullOrUndefined Nothing), "message": (NullOrUndefined Nothing) }
+newUnableToDetectSchemaException  = UnableToDetectSchemaException { "ProcessedInputRecords": Nothing, "RawInputRecords": Nothing, "message": Nothing }
 
 -- | Constructs UnableToDetectSchemaException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUnableToDetectSchemaException' :: ( { "message" :: NullOrUndefined (ErrorMessage) , "RawInputRecords" :: NullOrUndefined (RawInputRecords) , "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) } -> {"message" :: NullOrUndefined (ErrorMessage) , "RawInputRecords" :: NullOrUndefined (RawInputRecords) , "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) } ) -> UnableToDetectSchemaException
-newUnableToDetectSchemaException'  customize = (UnableToDetectSchemaException <<< customize) { "ProcessedInputRecords": (NullOrUndefined Nothing), "RawInputRecords": (NullOrUndefined Nothing), "message": (NullOrUndefined Nothing) }
+newUnableToDetectSchemaException' :: ( { "message" :: Maybe (ErrorMessage) , "RawInputRecords" :: Maybe (RawInputRecords) , "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) } -> {"message" :: Maybe (ErrorMessage) , "RawInputRecords" :: Maybe (RawInputRecords) , "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) } ) -> UnableToDetectSchemaException
+newUnableToDetectSchemaException'  customize = (UnableToDetectSchemaException <<< customize) { "ProcessedInputRecords": Nothing, "RawInputRecords": Nothing, "message": Nothing }
 
 
 

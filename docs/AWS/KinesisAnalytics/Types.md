@@ -294,7 +294,7 @@ Encode ApplicationDescription
 
 ``` purescript
 newtype ApplicationDetail
-  = ApplicationDetail { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: NullOrUndefined (ApplicationDescription), "ApplicationARN" :: ResourceARN, "ApplicationStatus" :: ApplicationStatus, "CreateTimestamp" :: NullOrUndefined (Timestamp), "LastUpdateTimestamp" :: NullOrUndefined (Timestamp), "InputDescriptions" :: NullOrUndefined (InputDescriptions), "OutputDescriptions" :: NullOrUndefined (OutputDescriptions), "ReferenceDataSourceDescriptions" :: NullOrUndefined (ReferenceDataSourceDescriptions), "CloudWatchLoggingOptionDescriptions" :: NullOrUndefined (CloudWatchLoggingOptionDescriptions), "ApplicationCode" :: NullOrUndefined (ApplicationCode), "ApplicationVersionId" :: ApplicationVersionId }
+  = ApplicationDetail { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: Maybe (ApplicationDescription), "ApplicationARN" :: ResourceARN, "ApplicationStatus" :: ApplicationStatus, "CreateTimestamp" :: Maybe (Timestamp), "LastUpdateTimestamp" :: Maybe (Timestamp), "InputDescriptions" :: Maybe (InputDescriptions), "OutputDescriptions" :: Maybe (OutputDescriptions), "ReferenceDataSourceDescriptions" :: Maybe (ReferenceDataSourceDescriptions), "CloudWatchLoggingOptionDescriptions" :: Maybe (CloudWatchLoggingOptionDescriptions), "ApplicationCode" :: Maybe (ApplicationCode), "ApplicationVersionId" :: ApplicationVersionId }
 ```
 
 <p>Provides a description of the application, including the application Amazon Resource Name (ARN), status, latest version, and input and output configuration.</p>
@@ -319,7 +319,7 @@ Constructs ApplicationDetail from required parameters
 #### `newApplicationDetail'`
 
 ``` purescript
-newApplicationDetail' :: ResourceARN -> ApplicationName -> ApplicationStatus -> ApplicationVersionId -> ({ "ApplicationName" :: ApplicationName, "ApplicationDescription" :: NullOrUndefined (ApplicationDescription), "ApplicationARN" :: ResourceARN, "ApplicationStatus" :: ApplicationStatus, "CreateTimestamp" :: NullOrUndefined (Timestamp), "LastUpdateTimestamp" :: NullOrUndefined (Timestamp), "InputDescriptions" :: NullOrUndefined (InputDescriptions), "OutputDescriptions" :: NullOrUndefined (OutputDescriptions), "ReferenceDataSourceDescriptions" :: NullOrUndefined (ReferenceDataSourceDescriptions), "CloudWatchLoggingOptionDescriptions" :: NullOrUndefined (CloudWatchLoggingOptionDescriptions), "ApplicationCode" :: NullOrUndefined (ApplicationCode), "ApplicationVersionId" :: ApplicationVersionId } -> { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: NullOrUndefined (ApplicationDescription), "ApplicationARN" :: ResourceARN, "ApplicationStatus" :: ApplicationStatus, "CreateTimestamp" :: NullOrUndefined (Timestamp), "LastUpdateTimestamp" :: NullOrUndefined (Timestamp), "InputDescriptions" :: NullOrUndefined (InputDescriptions), "OutputDescriptions" :: NullOrUndefined (OutputDescriptions), "ReferenceDataSourceDescriptions" :: NullOrUndefined (ReferenceDataSourceDescriptions), "CloudWatchLoggingOptionDescriptions" :: NullOrUndefined (CloudWatchLoggingOptionDescriptions), "ApplicationCode" :: NullOrUndefined (ApplicationCode), "ApplicationVersionId" :: ApplicationVersionId }) -> ApplicationDetail
+newApplicationDetail' :: ResourceARN -> ApplicationName -> ApplicationStatus -> ApplicationVersionId -> ({ "ApplicationName" :: ApplicationName, "ApplicationDescription" :: Maybe (ApplicationDescription), "ApplicationARN" :: ResourceARN, "ApplicationStatus" :: ApplicationStatus, "CreateTimestamp" :: Maybe (Timestamp), "LastUpdateTimestamp" :: Maybe (Timestamp), "InputDescriptions" :: Maybe (InputDescriptions), "OutputDescriptions" :: Maybe (OutputDescriptions), "ReferenceDataSourceDescriptions" :: Maybe (ReferenceDataSourceDescriptions), "CloudWatchLoggingOptionDescriptions" :: Maybe (CloudWatchLoggingOptionDescriptions), "ApplicationCode" :: Maybe (ApplicationCode), "ApplicationVersionId" :: ApplicationVersionId } -> { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: Maybe (ApplicationDescription), "ApplicationARN" :: ResourceARN, "ApplicationStatus" :: ApplicationStatus, "CreateTimestamp" :: Maybe (Timestamp), "LastUpdateTimestamp" :: Maybe (Timestamp), "InputDescriptions" :: Maybe (InputDescriptions), "OutputDescriptions" :: Maybe (OutputDescriptions), "ReferenceDataSourceDescriptions" :: Maybe (ReferenceDataSourceDescriptions), "CloudWatchLoggingOptionDescriptions" :: Maybe (CloudWatchLoggingOptionDescriptions), "ApplicationCode" :: Maybe (ApplicationCode), "ApplicationVersionId" :: ApplicationVersionId }) -> ApplicationDetail
 ```
 
 Constructs ApplicationDetail's fields from required parameters
@@ -410,7 +410,7 @@ Constructs ApplicationSummary's fields from required parameters
 
 ``` purescript
 newtype ApplicationUpdate
-  = ApplicationUpdate { "InputUpdates" :: NullOrUndefined (InputUpdates), "ApplicationCodeUpdate" :: NullOrUndefined (ApplicationCode), "OutputUpdates" :: NullOrUndefined (OutputUpdates), "ReferenceDataSourceUpdates" :: NullOrUndefined (ReferenceDataSourceUpdates), "CloudWatchLoggingOptionUpdates" :: NullOrUndefined (CloudWatchLoggingOptionUpdates) }
+  = ApplicationUpdate { "InputUpdates" :: Maybe (InputUpdates), "ApplicationCodeUpdate" :: Maybe (ApplicationCode), "OutputUpdates" :: Maybe (OutputUpdates), "ReferenceDataSourceUpdates" :: Maybe (ReferenceDataSourceUpdates), "CloudWatchLoggingOptionUpdates" :: Maybe (CloudWatchLoggingOptionUpdates) }
 ```
 
 <p>Describes updates to apply to an existing Amazon Kinesis Analytics application.</p>
@@ -435,7 +435,7 @@ Constructs ApplicationUpdate from required parameters
 #### `newApplicationUpdate'`
 
 ``` purescript
-newApplicationUpdate' :: ({ "InputUpdates" :: NullOrUndefined (InputUpdates), "ApplicationCodeUpdate" :: NullOrUndefined (ApplicationCode), "OutputUpdates" :: NullOrUndefined (OutputUpdates), "ReferenceDataSourceUpdates" :: NullOrUndefined (ReferenceDataSourceUpdates), "CloudWatchLoggingOptionUpdates" :: NullOrUndefined (CloudWatchLoggingOptionUpdates) } -> { "InputUpdates" :: NullOrUndefined (InputUpdates), "ApplicationCodeUpdate" :: NullOrUndefined (ApplicationCode), "OutputUpdates" :: NullOrUndefined (OutputUpdates), "ReferenceDataSourceUpdates" :: NullOrUndefined (ReferenceDataSourceUpdates), "CloudWatchLoggingOptionUpdates" :: NullOrUndefined (CloudWatchLoggingOptionUpdates) }) -> ApplicationUpdate
+newApplicationUpdate' :: ({ "InputUpdates" :: Maybe (InputUpdates), "ApplicationCodeUpdate" :: Maybe (ApplicationCode), "OutputUpdates" :: Maybe (OutputUpdates), "ReferenceDataSourceUpdates" :: Maybe (ReferenceDataSourceUpdates), "CloudWatchLoggingOptionUpdates" :: Maybe (CloudWatchLoggingOptionUpdates) } -> { "InputUpdates" :: Maybe (InputUpdates), "ApplicationCodeUpdate" :: Maybe (ApplicationCode), "OutputUpdates" :: Maybe (OutputUpdates), "ReferenceDataSourceUpdates" :: Maybe (ReferenceDataSourceUpdates), "CloudWatchLoggingOptionUpdates" :: Maybe (CloudWatchLoggingOptionUpdates) }) -> ApplicationUpdate
 ```
 
 Constructs ApplicationUpdate's fields from required parameters
@@ -560,7 +560,7 @@ Constructs CloudWatchLoggingOption's fields from required parameters
 
 ``` purescript
 newtype CloudWatchLoggingOptionDescription
-  = CloudWatchLoggingOptionDescription { "CloudWatchLoggingOptionId" :: NullOrUndefined (Id), "LogStreamARN" :: LogStreamARN, "RoleARN" :: RoleARN }
+  = CloudWatchLoggingOptionDescription { "CloudWatchLoggingOptionId" :: Maybe (Id), "LogStreamARN" :: LogStreamARN, "RoleARN" :: RoleARN }
 ```
 
 <p>Description of the CloudWatch logging option.</p>
@@ -585,7 +585,7 @@ Constructs CloudWatchLoggingOptionDescription from required parameters
 #### `newCloudWatchLoggingOptionDescription'`
 
 ``` purescript
-newCloudWatchLoggingOptionDescription' :: LogStreamARN -> RoleARN -> ({ "CloudWatchLoggingOptionId" :: NullOrUndefined (Id), "LogStreamARN" :: LogStreamARN, "RoleARN" :: RoleARN } -> { "CloudWatchLoggingOptionId" :: NullOrUndefined (Id), "LogStreamARN" :: LogStreamARN, "RoleARN" :: RoleARN }) -> CloudWatchLoggingOptionDescription
+newCloudWatchLoggingOptionDescription' :: LogStreamARN -> RoleARN -> ({ "CloudWatchLoggingOptionId" :: Maybe (Id), "LogStreamARN" :: LogStreamARN, "RoleARN" :: RoleARN } -> { "CloudWatchLoggingOptionId" :: Maybe (Id), "LogStreamARN" :: LogStreamARN, "RoleARN" :: RoleARN }) -> CloudWatchLoggingOptionDescription
 ```
 
 Constructs CloudWatchLoggingOptionDescription's fields from required parameters
@@ -610,7 +610,7 @@ Encode CloudWatchLoggingOptionDescriptions
 
 ``` purescript
 newtype CloudWatchLoggingOptionUpdate
-  = CloudWatchLoggingOptionUpdate { "CloudWatchLoggingOptionId" :: Id, "LogStreamARNUpdate" :: NullOrUndefined (LogStreamARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = CloudWatchLoggingOptionUpdate { "CloudWatchLoggingOptionId" :: Id, "LogStreamARNUpdate" :: Maybe (LogStreamARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p>Describes CloudWatch logging option updates.</p>
@@ -635,7 +635,7 @@ Constructs CloudWatchLoggingOptionUpdate from required parameters
 #### `newCloudWatchLoggingOptionUpdate'`
 
 ``` purescript
-newCloudWatchLoggingOptionUpdate' :: Id -> ({ "CloudWatchLoggingOptionId" :: Id, "LogStreamARNUpdate" :: NullOrUndefined (LogStreamARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "CloudWatchLoggingOptionId" :: Id, "LogStreamARNUpdate" :: NullOrUndefined (LogStreamARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> CloudWatchLoggingOptionUpdate
+newCloudWatchLoggingOptionUpdate' :: Id -> ({ "CloudWatchLoggingOptionId" :: Id, "LogStreamARNUpdate" :: Maybe (LogStreamARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "CloudWatchLoggingOptionId" :: Id, "LogStreamARNUpdate" :: Maybe (LogStreamARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> CloudWatchLoggingOptionUpdate
 ```
 
 Constructs CloudWatchLoggingOptionUpdate's fields from required parameters
@@ -676,7 +676,7 @@ Encode CloudWatchLoggingOptions
 
 ``` purescript
 newtype CodeValidationException
-  = CodeValidationException { message :: NullOrUndefined (ErrorMessage) }
+  = CodeValidationException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>User-provided application code (query) is invalid. This can be a simple syntax error.</p>
@@ -701,7 +701,7 @@ Constructs CodeValidationException from required parameters
 #### `newCodeValidationException'`
 
 ``` purescript
-newCodeValidationException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> CodeValidationException
+newCodeValidationException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> CodeValidationException
 ```
 
 Constructs CodeValidationException's fields from required parameters
@@ -710,7 +710,7 @@ Constructs CodeValidationException's fields from required parameters
 
 ``` purescript
 newtype ConcurrentModificationException
-  = ConcurrentModificationException { message :: NullOrUndefined (ErrorMessage) }
+  = ConcurrentModificationException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Exception thrown as a result of concurrent modification to an application. For example, two individuals attempting to edit the same application at the same time.</p>
@@ -735,7 +735,7 @@ Constructs ConcurrentModificationException from required parameters
 #### `newConcurrentModificationException'`
 
 ``` purescript
-newConcurrentModificationException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ConcurrentModificationException
+newConcurrentModificationException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ConcurrentModificationException
 ```
 
 Constructs ConcurrentModificationException's fields from required parameters
@@ -744,7 +744,7 @@ Constructs ConcurrentModificationException's fields from required parameters
 
 ``` purescript
 newtype CreateApplicationRequest
-  = CreateApplicationRequest { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: NullOrUndefined (ApplicationDescription), "Inputs" :: NullOrUndefined (Inputs), "Outputs" :: NullOrUndefined (Outputs), "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions), "ApplicationCode" :: NullOrUndefined (ApplicationCode) }
+  = CreateApplicationRequest { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: Maybe (ApplicationDescription), "Inputs" :: Maybe (Inputs), "Outputs" :: Maybe (Outputs), "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions), "ApplicationCode" :: Maybe (ApplicationCode) }
 ```
 
 <p>TBD</p>
@@ -769,7 +769,7 @@ Constructs CreateApplicationRequest from required parameters
 #### `newCreateApplicationRequest'`
 
 ``` purescript
-newCreateApplicationRequest' :: ApplicationName -> ({ "ApplicationName" :: ApplicationName, "ApplicationDescription" :: NullOrUndefined (ApplicationDescription), "Inputs" :: NullOrUndefined (Inputs), "Outputs" :: NullOrUndefined (Outputs), "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions), "ApplicationCode" :: NullOrUndefined (ApplicationCode) } -> { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: NullOrUndefined (ApplicationDescription), "Inputs" :: NullOrUndefined (Inputs), "Outputs" :: NullOrUndefined (Outputs), "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions), "ApplicationCode" :: NullOrUndefined (ApplicationCode) }) -> CreateApplicationRequest
+newCreateApplicationRequest' :: ApplicationName -> ({ "ApplicationName" :: ApplicationName, "ApplicationDescription" :: Maybe (ApplicationDescription), "Inputs" :: Maybe (Inputs), "Outputs" :: Maybe (Outputs), "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions), "ApplicationCode" :: Maybe (ApplicationCode) } -> { "ApplicationName" :: ApplicationName, "ApplicationDescription" :: Maybe (ApplicationDescription), "Inputs" :: Maybe (Inputs), "Outputs" :: Maybe (Outputs), "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions), "ApplicationCode" :: Maybe (ApplicationCode) }) -> CreateApplicationRequest
 ```
 
 Constructs CreateApplicationRequest's fields from required parameters
@@ -1128,7 +1128,7 @@ Constructs DescribeApplicationResponse's fields from required parameters
 
 ``` purescript
 newtype DestinationSchema
-  = DestinationSchema { "RecordFormatType" :: NullOrUndefined (RecordFormatType) }
+  = DestinationSchema { "RecordFormatType" :: Maybe (RecordFormatType) }
 ```
 
 <p>Describes the data format when records are written to the destination. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html">Configuring Application Output</a>. </p>
@@ -1153,7 +1153,7 @@ Constructs DestinationSchema from required parameters
 #### `newDestinationSchema'`
 
 ``` purescript
-newDestinationSchema' :: ({ "RecordFormatType" :: NullOrUndefined (RecordFormatType) } -> { "RecordFormatType" :: NullOrUndefined (RecordFormatType) }) -> DestinationSchema
+newDestinationSchema' :: ({ "RecordFormatType" :: Maybe (RecordFormatType) } -> { "RecordFormatType" :: Maybe (RecordFormatType) }) -> DestinationSchema
 ```
 
 Constructs DestinationSchema's fields from required parameters
@@ -1162,7 +1162,7 @@ Constructs DestinationSchema's fields from required parameters
 
 ``` purescript
 newtype DiscoverInputSchemaRequest
-  = DiscoverInputSchemaRequest { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN), "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration), "S3Configuration" :: NullOrUndefined (S3Configuration), "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) }
+  = DiscoverInputSchemaRequest { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN), "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration), "S3Configuration" :: Maybe (S3Configuration), "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) }
 ```
 
 ##### Instances
@@ -1185,7 +1185,7 @@ Constructs DiscoverInputSchemaRequest from required parameters
 #### `newDiscoverInputSchemaRequest'`
 
 ``` purescript
-newDiscoverInputSchemaRequest' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN), "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration), "S3Configuration" :: NullOrUndefined (S3Configuration), "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN), "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration), "S3Configuration" :: NullOrUndefined (S3Configuration), "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration) }) -> DiscoverInputSchemaRequest
+newDiscoverInputSchemaRequest' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN), "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration), "S3Configuration" :: Maybe (S3Configuration), "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN), "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration), "S3Configuration" :: Maybe (S3Configuration), "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration) }) -> DiscoverInputSchemaRequest
 ```
 
 Constructs DiscoverInputSchemaRequest's fields from required parameters
@@ -1194,7 +1194,7 @@ Constructs DiscoverInputSchemaRequest's fields from required parameters
 
 ``` purescript
 newtype DiscoverInputSchemaResponse
-  = DiscoverInputSchemaResponse { "InputSchema" :: NullOrUndefined (SourceSchema), "ParsedInputRecords" :: NullOrUndefined (ParsedInputRecords), "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords), "RawInputRecords" :: NullOrUndefined (RawInputRecords) }
+  = DiscoverInputSchemaResponse { "InputSchema" :: Maybe (SourceSchema), "ParsedInputRecords" :: Maybe (ParsedInputRecords), "ProcessedInputRecords" :: Maybe (ProcessedInputRecords), "RawInputRecords" :: Maybe (RawInputRecords) }
 ```
 
 <p/>
@@ -1219,7 +1219,7 @@ Constructs DiscoverInputSchemaResponse from required parameters
 #### `newDiscoverInputSchemaResponse'`
 
 ``` purescript
-newDiscoverInputSchemaResponse' :: ({ "InputSchema" :: NullOrUndefined (SourceSchema), "ParsedInputRecords" :: NullOrUndefined (ParsedInputRecords), "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords), "RawInputRecords" :: NullOrUndefined (RawInputRecords) } -> { "InputSchema" :: NullOrUndefined (SourceSchema), "ParsedInputRecords" :: NullOrUndefined (ParsedInputRecords), "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords), "RawInputRecords" :: NullOrUndefined (RawInputRecords) }) -> DiscoverInputSchemaResponse
+newDiscoverInputSchemaResponse' :: ({ "InputSchema" :: Maybe (SourceSchema), "ParsedInputRecords" :: Maybe (ParsedInputRecords), "ProcessedInputRecords" :: Maybe (ProcessedInputRecords), "RawInputRecords" :: Maybe (RawInputRecords) } -> { "InputSchema" :: Maybe (SourceSchema), "ParsedInputRecords" :: Maybe (ParsedInputRecords), "ProcessedInputRecords" :: Maybe (ProcessedInputRecords), "RawInputRecords" :: Maybe (RawInputRecords) }) -> DiscoverInputSchemaResponse
 ```
 
 Constructs DiscoverInputSchemaResponse's fields from required parameters
@@ -1324,7 +1324,7 @@ Encode InAppTableName
 
 ``` purescript
 newtype Input
-  = Input { "NamePrefix" :: InAppStreamName, "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration), "KinesisStreamsInput" :: NullOrUndefined (KinesisStreamsInput), "KinesisFirehoseInput" :: NullOrUndefined (KinesisFirehoseInput), "InputParallelism" :: NullOrUndefined (InputParallelism), "InputSchema" :: SourceSchema }
+  = Input { "NamePrefix" :: InAppStreamName, "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration), "KinesisStreamsInput" :: Maybe (KinesisStreamsInput), "KinesisFirehoseInput" :: Maybe (KinesisFirehoseInput), "InputParallelism" :: Maybe (InputParallelism), "InputSchema" :: SourceSchema }
 ```
 
 <p>When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
@@ -1349,7 +1349,7 @@ Constructs Input from required parameters
 #### `newInput'`
 
 ``` purescript
-newInput' :: SourceSchema -> InAppStreamName -> ({ "NamePrefix" :: InAppStreamName, "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration), "KinesisStreamsInput" :: NullOrUndefined (KinesisStreamsInput), "KinesisFirehoseInput" :: NullOrUndefined (KinesisFirehoseInput), "InputParallelism" :: NullOrUndefined (InputParallelism), "InputSchema" :: SourceSchema } -> { "NamePrefix" :: InAppStreamName, "InputProcessingConfiguration" :: NullOrUndefined (InputProcessingConfiguration), "KinesisStreamsInput" :: NullOrUndefined (KinesisStreamsInput), "KinesisFirehoseInput" :: NullOrUndefined (KinesisFirehoseInput), "InputParallelism" :: NullOrUndefined (InputParallelism), "InputSchema" :: SourceSchema }) -> Input
+newInput' :: SourceSchema -> InAppStreamName -> ({ "NamePrefix" :: InAppStreamName, "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration), "KinesisStreamsInput" :: Maybe (KinesisStreamsInput), "KinesisFirehoseInput" :: Maybe (KinesisFirehoseInput), "InputParallelism" :: Maybe (InputParallelism), "InputSchema" :: SourceSchema } -> { "NamePrefix" :: InAppStreamName, "InputProcessingConfiguration" :: Maybe (InputProcessingConfiguration), "KinesisStreamsInput" :: Maybe (KinesisStreamsInput), "KinesisFirehoseInput" :: Maybe (KinesisFirehoseInput), "InputParallelism" :: Maybe (InputParallelism), "InputSchema" :: SourceSchema }) -> Input
 ```
 
 Constructs Input's fields from required parameters
@@ -1408,7 +1408,7 @@ Encode InputConfigurations
 
 ``` purescript
 newtype InputDescription
-  = InputDescription { "InputId" :: NullOrUndefined (Id), "NamePrefix" :: NullOrUndefined (InAppStreamName), "InAppStreamNames" :: NullOrUndefined (InAppStreamNames), "InputProcessingConfigurationDescription" :: NullOrUndefined (InputProcessingConfigurationDescription), "KinesisStreamsInputDescription" :: NullOrUndefined (KinesisStreamsInputDescription), "KinesisFirehoseInputDescription" :: NullOrUndefined (KinesisFirehoseInputDescription), "InputSchema" :: NullOrUndefined (SourceSchema), "InputParallelism" :: NullOrUndefined (InputParallelism), "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) }
+  = InputDescription { "InputId" :: Maybe (Id), "NamePrefix" :: Maybe (InAppStreamName), "InAppStreamNames" :: Maybe (InAppStreamNames), "InputProcessingConfigurationDescription" :: Maybe (InputProcessingConfigurationDescription), "KinesisStreamsInputDescription" :: Maybe (KinesisStreamsInputDescription), "KinesisFirehoseInputDescription" :: Maybe (KinesisFirehoseInputDescription), "InputSchema" :: Maybe (SourceSchema), "InputParallelism" :: Maybe (InputParallelism), "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) }
 ```
 
 <p>Describes the application input configuration. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
@@ -1433,7 +1433,7 @@ Constructs InputDescription from required parameters
 #### `newInputDescription'`
 
 ``` purescript
-newInputDescription' :: ({ "InputId" :: NullOrUndefined (Id), "NamePrefix" :: NullOrUndefined (InAppStreamName), "InAppStreamNames" :: NullOrUndefined (InAppStreamNames), "InputProcessingConfigurationDescription" :: NullOrUndefined (InputProcessingConfigurationDescription), "KinesisStreamsInputDescription" :: NullOrUndefined (KinesisStreamsInputDescription), "KinesisFirehoseInputDescription" :: NullOrUndefined (KinesisFirehoseInputDescription), "InputSchema" :: NullOrUndefined (SourceSchema), "InputParallelism" :: NullOrUndefined (InputParallelism), "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) } -> { "InputId" :: NullOrUndefined (Id), "NamePrefix" :: NullOrUndefined (InAppStreamName), "InAppStreamNames" :: NullOrUndefined (InAppStreamNames), "InputProcessingConfigurationDescription" :: NullOrUndefined (InputProcessingConfigurationDescription), "KinesisStreamsInputDescription" :: NullOrUndefined (KinesisStreamsInputDescription), "KinesisFirehoseInputDescription" :: NullOrUndefined (KinesisFirehoseInputDescription), "InputSchema" :: NullOrUndefined (SourceSchema), "InputParallelism" :: NullOrUndefined (InputParallelism), "InputStartingPositionConfiguration" :: NullOrUndefined (InputStartingPositionConfiguration) }) -> InputDescription
+newInputDescription' :: ({ "InputId" :: Maybe (Id), "NamePrefix" :: Maybe (InAppStreamName), "InAppStreamNames" :: Maybe (InAppStreamNames), "InputProcessingConfigurationDescription" :: Maybe (InputProcessingConfigurationDescription), "KinesisStreamsInputDescription" :: Maybe (KinesisStreamsInputDescription), "KinesisFirehoseInputDescription" :: Maybe (KinesisFirehoseInputDescription), "InputSchema" :: Maybe (SourceSchema), "InputParallelism" :: Maybe (InputParallelism), "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) } -> { "InputId" :: Maybe (Id), "NamePrefix" :: Maybe (InAppStreamName), "InAppStreamNames" :: Maybe (InAppStreamNames), "InputProcessingConfigurationDescription" :: Maybe (InputProcessingConfigurationDescription), "KinesisStreamsInputDescription" :: Maybe (KinesisStreamsInputDescription), "KinesisFirehoseInputDescription" :: Maybe (KinesisFirehoseInputDescription), "InputSchema" :: Maybe (SourceSchema), "InputParallelism" :: Maybe (InputParallelism), "InputStartingPositionConfiguration" :: Maybe (InputStartingPositionConfiguration) }) -> InputDescription
 ```
 
 Constructs InputDescription's fields from required parameters
@@ -1492,7 +1492,7 @@ Constructs InputLambdaProcessor's fields from required parameters
 
 ``` purescript
 newtype InputLambdaProcessorDescription
-  = InputLambdaProcessorDescription { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }
+  = InputLambdaProcessorDescription { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }
 ```
 
 <p>An object that contains the Amazon Resource Name (ARN) of the <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a> function that is used to preprocess records in the stream, and the ARN of the IAM role that is used to access the AWS Lambda expression.</p>
@@ -1517,7 +1517,7 @@ Constructs InputLambdaProcessorDescription from required parameters
 #### `newInputLambdaProcessorDescription'`
 
 ``` purescript
-newInputLambdaProcessorDescription' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }) -> InputLambdaProcessorDescription
+newInputLambdaProcessorDescription' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }) -> InputLambdaProcessorDescription
 ```
 
 Constructs InputLambdaProcessorDescription's fields from required parameters
@@ -1526,7 +1526,7 @@ Constructs InputLambdaProcessorDescription's fields from required parameters
 
 ``` purescript
 newtype InputLambdaProcessorUpdate
-  = InputLambdaProcessorUpdate { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = InputLambdaProcessorUpdate { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p>Represents an update to the <a>InputLambdaProcessor</a> that is used to preprocess the records in the stream.</p>
@@ -1551,7 +1551,7 @@ Constructs InputLambdaProcessorUpdate from required parameters
 #### `newInputLambdaProcessorUpdate'`
 
 ``` purescript
-newInputLambdaProcessorUpdate' :: ({ "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> InputLambdaProcessorUpdate
+newInputLambdaProcessorUpdate' :: ({ "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> InputLambdaProcessorUpdate
 ```
 
 Constructs InputLambdaProcessorUpdate's fields from required parameters
@@ -1560,7 +1560,7 @@ Constructs InputLambdaProcessorUpdate's fields from required parameters
 
 ``` purescript
 newtype InputParallelism
-  = InputParallelism { "Count" :: NullOrUndefined (InputParallelismCount) }
+  = InputParallelism { "Count" :: Maybe (InputParallelismCount) }
 ```
 
 <p>Describes the number of in-application streams to create for a given streaming source. For information about parallelism, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application Input</a>. </p>
@@ -1585,7 +1585,7 @@ Constructs InputParallelism from required parameters
 #### `newInputParallelism'`
 
 ``` purescript
-newInputParallelism' :: ({ "Count" :: NullOrUndefined (InputParallelismCount) } -> { "Count" :: NullOrUndefined (InputParallelismCount) }) -> InputParallelism
+newInputParallelism' :: ({ "Count" :: Maybe (InputParallelismCount) } -> { "Count" :: Maybe (InputParallelismCount) }) -> InputParallelism
 ```
 
 Constructs InputParallelism's fields from required parameters
@@ -1610,7 +1610,7 @@ Encode InputParallelismCount
 
 ``` purescript
 newtype InputParallelismUpdate
-  = InputParallelismUpdate { "CountUpdate" :: NullOrUndefined (InputParallelismCount) }
+  = InputParallelismUpdate { "CountUpdate" :: Maybe (InputParallelismCount) }
 ```
 
 <p>Provides updates to the parallelism count.</p>
@@ -1635,7 +1635,7 @@ Constructs InputParallelismUpdate from required parameters
 #### `newInputParallelismUpdate'`
 
 ``` purescript
-newInputParallelismUpdate' :: ({ "CountUpdate" :: NullOrUndefined (InputParallelismCount) } -> { "CountUpdate" :: NullOrUndefined (InputParallelismCount) }) -> InputParallelismUpdate
+newInputParallelismUpdate' :: ({ "CountUpdate" :: Maybe (InputParallelismCount) } -> { "CountUpdate" :: Maybe (InputParallelismCount) }) -> InputParallelismUpdate
 ```
 
 Constructs InputParallelismUpdate's fields from required parameters
@@ -1678,7 +1678,7 @@ Constructs InputProcessingConfiguration's fields from required parameters
 
 ``` purescript
 newtype InputProcessingConfigurationDescription
-  = InputProcessingConfigurationDescription { "InputLambdaProcessorDescription" :: NullOrUndefined (InputLambdaProcessorDescription) }
+  = InputProcessingConfigurationDescription { "InputLambdaProcessorDescription" :: Maybe (InputLambdaProcessorDescription) }
 ```
 
 <p>Provides configuration information about an input processor. Currently, the only input processor available is <a href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.</p>
@@ -1703,7 +1703,7 @@ Constructs InputProcessingConfigurationDescription from required parameters
 #### `newInputProcessingConfigurationDescription'`
 
 ``` purescript
-newInputProcessingConfigurationDescription' :: ({ "InputLambdaProcessorDescription" :: NullOrUndefined (InputLambdaProcessorDescription) } -> { "InputLambdaProcessorDescription" :: NullOrUndefined (InputLambdaProcessorDescription) }) -> InputProcessingConfigurationDescription
+newInputProcessingConfigurationDescription' :: ({ "InputLambdaProcessorDescription" :: Maybe (InputLambdaProcessorDescription) } -> { "InputLambdaProcessorDescription" :: Maybe (InputLambdaProcessorDescription) }) -> InputProcessingConfigurationDescription
 ```
 
 Constructs InputProcessingConfigurationDescription's fields from required parameters
@@ -1746,7 +1746,7 @@ Constructs InputProcessingConfigurationUpdate's fields from required parameters
 
 ``` purescript
 newtype InputSchemaUpdate
-  = InputSchemaUpdate { "RecordFormatUpdate" :: NullOrUndefined (RecordFormat), "RecordEncodingUpdate" :: NullOrUndefined (RecordEncoding), "RecordColumnUpdates" :: NullOrUndefined (RecordColumns) }
+  = InputSchemaUpdate { "RecordFormatUpdate" :: Maybe (RecordFormat), "RecordEncodingUpdate" :: Maybe (RecordEncoding), "RecordColumnUpdates" :: Maybe (RecordColumns) }
 ```
 
 <p>Describes updates for the application's input schema.</p>
@@ -1771,7 +1771,7 @@ Constructs InputSchemaUpdate from required parameters
 #### `newInputSchemaUpdate'`
 
 ``` purescript
-newInputSchemaUpdate' :: ({ "RecordFormatUpdate" :: NullOrUndefined (RecordFormat), "RecordEncodingUpdate" :: NullOrUndefined (RecordEncoding), "RecordColumnUpdates" :: NullOrUndefined (RecordColumns) } -> { "RecordFormatUpdate" :: NullOrUndefined (RecordFormat), "RecordEncodingUpdate" :: NullOrUndefined (RecordEncoding), "RecordColumnUpdates" :: NullOrUndefined (RecordColumns) }) -> InputSchemaUpdate
+newInputSchemaUpdate' :: ({ "RecordFormatUpdate" :: Maybe (RecordFormat), "RecordEncodingUpdate" :: Maybe (RecordEncoding), "RecordColumnUpdates" :: Maybe (RecordColumns) } -> { "RecordFormatUpdate" :: Maybe (RecordFormat), "RecordEncodingUpdate" :: Maybe (RecordEncoding), "RecordColumnUpdates" :: Maybe (RecordColumns) }) -> InputSchemaUpdate
 ```
 
 Constructs InputSchemaUpdate's fields from required parameters
@@ -1796,7 +1796,7 @@ Encode InputStartingPosition
 
 ``` purescript
 newtype InputStartingPositionConfiguration
-  = InputStartingPositionConfiguration { "InputStartingPosition" :: NullOrUndefined (InputStartingPosition) }
+  = InputStartingPositionConfiguration { "InputStartingPosition" :: Maybe (InputStartingPosition) }
 ```
 
 <p>Describes the point at which the application reads from the streaming source.</p>
@@ -1821,7 +1821,7 @@ Constructs InputStartingPositionConfiguration from required parameters
 #### `newInputStartingPositionConfiguration'`
 
 ``` purescript
-newInputStartingPositionConfiguration' :: ({ "InputStartingPosition" :: NullOrUndefined (InputStartingPosition) } -> { "InputStartingPosition" :: NullOrUndefined (InputStartingPosition) }) -> InputStartingPositionConfiguration
+newInputStartingPositionConfiguration' :: ({ "InputStartingPosition" :: Maybe (InputStartingPosition) } -> { "InputStartingPosition" :: Maybe (InputStartingPosition) }) -> InputStartingPositionConfiguration
 ```
 
 Constructs InputStartingPositionConfiguration's fields from required parameters
@@ -1830,7 +1830,7 @@ Constructs InputStartingPositionConfiguration's fields from required parameters
 
 ``` purescript
 newtype InputUpdate
-  = InputUpdate { "InputId" :: Id, "NamePrefixUpdate" :: NullOrUndefined (InAppStreamName), "InputProcessingConfigurationUpdate" :: NullOrUndefined (InputProcessingConfigurationUpdate), "KinesisStreamsInputUpdate" :: NullOrUndefined (KinesisStreamsInputUpdate), "KinesisFirehoseInputUpdate" :: NullOrUndefined (KinesisFirehoseInputUpdate), "InputSchemaUpdate" :: NullOrUndefined (InputSchemaUpdate), "InputParallelismUpdate" :: NullOrUndefined (InputParallelismUpdate) }
+  = InputUpdate { "InputId" :: Id, "NamePrefixUpdate" :: Maybe (InAppStreamName), "InputProcessingConfigurationUpdate" :: Maybe (InputProcessingConfigurationUpdate), "KinesisStreamsInputUpdate" :: Maybe (KinesisStreamsInputUpdate), "KinesisFirehoseInputUpdate" :: Maybe (KinesisFirehoseInputUpdate), "InputSchemaUpdate" :: Maybe (InputSchemaUpdate), "InputParallelismUpdate" :: Maybe (InputParallelismUpdate) }
 ```
 
 <p>Describes updates to a specific input configuration (identified by the <code>InputId</code> of an application). </p>
@@ -1855,7 +1855,7 @@ Constructs InputUpdate from required parameters
 #### `newInputUpdate'`
 
 ``` purescript
-newInputUpdate' :: Id -> ({ "InputId" :: Id, "NamePrefixUpdate" :: NullOrUndefined (InAppStreamName), "InputProcessingConfigurationUpdate" :: NullOrUndefined (InputProcessingConfigurationUpdate), "KinesisStreamsInputUpdate" :: NullOrUndefined (KinesisStreamsInputUpdate), "KinesisFirehoseInputUpdate" :: NullOrUndefined (KinesisFirehoseInputUpdate), "InputSchemaUpdate" :: NullOrUndefined (InputSchemaUpdate), "InputParallelismUpdate" :: NullOrUndefined (InputParallelismUpdate) } -> { "InputId" :: Id, "NamePrefixUpdate" :: NullOrUndefined (InAppStreamName), "InputProcessingConfigurationUpdate" :: NullOrUndefined (InputProcessingConfigurationUpdate), "KinesisStreamsInputUpdate" :: NullOrUndefined (KinesisStreamsInputUpdate), "KinesisFirehoseInputUpdate" :: NullOrUndefined (KinesisFirehoseInputUpdate), "InputSchemaUpdate" :: NullOrUndefined (InputSchemaUpdate), "InputParallelismUpdate" :: NullOrUndefined (InputParallelismUpdate) }) -> InputUpdate
+newInputUpdate' :: Id -> ({ "InputId" :: Id, "NamePrefixUpdate" :: Maybe (InAppStreamName), "InputProcessingConfigurationUpdate" :: Maybe (InputProcessingConfigurationUpdate), "KinesisStreamsInputUpdate" :: Maybe (KinesisStreamsInputUpdate), "KinesisFirehoseInputUpdate" :: Maybe (KinesisFirehoseInputUpdate), "InputSchemaUpdate" :: Maybe (InputSchemaUpdate), "InputParallelismUpdate" :: Maybe (InputParallelismUpdate) } -> { "InputId" :: Id, "NamePrefixUpdate" :: Maybe (InAppStreamName), "InputProcessingConfigurationUpdate" :: Maybe (InputProcessingConfigurationUpdate), "KinesisStreamsInputUpdate" :: Maybe (KinesisStreamsInputUpdate), "KinesisFirehoseInputUpdate" :: Maybe (KinesisFirehoseInputUpdate), "InputSchemaUpdate" :: Maybe (InputSchemaUpdate), "InputParallelismUpdate" :: Maybe (InputParallelismUpdate) }) -> InputUpdate
 ```
 
 Constructs InputUpdate's fields from required parameters
@@ -1896,7 +1896,7 @@ Encode Inputs
 
 ``` purescript
 newtype InvalidApplicationConfigurationException
-  = InvalidApplicationConfigurationException { message :: NullOrUndefined (ErrorMessage) }
+  = InvalidApplicationConfigurationException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>User-provided application configuration is not valid.</p>
@@ -1921,7 +1921,7 @@ Constructs InvalidApplicationConfigurationException from required parameters
 #### `newInvalidApplicationConfigurationException'`
 
 ``` purescript
-newInvalidApplicationConfigurationException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InvalidApplicationConfigurationException
+newInvalidApplicationConfigurationException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InvalidApplicationConfigurationException
 ```
 
 Constructs InvalidApplicationConfigurationException's fields from required parameters
@@ -1930,7 +1930,7 @@ Constructs InvalidApplicationConfigurationException's fields from required param
 
 ``` purescript
 newtype InvalidArgumentException
-  = InvalidArgumentException { message :: NullOrUndefined (ErrorMessage) }
+  = InvalidArgumentException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Specified input parameter value is invalid.</p>
@@ -1955,7 +1955,7 @@ Constructs InvalidArgumentException from required parameters
 #### `newInvalidArgumentException'`
 
 ``` purescript
-newInvalidArgumentException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InvalidArgumentException
+newInvalidArgumentException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InvalidArgumentException
 ```
 
 Constructs InvalidArgumentException's fields from required parameters
@@ -2032,7 +2032,7 @@ Constructs KinesisFirehoseInput's fields from required parameters
 
 ``` purescript
 newtype KinesisFirehoseInputDescription
-  = KinesisFirehoseInputDescription { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }
+  = KinesisFirehoseInputDescription { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }
 ```
 
 <p> Describes the Amazon Kinesis Firehose delivery stream that is configured as the streaming source in the application input configuration. </p>
@@ -2057,7 +2057,7 @@ Constructs KinesisFirehoseInputDescription from required parameters
 #### `newKinesisFirehoseInputDescription'`
 
 ``` purescript
-newKinesisFirehoseInputDescription' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }) -> KinesisFirehoseInputDescription
+newKinesisFirehoseInputDescription' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }) -> KinesisFirehoseInputDescription
 ```
 
 Constructs KinesisFirehoseInputDescription's fields from required parameters
@@ -2066,7 +2066,7 @@ Constructs KinesisFirehoseInputDescription's fields from required parameters
 
 ``` purescript
 newtype KinesisFirehoseInputUpdate
-  = KinesisFirehoseInputUpdate { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = KinesisFirehoseInputUpdate { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p>When updating application input configuration, provides information about an Amazon Kinesis Firehose delivery stream as the streaming source.</p>
@@ -2091,7 +2091,7 @@ Constructs KinesisFirehoseInputUpdate from required parameters
 #### `newKinesisFirehoseInputUpdate'`
 
 ``` purescript
-newKinesisFirehoseInputUpdate' :: ({ "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> KinesisFirehoseInputUpdate
+newKinesisFirehoseInputUpdate' :: ({ "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> KinesisFirehoseInputUpdate
 ```
 
 Constructs KinesisFirehoseInputUpdate's fields from required parameters
@@ -2134,7 +2134,7 @@ Constructs KinesisFirehoseOutput's fields from required parameters
 
 ``` purescript
 newtype KinesisFirehoseOutputDescription
-  = KinesisFirehoseOutputDescription { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }
+  = KinesisFirehoseOutputDescription { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }
 ```
 
 <p> For an application output, describes the Amazon Kinesis Firehose delivery stream configured as its destination. </p>
@@ -2159,7 +2159,7 @@ Constructs KinesisFirehoseOutputDescription from required parameters
 #### `newKinesisFirehoseOutputDescription'`
 
 ``` purescript
-newKinesisFirehoseOutputDescription' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }) -> KinesisFirehoseOutputDescription
+newKinesisFirehoseOutputDescription' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }) -> KinesisFirehoseOutputDescription
 ```
 
 Constructs KinesisFirehoseOutputDescription's fields from required parameters
@@ -2168,7 +2168,7 @@ Constructs KinesisFirehoseOutputDescription's fields from required parameters
 
 ``` purescript
 newtype KinesisFirehoseOutputUpdate
-  = KinesisFirehoseOutputUpdate { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = KinesisFirehoseOutputUpdate { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p> When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an Amazon Kinesis Firehose delivery stream configured as the destination. </p>
@@ -2193,7 +2193,7 @@ Constructs KinesisFirehoseOutputUpdate from required parameters
 #### `newKinesisFirehoseOutputUpdate'`
 
 ``` purescript
-newKinesisFirehoseOutputUpdate' :: ({ "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> KinesisFirehoseOutputUpdate
+newKinesisFirehoseOutputUpdate' :: ({ "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> KinesisFirehoseOutputUpdate
 ```
 
 Constructs KinesisFirehoseOutputUpdate's fields from required parameters
@@ -2236,7 +2236,7 @@ Constructs KinesisStreamsInput's fields from required parameters
 
 ``` purescript
 newtype KinesisStreamsInputDescription
-  = KinesisStreamsInputDescription { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }
+  = KinesisStreamsInputDescription { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }
 ```
 
 <p> Describes the Amazon Kinesis stream that is configured as the streaming source in the application input configuration. </p>
@@ -2261,7 +2261,7 @@ Constructs KinesisStreamsInputDescription from required parameters
 #### `newKinesisStreamsInputDescription'`
 
 ``` purescript
-newKinesisStreamsInputDescription' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }) -> KinesisStreamsInputDescription
+newKinesisStreamsInputDescription' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }) -> KinesisStreamsInputDescription
 ```
 
 Constructs KinesisStreamsInputDescription's fields from required parameters
@@ -2270,7 +2270,7 @@ Constructs KinesisStreamsInputDescription's fields from required parameters
 
 ``` purescript
 newtype KinesisStreamsInputUpdate
-  = KinesisStreamsInputUpdate { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = KinesisStreamsInputUpdate { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p>When updating application input configuration, provides information about an Amazon Kinesis stream as the streaming source.</p>
@@ -2295,7 +2295,7 @@ Constructs KinesisStreamsInputUpdate from required parameters
 #### `newKinesisStreamsInputUpdate'`
 
 ``` purescript
-newKinesisStreamsInputUpdate' :: ({ "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> KinesisStreamsInputUpdate
+newKinesisStreamsInputUpdate' :: ({ "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> KinesisStreamsInputUpdate
 ```
 
 Constructs KinesisStreamsInputUpdate's fields from required parameters
@@ -2338,7 +2338,7 @@ Constructs KinesisStreamsOutput's fields from required parameters
 
 ``` purescript
 newtype KinesisStreamsOutputDescription
-  = KinesisStreamsOutputDescription { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }
+  = KinesisStreamsOutputDescription { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }
 ```
 
 <p> For an application output, describes the Amazon Kinesis stream configured as its destination. </p>
@@ -2363,7 +2363,7 @@ Constructs KinesisStreamsOutputDescription from required parameters
 #### `newKinesisStreamsOutputDescription'`
 
 ``` purescript
-newKinesisStreamsOutputDescription' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }) -> KinesisStreamsOutputDescription
+newKinesisStreamsOutputDescription' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }) -> KinesisStreamsOutputDescription
 ```
 
 Constructs KinesisStreamsOutputDescription's fields from required parameters
@@ -2372,7 +2372,7 @@ Constructs KinesisStreamsOutputDescription's fields from required parameters
 
 ``` purescript
 newtype KinesisStreamsOutputUpdate
-  = KinesisStreamsOutputUpdate { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = KinesisStreamsOutputUpdate { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p> When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an Amazon Kinesis stream configured as the destination. </p>
@@ -2397,7 +2397,7 @@ Constructs KinesisStreamsOutputUpdate from required parameters
 #### `newKinesisStreamsOutputUpdate'`
 
 ``` purescript
-newKinesisStreamsOutputUpdate' :: ({ "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> KinesisStreamsOutputUpdate
+newKinesisStreamsOutputUpdate' :: ({ "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> KinesisStreamsOutputUpdate
 ```
 
 Constructs KinesisStreamsOutputUpdate's fields from required parameters
@@ -2440,7 +2440,7 @@ Constructs LambdaOutput's fields from required parameters
 
 ``` purescript
 newtype LambdaOutputDescription
-  = LambdaOutputDescription { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }
+  = LambdaOutputDescription { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }
 ```
 
 <p>For an application output, describes the AWS Lambda function configured as its destination. </p>
@@ -2465,7 +2465,7 @@ Constructs LambdaOutputDescription from required parameters
 #### `newLambdaOutputDescription'`
 
 ``` purescript
-newLambdaOutputDescription' :: ({ "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) } -> { "ResourceARN" :: NullOrUndefined (ResourceARN), "RoleARN" :: NullOrUndefined (RoleARN) }) -> LambdaOutputDescription
+newLambdaOutputDescription' :: ({ "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) } -> { "ResourceARN" :: Maybe (ResourceARN), "RoleARN" :: Maybe (RoleARN) }) -> LambdaOutputDescription
 ```
 
 Constructs LambdaOutputDescription's fields from required parameters
@@ -2474,7 +2474,7 @@ Constructs LambdaOutputDescription's fields from required parameters
 
 ``` purescript
 newtype LambdaOutputUpdate
-  = LambdaOutputUpdate { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = LambdaOutputUpdate { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p>When updating an output configuration using the <a>UpdateApplication</a> operation, provides information about an AWS Lambda function configured as the destination.</p>
@@ -2499,7 +2499,7 @@ Constructs LambdaOutputUpdate from required parameters
 #### `newLambdaOutputUpdate'`
 
 ``` purescript
-newLambdaOutputUpdate' :: ({ "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "ResourceARNUpdate" :: NullOrUndefined (ResourceARN), "RoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> LambdaOutputUpdate
+newLambdaOutputUpdate' :: ({ "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) } -> { "ResourceARNUpdate" :: Maybe (ResourceARN), "RoleARNUpdate" :: Maybe (RoleARN) }) -> LambdaOutputUpdate
 ```
 
 Constructs LambdaOutputUpdate's fields from required parameters
@@ -2508,7 +2508,7 @@ Constructs LambdaOutputUpdate's fields from required parameters
 
 ``` purescript
 newtype LimitExceededException
-  = LimitExceededException { message :: NullOrUndefined (ErrorMessage) }
+  = LimitExceededException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Exceeded the number of applications allowed.</p>
@@ -2533,7 +2533,7 @@ Constructs LimitExceededException from required parameters
 #### `newLimitExceededException'`
 
 ``` purescript
-newLimitExceededException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> LimitExceededException
+newLimitExceededException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> LimitExceededException
 ```
 
 Constructs LimitExceededException's fields from required parameters
@@ -2558,7 +2558,7 @@ Encode ListApplicationsInputLimit
 
 ``` purescript
 newtype ListApplicationsRequest
-  = ListApplicationsRequest { "Limit" :: NullOrUndefined (ListApplicationsInputLimit), "ExclusiveStartApplicationName" :: NullOrUndefined (ApplicationName) }
+  = ListApplicationsRequest { "Limit" :: Maybe (ListApplicationsInputLimit), "ExclusiveStartApplicationName" :: Maybe (ApplicationName) }
 ```
 
 <p/>
@@ -2583,7 +2583,7 @@ Constructs ListApplicationsRequest from required parameters
 #### `newListApplicationsRequest'`
 
 ``` purescript
-newListApplicationsRequest' :: ({ "Limit" :: NullOrUndefined (ListApplicationsInputLimit), "ExclusiveStartApplicationName" :: NullOrUndefined (ApplicationName) } -> { "Limit" :: NullOrUndefined (ListApplicationsInputLimit), "ExclusiveStartApplicationName" :: NullOrUndefined (ApplicationName) }) -> ListApplicationsRequest
+newListApplicationsRequest' :: ({ "Limit" :: Maybe (ListApplicationsInputLimit), "ExclusiveStartApplicationName" :: Maybe (ApplicationName) } -> { "Limit" :: Maybe (ListApplicationsInputLimit), "ExclusiveStartApplicationName" :: Maybe (ApplicationName) }) -> ListApplicationsRequest
 ```
 
 Constructs ListApplicationsRequest's fields from required parameters
@@ -2642,7 +2642,7 @@ Encode LogStreamARN
 
 ``` purescript
 newtype MappingParameters
-  = MappingParameters { "JSONMappingParameters" :: NullOrUndefined (JSONMappingParameters), "CSVMappingParameters" :: NullOrUndefined (CSVMappingParameters) }
+  = MappingParameters { "JSONMappingParameters" :: Maybe (JSONMappingParameters), "CSVMappingParameters" :: Maybe (CSVMappingParameters) }
 ```
 
 <p>When configuring application input at the time of creating or updating an application, provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.</p>
@@ -2667,7 +2667,7 @@ Constructs MappingParameters from required parameters
 #### `newMappingParameters'`
 
 ``` purescript
-newMappingParameters' :: ({ "JSONMappingParameters" :: NullOrUndefined (JSONMappingParameters), "CSVMappingParameters" :: NullOrUndefined (CSVMappingParameters) } -> { "JSONMappingParameters" :: NullOrUndefined (JSONMappingParameters), "CSVMappingParameters" :: NullOrUndefined (CSVMappingParameters) }) -> MappingParameters
+newMappingParameters' :: ({ "JSONMappingParameters" :: Maybe (JSONMappingParameters), "CSVMappingParameters" :: Maybe (CSVMappingParameters) } -> { "JSONMappingParameters" :: Maybe (JSONMappingParameters), "CSVMappingParameters" :: Maybe (CSVMappingParameters) }) -> MappingParameters
 ```
 
 Constructs MappingParameters's fields from required parameters
@@ -2676,7 +2676,7 @@ Constructs MappingParameters's fields from required parameters
 
 ``` purescript
 newtype Output
-  = Output { "Name" :: InAppStreamName, "KinesisStreamsOutput" :: NullOrUndefined (KinesisStreamsOutput), "KinesisFirehoseOutput" :: NullOrUndefined (KinesisFirehoseOutput), "LambdaOutput" :: NullOrUndefined (LambdaOutput), "DestinationSchema" :: DestinationSchema }
+  = Output { "Name" :: InAppStreamName, "KinesisStreamsOutput" :: Maybe (KinesisStreamsOutput), "KinesisFirehoseOutput" :: Maybe (KinesisFirehoseOutput), "LambdaOutput" :: Maybe (LambdaOutput), "DestinationSchema" :: DestinationSchema }
 ```
 
 <p> Describes application output configuration in which you identify an in-application stream and a destination where you want the in-application stream data to be written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p> <p/> <p>For limits on how many destinations an application can write and other limitations, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. </p>
@@ -2701,7 +2701,7 @@ Constructs Output from required parameters
 #### `newOutput'`
 
 ``` purescript
-newOutput' :: DestinationSchema -> InAppStreamName -> ({ "Name" :: InAppStreamName, "KinesisStreamsOutput" :: NullOrUndefined (KinesisStreamsOutput), "KinesisFirehoseOutput" :: NullOrUndefined (KinesisFirehoseOutput), "LambdaOutput" :: NullOrUndefined (LambdaOutput), "DestinationSchema" :: DestinationSchema } -> { "Name" :: InAppStreamName, "KinesisStreamsOutput" :: NullOrUndefined (KinesisStreamsOutput), "KinesisFirehoseOutput" :: NullOrUndefined (KinesisFirehoseOutput), "LambdaOutput" :: NullOrUndefined (LambdaOutput), "DestinationSchema" :: DestinationSchema }) -> Output
+newOutput' :: DestinationSchema -> InAppStreamName -> ({ "Name" :: InAppStreamName, "KinesisStreamsOutput" :: Maybe (KinesisStreamsOutput), "KinesisFirehoseOutput" :: Maybe (KinesisFirehoseOutput), "LambdaOutput" :: Maybe (LambdaOutput), "DestinationSchema" :: DestinationSchema } -> { "Name" :: InAppStreamName, "KinesisStreamsOutput" :: Maybe (KinesisStreamsOutput), "KinesisFirehoseOutput" :: Maybe (KinesisFirehoseOutput), "LambdaOutput" :: Maybe (LambdaOutput), "DestinationSchema" :: DestinationSchema }) -> Output
 ```
 
 Constructs Output's fields from required parameters
@@ -2710,7 +2710,7 @@ Constructs Output's fields from required parameters
 
 ``` purescript
 newtype OutputDescription
-  = OutputDescription { "OutputId" :: NullOrUndefined (Id), "Name" :: NullOrUndefined (InAppStreamName), "KinesisStreamsOutputDescription" :: NullOrUndefined (KinesisStreamsOutputDescription), "KinesisFirehoseOutputDescription" :: NullOrUndefined (KinesisFirehoseOutputDescription), "LambdaOutputDescription" :: NullOrUndefined (LambdaOutputDescription), "DestinationSchema" :: NullOrUndefined (DestinationSchema) }
+  = OutputDescription { "OutputId" :: Maybe (Id), "Name" :: Maybe (InAppStreamName), "KinesisStreamsOutputDescription" :: Maybe (KinesisStreamsOutputDescription), "KinesisFirehoseOutputDescription" :: Maybe (KinesisFirehoseOutputDescription), "LambdaOutputDescription" :: Maybe (LambdaOutputDescription), "DestinationSchema" :: Maybe (DestinationSchema) }
 ```
 
 <p>Describes the application output configuration, which includes the in-application stream name and the destination where the stream data is written. The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream. </p>
@@ -2735,7 +2735,7 @@ Constructs OutputDescription from required parameters
 #### `newOutputDescription'`
 
 ``` purescript
-newOutputDescription' :: ({ "OutputId" :: NullOrUndefined (Id), "Name" :: NullOrUndefined (InAppStreamName), "KinesisStreamsOutputDescription" :: NullOrUndefined (KinesisStreamsOutputDescription), "KinesisFirehoseOutputDescription" :: NullOrUndefined (KinesisFirehoseOutputDescription), "LambdaOutputDescription" :: NullOrUndefined (LambdaOutputDescription), "DestinationSchema" :: NullOrUndefined (DestinationSchema) } -> { "OutputId" :: NullOrUndefined (Id), "Name" :: NullOrUndefined (InAppStreamName), "KinesisStreamsOutputDescription" :: NullOrUndefined (KinesisStreamsOutputDescription), "KinesisFirehoseOutputDescription" :: NullOrUndefined (KinesisFirehoseOutputDescription), "LambdaOutputDescription" :: NullOrUndefined (LambdaOutputDescription), "DestinationSchema" :: NullOrUndefined (DestinationSchema) }) -> OutputDescription
+newOutputDescription' :: ({ "OutputId" :: Maybe (Id), "Name" :: Maybe (InAppStreamName), "KinesisStreamsOutputDescription" :: Maybe (KinesisStreamsOutputDescription), "KinesisFirehoseOutputDescription" :: Maybe (KinesisFirehoseOutputDescription), "LambdaOutputDescription" :: Maybe (LambdaOutputDescription), "DestinationSchema" :: Maybe (DestinationSchema) } -> { "OutputId" :: Maybe (Id), "Name" :: Maybe (InAppStreamName), "KinesisStreamsOutputDescription" :: Maybe (KinesisStreamsOutputDescription), "KinesisFirehoseOutputDescription" :: Maybe (KinesisFirehoseOutputDescription), "LambdaOutputDescription" :: Maybe (LambdaOutputDescription), "DestinationSchema" :: Maybe (DestinationSchema) }) -> OutputDescription
 ```
 
 Constructs OutputDescription's fields from required parameters
@@ -2760,7 +2760,7 @@ Encode OutputDescriptions
 
 ``` purescript
 newtype OutputUpdate
-  = OutputUpdate { "OutputId" :: Id, "NameUpdate" :: NullOrUndefined (InAppStreamName), "KinesisStreamsOutputUpdate" :: NullOrUndefined (KinesisStreamsOutputUpdate), "KinesisFirehoseOutputUpdate" :: NullOrUndefined (KinesisFirehoseOutputUpdate), "LambdaOutputUpdate" :: NullOrUndefined (LambdaOutputUpdate), "DestinationSchemaUpdate" :: NullOrUndefined (DestinationSchema) }
+  = OutputUpdate { "OutputId" :: Id, "NameUpdate" :: Maybe (InAppStreamName), "KinesisStreamsOutputUpdate" :: Maybe (KinesisStreamsOutputUpdate), "KinesisFirehoseOutputUpdate" :: Maybe (KinesisFirehoseOutputUpdate), "LambdaOutputUpdate" :: Maybe (LambdaOutputUpdate), "DestinationSchemaUpdate" :: Maybe (DestinationSchema) }
 ```
 
 <p> Describes updates to the output configuration identified by the <code>OutputId</code>. </p>
@@ -2785,7 +2785,7 @@ Constructs OutputUpdate from required parameters
 #### `newOutputUpdate'`
 
 ``` purescript
-newOutputUpdate' :: Id -> ({ "OutputId" :: Id, "NameUpdate" :: NullOrUndefined (InAppStreamName), "KinesisStreamsOutputUpdate" :: NullOrUndefined (KinesisStreamsOutputUpdate), "KinesisFirehoseOutputUpdate" :: NullOrUndefined (KinesisFirehoseOutputUpdate), "LambdaOutputUpdate" :: NullOrUndefined (LambdaOutputUpdate), "DestinationSchemaUpdate" :: NullOrUndefined (DestinationSchema) } -> { "OutputId" :: Id, "NameUpdate" :: NullOrUndefined (InAppStreamName), "KinesisStreamsOutputUpdate" :: NullOrUndefined (KinesisStreamsOutputUpdate), "KinesisFirehoseOutputUpdate" :: NullOrUndefined (KinesisFirehoseOutputUpdate), "LambdaOutputUpdate" :: NullOrUndefined (LambdaOutputUpdate), "DestinationSchemaUpdate" :: NullOrUndefined (DestinationSchema) }) -> OutputUpdate
+newOutputUpdate' :: Id -> ({ "OutputId" :: Id, "NameUpdate" :: Maybe (InAppStreamName), "KinesisStreamsOutputUpdate" :: Maybe (KinesisStreamsOutputUpdate), "KinesisFirehoseOutputUpdate" :: Maybe (KinesisFirehoseOutputUpdate), "LambdaOutputUpdate" :: Maybe (LambdaOutputUpdate), "DestinationSchemaUpdate" :: Maybe (DestinationSchema) } -> { "OutputId" :: Id, "NameUpdate" :: Maybe (InAppStreamName), "KinesisStreamsOutputUpdate" :: Maybe (KinesisStreamsOutputUpdate), "KinesisFirehoseOutputUpdate" :: Maybe (KinesisFirehoseOutputUpdate), "LambdaOutputUpdate" :: Maybe (LambdaOutputUpdate), "DestinationSchemaUpdate" :: Maybe (DestinationSchema) }) -> OutputUpdate
 ```
 
 Constructs OutputUpdate's fields from required parameters
@@ -2938,7 +2938,7 @@ Encode RawInputRecords
 
 ``` purescript
 newtype RecordColumn
-  = RecordColumn { "Name" :: RecordColumnName, "Mapping" :: NullOrUndefined (RecordColumnMapping), "SqlType" :: RecordColumnSqlType }
+  = RecordColumn { "Name" :: RecordColumnName, "Mapping" :: Maybe (RecordColumnMapping), "SqlType" :: RecordColumnSqlType }
 ```
 
 <p>Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.</p> <p>Also used to describe the format of the reference data source.</p>
@@ -2963,7 +2963,7 @@ Constructs RecordColumn from required parameters
 #### `newRecordColumn'`
 
 ``` purescript
-newRecordColumn' :: RecordColumnName -> RecordColumnSqlType -> ({ "Name" :: RecordColumnName, "Mapping" :: NullOrUndefined (RecordColumnMapping), "SqlType" :: RecordColumnSqlType } -> { "Name" :: RecordColumnName, "Mapping" :: NullOrUndefined (RecordColumnMapping), "SqlType" :: RecordColumnSqlType }) -> RecordColumn
+newRecordColumn' :: RecordColumnName -> RecordColumnSqlType -> ({ "Name" :: RecordColumnName, "Mapping" :: Maybe (RecordColumnMapping), "SqlType" :: RecordColumnSqlType } -> { "Name" :: RecordColumnName, "Mapping" :: Maybe (RecordColumnMapping), "SqlType" :: RecordColumnSqlType }) -> RecordColumn
 ```
 
 Constructs RecordColumn's fields from required parameters
@@ -3068,7 +3068,7 @@ Encode RecordEncoding
 
 ``` purescript
 newtype RecordFormat
-  = RecordFormat { "RecordFormatType" :: RecordFormatType, "MappingParameters" :: NullOrUndefined (MappingParameters) }
+  = RecordFormat { "RecordFormatType" :: RecordFormatType, "MappingParameters" :: Maybe (MappingParameters) }
 ```
 
 <p> Describes the record format and relevant mapping information that should be applied to schematize the records on the stream. </p>
@@ -3093,7 +3093,7 @@ Constructs RecordFormat from required parameters
 #### `newRecordFormat'`
 
 ``` purescript
-newRecordFormat' :: RecordFormatType -> ({ "RecordFormatType" :: RecordFormatType, "MappingParameters" :: NullOrUndefined (MappingParameters) } -> { "RecordFormatType" :: RecordFormatType, "MappingParameters" :: NullOrUndefined (MappingParameters) }) -> RecordFormat
+newRecordFormat' :: RecordFormatType -> ({ "RecordFormatType" :: RecordFormatType, "MappingParameters" :: Maybe (MappingParameters) } -> { "RecordFormatType" :: RecordFormatType, "MappingParameters" :: Maybe (MappingParameters) }) -> RecordFormat
 ```
 
 Constructs RecordFormat's fields from required parameters
@@ -3150,7 +3150,7 @@ Encode RecordRowPath
 
 ``` purescript
 newtype ReferenceDataSource
-  = ReferenceDataSource { "TableName" :: InAppTableName, "S3ReferenceDataSource" :: NullOrUndefined (S3ReferenceDataSource), "ReferenceSchema" :: SourceSchema }
+  = ReferenceDataSource { "TableName" :: InAppTableName, "S3ReferenceDataSource" :: Maybe (S3ReferenceDataSource), "ReferenceSchema" :: SourceSchema }
 ```
 
 <p>Describes the reference data source by providing the source information (S3 bucket name and object key name), the resulting in-application table name that is created, and the necessary schema to map the data elements in the Amazon S3 object to the in-application table.</p>
@@ -3175,7 +3175,7 @@ Constructs ReferenceDataSource from required parameters
 #### `newReferenceDataSource'`
 
 ``` purescript
-newReferenceDataSource' :: SourceSchema -> InAppTableName -> ({ "TableName" :: InAppTableName, "S3ReferenceDataSource" :: NullOrUndefined (S3ReferenceDataSource), "ReferenceSchema" :: SourceSchema } -> { "TableName" :: InAppTableName, "S3ReferenceDataSource" :: NullOrUndefined (S3ReferenceDataSource), "ReferenceSchema" :: SourceSchema }) -> ReferenceDataSource
+newReferenceDataSource' :: SourceSchema -> InAppTableName -> ({ "TableName" :: InAppTableName, "S3ReferenceDataSource" :: Maybe (S3ReferenceDataSource), "ReferenceSchema" :: SourceSchema } -> { "TableName" :: InAppTableName, "S3ReferenceDataSource" :: Maybe (S3ReferenceDataSource), "ReferenceSchema" :: SourceSchema }) -> ReferenceDataSource
 ```
 
 Constructs ReferenceDataSource's fields from required parameters
@@ -3184,7 +3184,7 @@ Constructs ReferenceDataSource's fields from required parameters
 
 ``` purescript
 newtype ReferenceDataSourceDescription
-  = ReferenceDataSourceDescription { "ReferenceId" :: Id, "TableName" :: InAppTableName, "S3ReferenceDataSourceDescription" :: S3ReferenceDataSourceDescription, "ReferenceSchema" :: NullOrUndefined (SourceSchema) }
+  = ReferenceDataSourceDescription { "ReferenceId" :: Id, "TableName" :: InAppTableName, "S3ReferenceDataSourceDescription" :: S3ReferenceDataSourceDescription, "ReferenceSchema" :: Maybe (SourceSchema) }
 ```
 
 <p>Describes the reference data source configured for an application.</p>
@@ -3209,7 +3209,7 @@ Constructs ReferenceDataSourceDescription from required parameters
 #### `newReferenceDataSourceDescription'`
 
 ``` purescript
-newReferenceDataSourceDescription' :: Id -> S3ReferenceDataSourceDescription -> InAppTableName -> ({ "ReferenceId" :: Id, "TableName" :: InAppTableName, "S3ReferenceDataSourceDescription" :: S3ReferenceDataSourceDescription, "ReferenceSchema" :: NullOrUndefined (SourceSchema) } -> { "ReferenceId" :: Id, "TableName" :: InAppTableName, "S3ReferenceDataSourceDescription" :: S3ReferenceDataSourceDescription, "ReferenceSchema" :: NullOrUndefined (SourceSchema) }) -> ReferenceDataSourceDescription
+newReferenceDataSourceDescription' :: Id -> S3ReferenceDataSourceDescription -> InAppTableName -> ({ "ReferenceId" :: Id, "TableName" :: InAppTableName, "S3ReferenceDataSourceDescription" :: S3ReferenceDataSourceDescription, "ReferenceSchema" :: Maybe (SourceSchema) } -> { "ReferenceId" :: Id, "TableName" :: InAppTableName, "S3ReferenceDataSourceDescription" :: S3ReferenceDataSourceDescription, "ReferenceSchema" :: Maybe (SourceSchema) }) -> ReferenceDataSourceDescription
 ```
 
 Constructs ReferenceDataSourceDescription's fields from required parameters
@@ -3234,7 +3234,7 @@ Encode ReferenceDataSourceDescriptions
 
 ``` purescript
 newtype ReferenceDataSourceUpdate
-  = ReferenceDataSourceUpdate { "ReferenceId" :: Id, "TableNameUpdate" :: NullOrUndefined (InAppTableName), "S3ReferenceDataSourceUpdate" :: NullOrUndefined (S3ReferenceDataSourceUpdate), "ReferenceSchemaUpdate" :: NullOrUndefined (SourceSchema) }
+  = ReferenceDataSourceUpdate { "ReferenceId" :: Id, "TableNameUpdate" :: Maybe (InAppTableName), "S3ReferenceDataSourceUpdate" :: Maybe (S3ReferenceDataSourceUpdate), "ReferenceSchemaUpdate" :: Maybe (SourceSchema) }
 ```
 
 <p>When you update a reference data source configuration for an application, this object provides all the updated values (such as the source bucket name and object key name), the in-application table name that is created, and updated mapping information that maps the data in the Amazon S3 object to the in-application reference table that is created.</p>
@@ -3259,7 +3259,7 @@ Constructs ReferenceDataSourceUpdate from required parameters
 #### `newReferenceDataSourceUpdate'`
 
 ``` purescript
-newReferenceDataSourceUpdate' :: Id -> ({ "ReferenceId" :: Id, "TableNameUpdate" :: NullOrUndefined (InAppTableName), "S3ReferenceDataSourceUpdate" :: NullOrUndefined (S3ReferenceDataSourceUpdate), "ReferenceSchemaUpdate" :: NullOrUndefined (SourceSchema) } -> { "ReferenceId" :: Id, "TableNameUpdate" :: NullOrUndefined (InAppTableName), "S3ReferenceDataSourceUpdate" :: NullOrUndefined (S3ReferenceDataSourceUpdate), "ReferenceSchemaUpdate" :: NullOrUndefined (SourceSchema) }) -> ReferenceDataSourceUpdate
+newReferenceDataSourceUpdate' :: Id -> ({ "ReferenceId" :: Id, "TableNameUpdate" :: Maybe (InAppTableName), "S3ReferenceDataSourceUpdate" :: Maybe (S3ReferenceDataSourceUpdate), "ReferenceSchemaUpdate" :: Maybe (SourceSchema) } -> { "ReferenceId" :: Id, "TableNameUpdate" :: Maybe (InAppTableName), "S3ReferenceDataSourceUpdate" :: Maybe (S3ReferenceDataSourceUpdate), "ReferenceSchemaUpdate" :: Maybe (SourceSchema) }) -> ReferenceDataSourceUpdate
 ```
 
 Constructs ReferenceDataSourceUpdate's fields from required parameters
@@ -3300,7 +3300,7 @@ Encode ResourceARN
 
 ``` purescript
 newtype ResourceInUseException
-  = ResourceInUseException { message :: NullOrUndefined (ErrorMessage) }
+  = ResourceInUseException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Application is not available for this operation.</p>
@@ -3325,7 +3325,7 @@ Constructs ResourceInUseException from required parameters
 #### `newResourceInUseException'`
 
 ``` purescript
-newResourceInUseException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ResourceInUseException
+newResourceInUseException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ResourceInUseException
 ```
 
 Constructs ResourceInUseException's fields from required parameters
@@ -3334,7 +3334,7 @@ Constructs ResourceInUseException's fields from required parameters
 
 ``` purescript
 newtype ResourceNotFoundException
-  = ResourceNotFoundException { message :: NullOrUndefined (ErrorMessage) }
+  = ResourceNotFoundException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Specified application can't be found.</p>
@@ -3359,7 +3359,7 @@ Constructs ResourceNotFoundException from required parameters
 #### `newResourceNotFoundException'`
 
 ``` purescript
-newResourceNotFoundException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ResourceNotFoundException
+newResourceNotFoundException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ResourceNotFoundException
 ```
 
 Constructs ResourceNotFoundException's fields from required parameters
@@ -3368,7 +3368,7 @@ Constructs ResourceNotFoundException's fields from required parameters
 
 ``` purescript
 newtype ResourceProvisionedThroughputExceededException
-  = ResourceProvisionedThroughputExceededException { message :: NullOrUndefined (ErrorMessage) }
+  = ResourceProvisionedThroughputExceededException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>Discovery failed to get a record from the streaming source because of the Amazon Kinesis Streams ProvisionedThroughputExceededException. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html">GetRecords</a> in the Amazon Kinesis Streams API Reference.</p>
@@ -3393,7 +3393,7 @@ Constructs ResourceProvisionedThroughputExceededException from required paramete
 #### `newResourceProvisionedThroughputExceededException'`
 
 ``` purescript
-newResourceProvisionedThroughputExceededException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ResourceProvisionedThroughputExceededException
+newResourceProvisionedThroughputExceededException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ResourceProvisionedThroughputExceededException
 ```
 
 Constructs ResourceProvisionedThroughputExceededException's fields from required parameters
@@ -3520,7 +3520,7 @@ Constructs S3ReferenceDataSourceDescription's fields from required parameters
 
 ``` purescript
 newtype S3ReferenceDataSourceUpdate
-  = S3ReferenceDataSourceUpdate { "BucketARNUpdate" :: NullOrUndefined (BucketARN), "FileKeyUpdate" :: NullOrUndefined (FileKey), "ReferenceRoleARNUpdate" :: NullOrUndefined (RoleARN) }
+  = S3ReferenceDataSourceUpdate { "BucketARNUpdate" :: Maybe (BucketARN), "FileKeyUpdate" :: Maybe (FileKey), "ReferenceRoleARNUpdate" :: Maybe (RoleARN) }
 ```
 
 <p>Describes the S3 bucket name, object key name, and IAM role that Amazon Kinesis Analytics can assume to read the Amazon S3 object on your behalf and populate the in-application reference table.</p>
@@ -3545,7 +3545,7 @@ Constructs S3ReferenceDataSourceUpdate from required parameters
 #### `newS3ReferenceDataSourceUpdate'`
 
 ``` purescript
-newS3ReferenceDataSourceUpdate' :: ({ "BucketARNUpdate" :: NullOrUndefined (BucketARN), "FileKeyUpdate" :: NullOrUndefined (FileKey), "ReferenceRoleARNUpdate" :: NullOrUndefined (RoleARN) } -> { "BucketARNUpdate" :: NullOrUndefined (BucketARN), "FileKeyUpdate" :: NullOrUndefined (FileKey), "ReferenceRoleARNUpdate" :: NullOrUndefined (RoleARN) }) -> S3ReferenceDataSourceUpdate
+newS3ReferenceDataSourceUpdate' :: ({ "BucketARNUpdate" :: Maybe (BucketARN), "FileKeyUpdate" :: Maybe (FileKey), "ReferenceRoleARNUpdate" :: Maybe (RoleARN) } -> { "BucketARNUpdate" :: Maybe (BucketARN), "FileKeyUpdate" :: Maybe (FileKey), "ReferenceRoleARNUpdate" :: Maybe (RoleARN) }) -> S3ReferenceDataSourceUpdate
 ```
 
 Constructs S3ReferenceDataSourceUpdate's fields from required parameters
@@ -3554,7 +3554,7 @@ Constructs S3ReferenceDataSourceUpdate's fields from required parameters
 
 ``` purescript
 newtype ServiceUnavailableException
-  = ServiceUnavailableException { message :: NullOrUndefined (ErrorMessage) }
+  = ServiceUnavailableException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>The service is unavailable, back off and retry the operation. </p>
@@ -3579,7 +3579,7 @@ Constructs ServiceUnavailableException from required parameters
 #### `newServiceUnavailableException'`
 
 ``` purescript
-newServiceUnavailableException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ServiceUnavailableException
+newServiceUnavailableException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ServiceUnavailableException
 ```
 
 Constructs ServiceUnavailableException's fields from required parameters
@@ -3588,7 +3588,7 @@ Constructs ServiceUnavailableException's fields from required parameters
 
 ``` purescript
 newtype SourceSchema
-  = SourceSchema { "RecordFormat" :: RecordFormat, "RecordEncoding" :: NullOrUndefined (RecordEncoding), "RecordColumns" :: RecordColumns }
+  = SourceSchema { "RecordFormat" :: RecordFormat, "RecordEncoding" :: Maybe (RecordEncoding), "RecordColumns" :: RecordColumns }
 ```
 
 <p>Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.</p>
@@ -3613,7 +3613,7 @@ Constructs SourceSchema from required parameters
 #### `newSourceSchema'`
 
 ``` purescript
-newSourceSchema' :: RecordColumns -> RecordFormat -> ({ "RecordFormat" :: RecordFormat, "RecordEncoding" :: NullOrUndefined (RecordEncoding), "RecordColumns" :: RecordColumns } -> { "RecordFormat" :: RecordFormat, "RecordEncoding" :: NullOrUndefined (RecordEncoding), "RecordColumns" :: RecordColumns }) -> SourceSchema
+newSourceSchema' :: RecordColumns -> RecordFormat -> ({ "RecordFormat" :: RecordFormat, "RecordEncoding" :: Maybe (RecordEncoding), "RecordColumns" :: RecordColumns } -> { "RecordFormat" :: RecordFormat, "RecordEncoding" :: Maybe (RecordEncoding), "RecordColumns" :: RecordColumns }) -> SourceSchema
 ```
 
 Constructs SourceSchema's fields from required parameters
@@ -3726,7 +3726,7 @@ Encode StopApplicationResponse
 
 ``` purescript
 newtype UnableToDetectSchemaException
-  = UnableToDetectSchemaException { message :: NullOrUndefined (ErrorMessage), "RawInputRecords" :: NullOrUndefined (RawInputRecords), "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) }
+  = UnableToDetectSchemaException { message :: Maybe (ErrorMessage), "RawInputRecords" :: Maybe (RawInputRecords), "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) }
 ```
 
 <p>Data format is not valid, Amazon Kinesis Analytics is not able to detect schema for the given streaming source.</p>
@@ -3751,7 +3751,7 @@ Constructs UnableToDetectSchemaException from required parameters
 #### `newUnableToDetectSchemaException'`
 
 ``` purescript
-newUnableToDetectSchemaException' :: ({ message :: NullOrUndefined (ErrorMessage), "RawInputRecords" :: NullOrUndefined (RawInputRecords), "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) } -> { message :: NullOrUndefined (ErrorMessage), "RawInputRecords" :: NullOrUndefined (RawInputRecords), "ProcessedInputRecords" :: NullOrUndefined (ProcessedInputRecords) }) -> UnableToDetectSchemaException
+newUnableToDetectSchemaException' :: ({ message :: Maybe (ErrorMessage), "RawInputRecords" :: Maybe (RawInputRecords), "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) } -> { message :: Maybe (ErrorMessage), "RawInputRecords" :: Maybe (RawInputRecords), "ProcessedInputRecords" :: Maybe (ProcessedInputRecords) }) -> UnableToDetectSchemaException
 ```
 
 Constructs UnableToDetectSchemaException's fields from required parameters
